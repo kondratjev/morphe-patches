@@ -3,5 +3,5 @@ extension {
 }
 
 android {
-    namespace = "app.kondratjev.extension"
+    namespace = "app.template.extension"
 }

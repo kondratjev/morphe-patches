@@ -35,7 +35,7 @@ To start using this template, follow these steps:
    and the [contribution guidelines](CONTRIBUTING.md)[^3].
 5. Choose a name for your patches project. Keep in mind you must use a unique name that does not 
    imply or suggest authorship by the Morphe open source project. If unsure, then simply name these
-   patches after yourself ("Kondratjev Morphe patches"). See the [NOTICE](NOTICE) for details. 
+   patches after yourself ("UserXYZ Morphe patches"). See the [NOTICE](NOTICE) for details. 
 6. (Optional): Add `patches-bundle.png` to the project if you want a custom icon to show in
    Morphe Manager instead of your GitHub profile avatar.
 
@@ -86,14 +86,14 @@ Or manually add this repository url as a patch source in Morphe: https://github.
 
 ### 📙 Contributing
 
-Thank you for considering contributing to Kondratjev Morphe Patches.  
+Thank you for considering contributing to UserXYZ Morphe Patches.  
 You can find the contribution guidelines [here](CONTRIBUTING.md).
 
 ### 🛠️ Building
 
-To build Kondratjev Morphe Patches,
+To build UserXYZ Morphe Patches,
 you can follow the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation).
 
 ## 📜 License
 
-Kondratjev Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+UserXYZ Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE)

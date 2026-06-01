@@ -1,4 +1,4 @@
-package app.kondratjev.extension.extension;
+package app.template.extension.extension;
 
 @SuppressWarnings("unused")
 public class ExamplePatch {
