@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "@cleyrop-org/semantic-release-backmerge": "^5.2.4",
     "@MorpheApp/changelog": "git+https://github.com/MorpheApp/changelog.git#bundle",
+    "@saithodev/semantic-release-backmerge": "^4.0.1",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
     "gradle-semantic-release-plugin": "^1.10.3",
