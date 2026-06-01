@@ -1,21 +1,21 @@
-group = "app.kondratjev"
+group = "app.template"
 
 patches {
-	about {
-		name = "Kondratjev Patches"
-		description = "Patches for apps I like"
-		source = "git@github.com:kondratjev/morphe-patches.git"
-		author = "Awesome dev"
-		contact = "na"
-		website = "na"
-		license = "GPLv3"
-	}
+    about {
+        name = "UserXYZ Patches"
+        description = "Patches for apps I like"
+        source = "git@github.com:UserXYZ/morphe-patches.git"
+        author = "Awesome dev"
+        contact = "na"
+        website = "na"
+        license = "GPLv3"
+    }
 }
 
 kotlin {
-	compilerOptions {
-		freeCompilerArgs.add("-Xcontext-parameters")
-	}
+    compilerOptions {
+        freeCompilerArgs.add("-Xcontext-parameters")
+    }
 }
 
 // Separate configuration so gson is available at runtime for the
@@ -23,24 +23,22 @@ kotlin {
 val patchListGeneratorClasspath: Configuration by configurations.creating
 
 dependencies {
-	compileOnly(libs.gson)
-	patchListGeneratorClasspath(libs.gson)
-
-	implementation(libs.morphe.patches.library)
+    compileOnly(libs.gson)
+    patchListGeneratorClasspath(libs.gson)
 }
 
 tasks {
-	register<JavaExec>("generatePatchesList") {
-		description = "Build patch with patch list"
+    register<JavaExec>("generatePatchesList") {
+        description = "Build patch with patch list"
 
-		dependsOn(build)
+        dependsOn(build)
 
-		classpath = sourceSets["main"].runtimeClasspath + patchListGeneratorClasspath
-		mainClass.set("util.PatchListGeneratorKt")
-	}
+        classpath = sourceSets["main"].runtimeClasspath + patchListGeneratorClasspath
+        mainClass.set("util.PatchListGeneratorKt")
+    }
 
-	// Used by gradle-semantic-release-plugin.
-	publish {
-		dependsOn("generatePatchesList")
-	}
+    // Used by gradle-semantic-release-plugin.
+    publish {
+        dependsOn("generatePatchesList")
+    }
 }

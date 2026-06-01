@@ -1,4 +1,4 @@
-package app.kondratjev.patches.shared
+package app.template.patches.shared
 
 import app.morphe.patcher.patch.ApkFileType
 import app.morphe.patcher.patch.AppTarget
