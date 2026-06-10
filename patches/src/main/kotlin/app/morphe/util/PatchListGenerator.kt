@@ -3,7 +3,7 @@
  * https://github.com/MorpheApp/morphe-patches-template
  */
 
-package util
+package app.morphe.util
 
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.loadPatchesFromJar
