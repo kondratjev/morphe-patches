@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/kondratjev/morphe-patches/compare/v1.0.0...v1.1.0) (2026-06-10)
+
+### ✨ New Features
+
+* Add Unlock Premium patch for Pillo ([a931564](https://github.com/kondratjev/morphe-patches/commit/a9315647e63bf8933031489d57426ecb59957613))
+* Fix pillo fingerprints ([2a3acd3](https://github.com/kondratjev/morphe-patches/commit/2a3acd3d06393d7cd121cc3b5863db0a1262d9fd))
+
 ## [1.1.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-06-10)
 
 ### ✨ New Features
