@@ -24,7 +24,7 @@ body:
       description: |
         A strong motivation is necessary for a feature request to be considered.
 
-        - Why should this feature be implemented? 
+        - Why should this feature be implemented?
         - What is the explicit use case?
         - What are the benefits?
         - What makes this feature important?
