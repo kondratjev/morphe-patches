@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0-dev.1",
+  "version": "1.1.0-dev.2",
   "patches": [
     {
       "name": "Disable Pairip license check",
@@ -13,7 +13,9 @@
       "name": "Enable Premium",
       "description": "Enables app features locked behind the subscription paywall.",
       "default": true,
-      "dependencies": ["BytecodePatch"],
+      "dependencies": [
+        "BytecodePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.lyfta",
