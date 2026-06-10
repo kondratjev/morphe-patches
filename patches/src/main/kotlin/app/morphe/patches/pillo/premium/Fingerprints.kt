@@ -2,29 +2,25 @@ package app.morphe.patches.pillo.premium
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
-import com.android.tools.smali.dexlib2.AccessFlags
 
 /**
- * Matches the private method `setIsPremiumState(Z)V`
- * in `Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;`.
+ * Matches `Job setIsPremiumState(boolean)` in SubscriptionStateProvider.
+ * Return type is Job, not void — the method returns the launched coroutine.
  */
 object SetIsPremiumStateFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
     name = "setIsPremiumState",
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PRIVATE),
+    returnType = "Lkotlinx/coroutines/Job;",
     parameters = listOf("Z"),
 )
 
 /**
- * Matches the private method `setIsAdfreeState(Z)V`
- * in `Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;`.
+ * Matches `Job setIsAdfreeState(boolean)` in SubscriptionStateProvider.
  */
 object SetIsAdfreeStateFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
     name = "setIsAdfreeState",
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PRIVATE),
+    returnType = "Lkotlinx/coroutines/Job;",
     parameters = listOf("Z"),
 )
 
