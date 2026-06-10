@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "v1.0.0-dev.1",
   "patches": [
     {
       "name": "Disable Pairip license check",
@@ -37,27 +37,21 @@
       "options": []
     },
     {
-      "name": "Example Patch",
-      "description": "Example patch to start with.",
+      "name": "Unlock Premium",
+      "description": "Unlocks premium features and removes ads by forcing subscription state to always be active.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {
-          "packageName": "com.example.app",
-          "name": "XYZ app",
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
           "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#FF0045",
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
           "signatures": null,
           "targets": [
             {
-              "version": "2.0.0",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.0.2",
+              "version": "0.6.10",
               "isExperimental": false,
               "minSdk": null,
               "description": null
