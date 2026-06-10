@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-dev.1",
+  "version": "1.0.0",
   "patches": [
     {
       "name": "Disable Pairip license check",
@@ -27,6 +27,37 @@
           "targets": [
             {
               "version": "1.572",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Example Patch",
+      "description": "Example patch to start with.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.example.app",
+          "name": "XYZ app",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#FF0045",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2.0.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
