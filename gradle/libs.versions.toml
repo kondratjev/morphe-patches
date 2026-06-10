@@ -1,5 +1,5 @@
 [versions]
-morphe-patcher = "1.5.1"
+morphe-patcher = "1.5.2"
 morphe-patches-library = "1.3.3"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
