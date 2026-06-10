@@ -1,30 +1,27 @@
-group = "app.template"
+group = "app.morphe"
 
 patches {
     about {
-        name = "UserXYZ Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
-        contact = "na"
-        website = "na"
+        name = "kondratjev Morphe Patches"
+        description = "Patches for Lyfta and other apps"
+        source = "git@github.com:kondratjev/morphe-patches.git"
+        author = "kondratjev"
+        contact = "kondratj3v@gmail.com"
+        website = "https://github.com/kondratjev/morphe-patches"
         license = "GPLv3"
     }
 }
 
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.add("-Xcontext-parameters")
-    }
-}
-
-// Separate configuration so gson is available at runtime for the
-// generatePatchesList task but never bundled into the APK.
-val patchListGeneratorClasspath: Configuration by configurations.creating
-
 dependencies {
-    compileOnly(libs.gson)
-    patchListGeneratorClasspath(libs.gson)
+    // Used by JsonGenerator.
+    implementation(libs.gson)
+
+    // Required due to smali, or build fails. Can be removed once smali is bumped.
+    implementation(libs.guava)
+
+    implementation(libs.morphe.patches.library)
+
+    compileOnly(project(":patches:stub"))
 }
 
 tasks {
@@ -33,12 +30,17 @@ tasks {
 
         dependsOn(build)
 
-        classpath = sourceSets["main"].runtimeClasspath + patchListGeneratorClasspath
-        mainClass.set("util.PatchListGeneratorKt")
+        classpath = sourceSets["main"].runtimeClasspath
+        mainClass.set("app.morphe.util.PatchListGeneratorKt")
     }
-
     // Used by gradle-semantic-release-plugin.
     publish {
         dependsOn("generatePatchesList")
+    }
+}
+
+kotlin {
+    compilerOptions {
+        freeCompilerArgs = listOf("-Xcontext-parameters")
     }
 }
