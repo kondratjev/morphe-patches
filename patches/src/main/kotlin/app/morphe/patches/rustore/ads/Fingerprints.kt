@@ -3,12 +3,14 @@ package app.morphe.patches.rustore.ads
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches the static initializer `<clinit>` of class `b` (Features.kt)
- * which contains the ad-related feature toggle defaults.
+ * Matches `FlipperRepository.c(Feature$Remote$a, Continuation)Object` —
+ * the static method that reads remote feature toggle values from the
+ * Omicron config server and local cache.
  */
-object AdFeatureClinitFingerprint : Fingerprint(
+object FlipperRepoGetRemoteFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lru/vk/store/lib/featuretoggle/b;" &&
-                method.name == "<clinit>"
+        classDef.type == "Lru/vk/store/lib/featuretoggle/c;" &&
+                method.name == "c" &&
+                method.parameters.size == 2
     }
 )
