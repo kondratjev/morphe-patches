@@ -19,3 +19,23 @@ object UpdateBannerFingerprint : Fingerprint(
                 method.parameters.size == 1
     }
 )
+
+/**
+ * Matches `PermissionLauncher.a(String key, String permission)` —
+ * the centralized method that ALL permission dialogs go through.
+ * No-oping this suppresses the system notification permission dialog
+ * AND the update-settings notification prompt.
+ *
+ * Class `al2.a` = PermissionLauncher.
+ * Method `a` = launch(key, permission): void
+ */
+object PermissionLauncherFingerprint : Fingerprint(
+    custom = { method, classDef ->
+        classDef.type == "Lal2/a;" &&
+                method.name == "a" &&
+                method.returnType == "V" &&
+                method.parameters.size == 2 &&
+                method.parameterTypes[0] == "Ljava/lang/String;" &&
+                method.parameterTypes[1] == "Ljava/lang/String;"
+    }
+)

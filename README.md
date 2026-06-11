@@ -6,14 +6,6 @@ Patches for use with [Morphe](https://morphe.software).
 
 A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
-| App | Package | Patches |
-|---|---|---|
-| Lyfta | `com.lyfta` | Enable Premium |
-| Pillo | `xyz.rtrvr.pillo` | Unlock Premium |
-| Medisafe | `com.medisafe.android.client` | Unlock Premium |
-| RuStore | `ru.vk.store` | Enable debug menu, Disable ads, Bypass authorization |
-| *Universal* | — | Change version code, Disable Pairip license check |
-
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
