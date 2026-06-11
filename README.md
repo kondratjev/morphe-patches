@@ -4,39 +4,119 @@ Patches for use with [Morphe](https://morphe.software).
 
 ## ❓ About
 
-A collection of patches for various Android apps, built for the Morphe patcher.
-Currently includes patches for **Lyfta** and **universal Pairip license check bypass**.
+A collection of bytecode patches for Android apps, built for the Morphe patcher.
+
+| App | Package | Patches |
+|---|---|---|
+| Lyfta | `com.lyfta` | Enable Premium |
+| Pillo | `xyz.rtrvr.pillo` | Unlock Premium |
+| Medisafe | `com.medisafe.android.client` | Unlock Premium |
+| RuStore | `ru.vk.store` | Enable debug menu, Disable ads, Bypass authorization |
+| *Universal* | — | Change version code, Disable Pairip license check |
 
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
+> **[v1.4.0-dev.6](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.6)**  •  `dev`  •  9 patches total
+<details open>
+<summary>📦 RuStore  •  4 patches</summary>
+<br>
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release.
+**🎯 Supported versions:**
 
-     If you wish for the patches list to be collapsed, then remove the word 'EXPANDED' from the comment tag above.
+| 1.103.0.3 |
+| :---: |
 
-     If you wish to manually keep this list updated then remove the PATCHES_START and PATCHES_END
-     comment blocks entirely. -->
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. |  |
+| [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan. The scan checks all files for vulnerabilities and runs daily in the background. This patch forces the feature off regardless of the stored user preference. |  |
+| [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
+| [Suppress notification banner](#suppress-notification-banner) | Prevents the notification permission banner from appearing on settings and update screens. The "Enable notifications?" prompt will no longer pop up. System notification permission can still be toggled manually in Android Settings → Apps → RuStore. |  |
 
-#### A list of your patches will be automatically shown here after your first patches release is created.
+</details>
 
-&nbsp;
+<details open>
+<summary>📦 Lyfta  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.572 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Enable Premium](#enable-premium) | Enables app features locked behind the subscription paywall. |  |
+
+</details>
+
+<details open>
+<summary>📦 Medisafe  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 9.50.3 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features including unlimited dependents, medfriends, custom ringtones and theme colors. |  |
+
+</details>
+
+<details open>
+<summary>📦 Pillo  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 0.6.10 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads by forcing subscription state to always be active. |  |
+
+</details>
+
+<details open>
+<summary>🌐 Universal  •  2 patches</summary>
+<br>
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Change version code](#change-version-code) | Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set. | • Version code |
+| [Disable Pairip license check](#disable-pairip-license-check) | Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization. |  |
+
+</details>
+
+<!-- PATCHES_END -->
 
 ## 📚 How to use
 
 Click here to add these patches to Morphe:
-https://morphe.software/add-source?github=kondratjev/morphe-patches
 
-Or manually add this repository URL as a patch source in Morphe Manager:
-`https://github.com/kondratjev/morphe-patches`
+> https://morphe.software/add-source?github=kondratjev/morphe-patches
 
-<!-- The patches end tag is intentionally placed here so the first release will cleanup
-     this readme of all developer instructions above. -->
-<!-- PATCHES_END -->
+Or manually add this repository URL in Morphe Manager → Sources:
+
+> `https://github.com/kondratjev/morphe-patches`
+
+## ⚖️ Disclaimer
+
+This project is provided for **educational purposes only**. The patches are intended to help developers understand Android bytecode modification and the Morphe patching framework.
+
+- **No affiliation** — This project is not affiliated with, endorsed by, or connected to any of the patched applications or their developers.
+- **No warranty** — These patches are provided "as is" without warranty of any kind. Use at your own risk.
+- **Terms of Service** — Using modified versions of applications may violate their Terms of Service. It is your responsibility to review and comply with applicable terms.
+- **No redistribution** — The patched APK files should not be redistributed. These patches are meant to be applied by end users to their own legally obtained APKs.
+- **Fair use** — These patches are developed through independent reverse engineering for interoperability and personal use, consistent with fair use principles.
+
+The author assumes no liability for any consequences resulting from the use of these patches.
 
 ## 🛠️ Building
-
-To build these patches, run:
 
 ```bash
 ./gradlew patches:generatePatchesList
