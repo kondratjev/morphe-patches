@@ -1,5 +1,5 @@
 {
-  "version": "1.4.1-dev.1",
+  "version": "v1.4.1-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -110,31 +110,6 @@
     {
       "name": "Skip update auth",
       "description": "Skips the authorization modal when tapping \"Update all\" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.103.0.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Suppress permission dialogs",
-      "description": "Suppresses ALL system permission dialogs (notifications, storage, camera, etc.) including the in-app notification banner. Permissions can still be toggled manually in Android Settings → Apps → RuStore.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
