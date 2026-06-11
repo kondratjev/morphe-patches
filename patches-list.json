@@ -2,6 +2,31 @@
   "version": "1.3.0",
   "patches": [
     {
+      "name": "Bypass authorization",
+      "description": "Makes the app behave as if the user is logged in at the UI level. The main screen and profile will show logged-in state without requiring actual authentication. Server-side features like purchases still require real login.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Change version code",
       "description": "Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set.",
       "default": false,
@@ -31,6 +56,31 @@
       "options": []
     },
     {
+      "name": "Disable ads",
+      "description": "Disables all advertisements by setting ad-related feature toggle defaults to false. Other remote features are left untouched.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Enable Premium",
       "description": "Enables app features locked behind the subscription paywall.",
       "default": true,
@@ -48,6 +98,31 @@
           "targets": [
             {
               "version": "1.572",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable debug menu",
+      "description": "Enables the hidden in-app debug screen and other developer features by forcing local feature toggles to true.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
