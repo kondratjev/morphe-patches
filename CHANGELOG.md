@@ -1,3 +1,9 @@
+## [1.3.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-06-11)
+
+### ✨ New Features
+
+* Add additional Medisafe Premium handlers ([c97e4c9](https://github.com/kondratjev/morphe-patches/commit/c97e4c9a3efcc75fe294febf81550aa3983b64ac))
+
 ## [1.3.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-06-11)
 
 ### ✨ New Features
