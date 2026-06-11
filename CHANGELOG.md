@@ -1,3 +1,9 @@
+## [1.4.0-dev.5](https://github.com/kondratjev/morphe-patches/compare/v1.4.0-dev.4...v1.4.0-dev.5) (2026-06-11)
+
+### ✨ New Features
+
+* Add additional rustore patches ([7232243](https://github.com/kondratjev/morphe-patches/commit/72322431b08d3f4f070378d55ae2b0ffea1bc8f3))
+
 ## [1.4.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.4.0-dev.3...v1.4.0-dev.4) (2026-06-11)
 
 ### ✨ New Features

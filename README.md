@@ -17,7 +17,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0-dev.4](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.4)**  •  `dev`  •  9 patches total
+> **[v1.4.0-dev.5](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.5)**  •  `dev`  •  9 patches total
 <details open>
 <summary>📦 RuStore  •  4 patches</summary>
 <br>
@@ -30,9 +30,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. |  |
-| [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan by default on first install. The scan checks all files for vulnerabilities. Manual scan in Security settings still works, and existing users keep their stored preference. |  |
+| [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan. The scan checks all files for vulnerabilities and runs daily in the background. This patch forces the feature off regardless of the stored user preference. |  |
 | [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
-| [Suppress notification banner](#suppress-notification-banner) | Prevents the notification permission banner from appearing on settings and update screens. The "Enable notifications?" modal will no longer pop up. System notification permission can still be toggled manually in Android Settings → Apps → RuStore. |  |
+| [Suppress notification banner](#suppress-notification-banner) | Prevents the notification permission banner from appearing on settings and update screens. The "Enable notifications?" prompt will no longer pop up. System notification permission can still be toggled manually in Android Settings → Apps → RuStore. |  |
 
 </details>
 
