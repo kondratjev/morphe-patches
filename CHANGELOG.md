@@ -1,3 +1,9 @@
+## [1.4.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.3.0...v1.4.0-dev.1) (2026-06-11)
+
+### ✨ New Features
+
+* Add RuStore patches ([9e71a9e](https://github.com/kondratjev/morphe-patches/commit/9e71a9e6261e7912a6fde1446258b197ae352f94))
+
 ## [1.3.0](https://github.com/kondratjev/morphe-patches/compare/v1.2.0...v1.3.0) (2026-06-11)
 
 ### ✨ New Features
