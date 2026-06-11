@@ -17,9 +17,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.3.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.3.0)**  •  `dev`  •  8 patches total
+> **[v1.4.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.1)**  •  `dev`  •  7 patches total
 <details open>
-<summary>📦 RuStore  •  3 patches</summary>
+<summary>📦 RuStore  •  2 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -29,8 +29,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Bypass authorization](#bypass-authorization) | Makes the app behave as if the user is logged in at the UI level. The main screen and profile will show logged-in state without requiring actual authentication. Server-side features like purchases still require real login. |  |
-| [Disable ads](#disable-ads) | Disables all advertisements by setting ad-related feature toggle defaults to false. Other remote features are left untouched. |  |
+| [Disable ads](#disable-ads) | Disables all advertisements by forcing remote feature toggle reads to return false for all features. Note: this may affect other remote features as well. |  |
 | [Enable debug menu](#enable-debug-menu) | Enables the hidden in-app debug screen and other developer features by forcing local feature toggles to true. |  |
 
 </details>
