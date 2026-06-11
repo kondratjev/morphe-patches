@@ -23,10 +23,7 @@ val suppressNotificationBannerPatch = bytecodePatch(
         // keeps it false permanently — the banner never shows.
         UpdateBannerFingerprint.method.addInstructions(
             0,
-            """
-                sget-object v0, Lbq0/g0;->f15230a:Lbq0/g0;
-                return-object v0
-            """.trimIndent()
+            "const/4 v0, 0x0\nreturn-object v0"
         )
     }
 }
