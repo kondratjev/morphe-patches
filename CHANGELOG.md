@@ -1,3 +1,5 @@
+## [1.3.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-06-11)
+
 ## [1.3.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-06-11)
 
 ### ✨ New Features
