@@ -1,3 +1,9 @@
+## [1.5.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.4.1-dev.1...v1.5.0-dev.1) (2026-06-11)
+
+### ✨ New Features
+
+* Remove suppressPermissionDialogsPatch ([6757e17](https://github.com/kondratjev/morphe-patches/commit/6757e1751fb65b09828e50c9add65c22b5cf0f2d))
+
 ## [1.4.1-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.4.0...v1.4.1-dev.1) (2026-06-11)
 
 ### 🐛 Bug Fixes
