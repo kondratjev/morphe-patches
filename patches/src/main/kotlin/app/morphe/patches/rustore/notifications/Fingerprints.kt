@@ -3,17 +3,18 @@ package app.morphe.patches.rustore.notifications
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `NotificationPermissionBannerDelegateImpl.canShowInCurrentSession()` —
- * the decision method that determines whether the notification permission
- * banner/modal should be shown across all screens (Mine, Update Settings, etc.).
+ * Matches `NotificationPermissionBannerDelegateImpl.d()` — the
+ * `updateBanner` suspend wrapper that is called by the `updateBanners`
+ * coroutine. Making this a no-op prevents ALL banner update logic,
+ * keeping the banner state at its constructor-initialized `false`.
  *
  * Class `b` in `eq1` = NotificationPermissionBannerDelegateImpl.
- * Method `a` = canShowInCurrentSession(Continuation): Object
+ * Method `d` = updateBanner(Continuation): Object (returns Unit)
  */
-object CanShowNotificationBannerFingerprint : Fingerprint(
+object UpdateBannerFingerprint : Fingerprint(
     custom = { method, classDef ->
         classDef.type == "Leq1/b;" &&
-                method.name == "a" &&
+                method.name == "d" &&
                 method.returnType == "Ljava/lang/Object;" &&
                 method.parameters.size == 1
     }

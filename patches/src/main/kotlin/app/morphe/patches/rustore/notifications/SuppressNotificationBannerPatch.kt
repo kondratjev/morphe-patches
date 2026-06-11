@@ -9,7 +9,7 @@ val suppressNotificationBannerPatch = bytecodePatch(
     name = "Suppress notification banner",
     description = "Prevents the notification permission banner from " +
             "appearing on settings and update screens. The \"Enable " +
-            "notifications?\" modal will no longer pop up. System " +
+            "notifications?\" prompt will no longer pop up. System " +
             "notification permission can still be toggled manually " +
             "in Android Settings → Apps → RuStore.",
     default = true,
@@ -17,10 +17,14 @@ val suppressNotificationBannerPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_RUSTORE)
 
     execute {
-        CanShowNotificationBannerFingerprint.method.addInstructions(
+        // Hook updateBanner to be a no-op.
+        // The banner state (eq1/b.f36911e MutableStateFlow) is initialized
+        // to false in the constructor. Preventing updateBanner from running
+        // keeps it false permanently — the banner never shows.
+        UpdateBannerFingerprint.method.addInstructions(
             0,
             """
-                sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+                sget-object v0, Lbq0/g0;->f15230a:Lbq0/g0;
                 return-object v0
             """.trimIndent()
         )
