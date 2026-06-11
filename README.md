@@ -17,7 +17,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.2)**  •  `dev`  •  7 patches total
+> **[v1.4.0-dev.3](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.3)**  •  `dev`  •  7 patches total
 <details open>
 <summary>📦 RuStore  •  2 patches</summary>
 <br>
@@ -29,8 +29,8 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Disable ads](#disable-ads) | Disables all advertisements by forcing remote feature toggle reads to return false for all features. Note: this may affect other remote features as well. |  |
-| [Enable debug menu](#enable-debug-menu) | Enables the hidden in-app debug screen and other developer features by forcing local feature toggles to true. |  |
+| [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. Other features like notifications and security settings are NOT affected. |  |
+| [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
 
 </details>
 
