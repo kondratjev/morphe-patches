@@ -17,9 +17,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0-dev.3](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.3)**  •  `dev`  •  7 patches total
+> **[v1.4.0-dev.4](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0-dev.4)**  •  `dev`  •  9 patches total
 <details open>
-<summary>📦 RuStore  •  2 patches</summary>
+<summary>📦 RuStore  •  4 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -29,8 +29,10 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. Other features like notifications and security settings are NOT affected. |  |
+| [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. |  |
+| [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan by default on first install. The scan checks all files for vulnerabilities. Manual scan in Security settings still works, and existing users keep their stored preference. |  |
 | [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
+| [Suppress notification banner](#suppress-notification-banner) | Prevents the notification permission banner from appearing on settings and update screens. The "Enable notifications?" modal will no longer pop up. System notification permission can still be toggled manually in Android Settings → Apps → RuStore. |  |
 
 </details>
 
