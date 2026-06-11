@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/kondratjev/morphe-patches/compare/v1.1.0...v1.2.0) (2026-06-11)
+
+### ✨ New Features
+
+* Add Change version code patch ([9bc8f4a](https://github.com/kondratjev/morphe-patches/commit/9bc8f4a6beec7b9d8d5bd7730de494d0e781af30))
+
 ## [1.2.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-06-11)
 
 ### ✨ New Features
