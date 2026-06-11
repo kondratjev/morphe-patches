@@ -29,21 +29,5 @@ val unlockPremiumPatch = bytecodePatch(
                 return-object v0
             """.trimIndent()
         )
-
-        // ── Hook C: Block server from overwriting the local purchase bundle ──
-        // Server sync can send available_features with bundleName "base",
-        // which would overwrite SharedPreferences. No-op prevents this.
-        UpdatePurchaseBundleFingerprint.method.addInstructions(
-            0,
-            "return-void"
-        )
-
-        // ── Hook D: Prevent theme/ringtone resets on server bundle update ──
-        // handlePurchaseBundleFeatures resets user colors to 0 and ringtones
-        // to default when a free bundle is received from the server.
-        HandlePurchaseBundleFeaturesFingerprint.method.addInstructions(
-            0,
-            "return-void"
-        )
     }
 }
