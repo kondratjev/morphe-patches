@@ -1,6 +1,27 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0-dev.1",
   "patches": [
+    {
+      "name": "Change version code",
+      "description": "Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set.",
+      "default": false,
+      "dependencies": [],
+      "compatiblePackages": null,
+      "options": [
+        {
+          "key": "versionCode",
+          "title": "Version code",
+          "description": "The version code to use. (1 ~ 2147483647)",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "2147483647",
+          "values": {
+            "Lowest": "1",
+            "Highest": "2147483647"
+          }
+        }
+      ]
+    },
     {
       "name": "Disable Pairip license check",
       "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
