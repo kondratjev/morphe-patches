@@ -32,7 +32,7 @@
     },
     {
       "name": "Disable ads",
-      "description": "Disables all advertisements by forcing remote feature toggle reads to return false for all features. Note: this may affect other remote features as well.",
+      "description": "Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. Other features like notifications and security settings are NOT affected.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -83,9 +83,9 @@
       "options": []
     },
     {
-      "name": "Enable debug menu",
-      "description": "Enables the hidden in-app debug screen and other developer features by forcing local feature toggles to true.",
-      "default": false,
+      "name": "Skip update auth",
+      "description": "Skips the authorization modal when tapping \"Update all\" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully.",
+      "default": true,
       "dependencies": [],
       "compatiblePackages": [
         {

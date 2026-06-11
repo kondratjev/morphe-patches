@@ -3,14 +3,18 @@ package app.morphe.patches.rustore.ads
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `FlipperRepository.c(Feature$Remote$a, Continuation)Object` —
- * the static method that reads remote feature toggle values from the
- * Omicron config server and local cache.
+ * Matches `RawAdvertisementRepositoryImpl.get()` — the single method
+ * that ALL ad loading flows converge on. Patching this blocks SSP,
+ * MyTarget, and VKR ads at the data source without affecting any
+ * other remote features (notifications, security, etc.).
+ *
+ * Class `n0` in `j41` = RawAdvertisementRepositoryImpl.
+ * Method `a` = get() — fetches ads from 3 sources concurrently.
  */
-object FlipperRepoGetRemoteFingerprint : Fingerprint(
+object RawAdvertisementRepoGetFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lru/vk/store/lib/featuretoggle/c;" &&
-                method.name == "c" &&
-                method.parameters.size == 2
+        classDef.type == "Lj41/n0;" &&
+                method.name == "a" &&
+                method.parameters.size >= 7
     }
 )
