@@ -12,7 +12,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks premium features and removes ads by forcing subscription state to always be active."
+    description = "Unlocks premium features and removes ads."
 ) {
     compatibleWith(COMPATIBILITY_PILLO)
 

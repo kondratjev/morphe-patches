@@ -7,10 +7,7 @@ import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
 @Suppress("unused")
 val disableKasperskyScanPatch = bytecodePatch(
     name = "Disable background scan",
-    description = "Disables the Kaspersky-powered periodic device scan. " +
-            "The scan checks all files for vulnerabilities and runs daily " +
-            "in the background. This patch forces the feature off regardless " +
-            "of the stored user preference.",
+    description = "Disables the periodic Kaspersky background device scan.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)

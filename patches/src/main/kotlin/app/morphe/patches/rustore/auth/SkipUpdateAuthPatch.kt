@@ -7,10 +7,7 @@ import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
 @Suppress("unused")
 val skipUpdateAuthPatch = bytecodePatch(
     name = "Skip update auth",
-    description = "Skips the authorization modal when tapping " +
-            "\"Update all\" or individual update buttons. The update " +
-            "will proceed without requiring login. If the update API " +
-            "requires auth tokens, the download will fail gracefully.",
+    description = "Removes the login requirement when updating apps.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)

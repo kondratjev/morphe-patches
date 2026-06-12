@@ -8,8 +8,7 @@ import app.morphe.patches.medisafe.shared.Constants.COMPATIBILITY_MEDISAFE
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks all premium features including unlimited dependents, " +
-            "medfriends, custom ringtones and theme colors."
+    description = "Unlocks all premium features.",
 ) {
     compatibleWith(COMPATIBILITY_MEDISAFE)
 

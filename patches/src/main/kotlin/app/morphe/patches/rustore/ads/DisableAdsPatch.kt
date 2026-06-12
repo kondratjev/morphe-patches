@@ -7,8 +7,7 @@ import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
 @Suppress("unused")
 val disableAdsPatch = bytecodePatch(
     name = "Disable ads",
-    description = "Disables all advertisements (banners, native ads, MyTarget, " +
-            "SSP, VKR) by blocking the ad repository at the data source.",
+    description = "Removes all advertisements from the app.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)

@@ -6,20 +6,12 @@ Patches for use with [Morphe](https://morphe.software).
 
 A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
-| App | Package | Patches |
-|---|---|---|
-| Lyfta | `com.lyfta` | Enable Premium |
-| Pillo | `xyz.rtrvr.pillo` | Unlock Premium |
-| Medisafe | `com.medisafe.android.client` | Unlock Premium |
-| RuStore | `ru.vk.store` | Enable debug menu, Disable ads, Bypass authorization |
-| *Universal* | — | Change version code, Disable Pairip license check |
-
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.4.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.4.0)**  •  `main`  •  9 patches total
+> **[v1.5.0-dev.4](https://github.com/kondratjev/morphe-patches/releases/tag/v1.5.0-dev.4)**  •  `dev`  •  10 patches total
 <details open>
-<summary>📦 RuStore  •  4 patches</summary>
+<summary>📦 RuStore  •  5 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -29,10 +21,11 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. |  |
-| [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan. The scan checks all files for vulnerabilities and runs daily in the background. This patch forces the feature off regardless of the stored user preference. |  |
-| [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
-| [Suppress notification banner](#suppress-notification-banner) | Prevents the notification permission banner from appearing on settings and update screens. The "Enable notifications?" prompt will no longer pop up. System notification permission can still be toggled manually in Android Settings → Apps → RuStore. |  |
+| [Disable Mine redesign](#disable-mine-redesign) | Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface. |  |
+| [Disable ads](#disable-ads) | Removes all advertisements from the app. |  |
+| [Disable background scan](#disable-background-scan) | Disables the periodic Kaspersky background device scan. |  |
+| [Disable gaming profile](#disable-gaming-profile) | Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen. |  |
+| [Skip update auth](#skip-update-auth) | Removes the login requirement when updating apps. |  |
 
 </details>
 
@@ -47,7 +40,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Enable Premium](#enable-premium) | Enables app features locked behind the subscription paywall. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
@@ -62,7 +55,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks all premium features including unlimited dependents, medfriends, custom ringtones and theme colors. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
@@ -77,7 +70,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads by forcing subscription state to always be active. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
 
 </details>
 
@@ -87,8 +80,8 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Change version code](#change-version-code) | Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set. | • Version code |
-| [Disable Pairip license check](#disable-pairip-license-check) | Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization. |  |
+| [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
+| [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
 
 </details>
 
