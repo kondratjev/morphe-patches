@@ -1,5 +1,5 @@
 {
-  "version": "v1.5.0",
+  "version": "1.6.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -107,7 +107,7 @@
     },
     {
       "name": "Disable analytics",
-      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Amplitude, Mixpanel, Adjust, AppsFlyer, and VK-specific analytics.",
+      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Amplitude, Mixpanel, Adjust, and AppsFlyer",
       "default": true,
       "dependencies": [],
       "compatiblePackages": null,
