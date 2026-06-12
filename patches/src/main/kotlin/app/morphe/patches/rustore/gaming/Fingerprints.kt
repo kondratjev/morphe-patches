@@ -35,3 +35,47 @@ object MineViewModelOpenGameCenterFingerprint : Fingerprint(
                 method.parameters.isEmpty()
     }
 )
+
+/**
+ * Matches `GameCenterV2ButtonWidgetKt.GameCenterV2Button()` — the V2
+ * Mine screen composable that renders the Game Center stats button.
+ *
+ * Class `i0` in `wb1` = GameCenterV2ButtonWidgetKt.
+ * Method `d` = GameCenterV2Button(Function0, Modifier, GameCenterButtonWidgetViewModel?, Composer, int).
+ *
+ * Called from `pi1/j7` (MineV2Screen Apps menu item) with:
+ *   wb1.i0.d(onClick, modifier.withTestTag("GAME_CENTER_BUTTON_TEST_TAG"), null, composer, 48)
+ *
+ * Making this composable return immediately hides the Game Center button
+ * from the V2 Mine screen without affecting any other UI.
+ */
+object GameCenterV2ButtonComposableFingerprint : Fingerprint(
+    custom = { method, classDef ->
+        classDef.type == "Lwb1/i0;" &&
+                method.name == "d" &&
+                method.returnType == "V"
+    }
+)
+
+/**
+ * Matches `GameCenterButtonWidgetKt.GameCenterButton()` — the V1 Mine
+ * screen composable that renders the Game Center stats button.
+ *
+ * Class `o` in `wb1` = GameCenterButtonWidgetKt.
+ * Method `e` = GameCenterButton(Function0, Modifier, GameCenterButtonWidgetViewModel?, Composer, int).
+ *
+ * Called from `pi1/g5.j()` (MineScreen toolbar/header section) in two
+ * variants:
+ *   1. With apps button visible: wb1.o.e(onClick, LayoutWeightElement, null, composer, shift)
+ *   2. Without apps button:     wb1.o.e(onClick, modifier, null, composer, shift)
+ *
+ * Making this composable return immediately hides the Game Center button
+ * from the V1 Mine screen without affecting any other UI.
+ */
+object GameCenterV1ButtonComposableFingerprint : Fingerprint(
+    custom = { method, classDef ->
+        classDef.type == "Lwb1/o;" &&
+                method.name == "e" &&
+                method.returnType == "V"
+    }
+)

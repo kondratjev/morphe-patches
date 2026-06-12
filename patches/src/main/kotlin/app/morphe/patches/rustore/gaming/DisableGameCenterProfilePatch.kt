@@ -7,11 +7,8 @@ import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
 @Suppress("unused")
 val disableGameCenterProfilePatch = bytecodePatch(
     name = "Disable gaming profile",
-    description = "Disables the Game Center profile screen (game usage statistics) " +
-            "by blocking navigation from the Mine screen. Both MineViewModel " +
-            "(V1) and MineV2ViewModel (V2/V3) navigation to " +
-            "GameCenterStatsDestination is disabled. The 'Game Profile' " +
-            "menu item will no longer open the gaming statistics screen.",
+    description = "Removes the Game Profile section from the Mine screen, " +
+            "including the button and the usage statistics screen.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
@@ -31,6 +28,26 @@ val disableGameCenterProfilePatch = bytecodePatch(
         // Making it a no-op prevents the V1 Mine screen from opening
         // the gaming profile.
         MineViewModelOpenGameCenterFingerprint.method.addInstructions(
+            0,
+            "return-void"
+        )
+
+        // Hook C: Hide the Game Center button in V2 Mine screen.
+        // The `wb1.i0.d()` composable renders the Game Center stats
+        // button in the V2 Mine screen Apps menu item (pi1/j7).
+        // Making it return-void prevents the button from appearing
+        // in the V2/V3 layout.
+        GameCenterV2ButtonComposableFingerprint.method.addInstructions(
+            0,
+            "return-void"
+        )
+
+        // Hook D: Hide the Game Center button in V1 Mine screen.
+        // The `wb1.o.e()` composable renders the Game Center stats
+        // button in the V1 Mine screen toolbar/header (pi1/g5.j).
+        // Making it return-void prevents the button from appearing
+        // in the V1 layout.
+        GameCenterV1ButtonComposableFingerprint.method.addInstructions(
             0,
             "return-void"
         )

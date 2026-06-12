@@ -10,7 +10,7 @@ import java.util.logging.Logger
 @Suppress("unused")
 val disableLicenseCheckPatch = bytecodePatch(
     name = "Disable Pairip license check",
-    description = "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
+    description = "Disables the Pairip license verification check.",
     default = false
 ) {
 

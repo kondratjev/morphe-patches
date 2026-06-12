@@ -11,10 +11,7 @@ private const val MAX_VALUE = Int.MAX_VALUE.toString()
 @Suppress("unused")
 val changeVersionCodePatch = resourcePatch(
     name = "Change version code",
-    description = "Changes the version code of the app to the value specified in patch options. " +
-            "Except when mounting, this can prevent app stores from updating the app and allow " +
-            "the app to be installed over an existing installation that has a higher version code. " +
-            "By default, the highest version code is set.",
+    description = "Changes the app version code, allowing installation over existing versions.",
     default = false,
 ) {
     val versionCode by stringOption(

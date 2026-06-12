@@ -1,9 +1,9 @@
 {
-  "version": "1.5.0-dev.3",
+  "version": "v1.5.0-dev.3",
   "patches": [
     {
       "name": "Change version code",
-      "description": "Changes the version code of the app to the value specified in patch options. Except when mounting, this can prevent app stores from updating the app and allow the app to be installed over an existing installation that has a higher version code. By default, the highest version code is set.",
+      "description": "Changes the app version code, allowing installation over existing versions.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -24,7 +24,7 @@
     },
     {
       "name": "Disable Mine redesign",
-      "description": "Forces the app to use the original V1 Mine screen by disabling the Mine V2/V3 redesign feature toggle. The `featureMineRedesignV3Enabled` remote toggle is intercepted before it can update the navigation tab state, so the app always falls back to the classic MineViewModel/MineScreen layout. The V2/V3 redesigned UI with the profile menu, Connect integration, and restructured layout is suppressed.",
+      "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": [
@@ -49,7 +49,7 @@
     },
     {
       "name": "Disable Pairip license check",
-      "description": "Disables Play Integrity API (pairip) client-side license check. This patch does not bypass Play Integrity attestation or pairipcore virtualization.",
+      "description": "Disables the Pairip license verification check.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
@@ -57,7 +57,7 @@
     },
     {
       "name": "Disable ads",
-      "description": "Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source.",
+      "description": "Removes all advertisements from the app.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -82,7 +82,7 @@
     },
     {
       "name": "Disable background scan",
-      "description": "Disables the Kaspersky-powered periodic device scan. The scan checks all files for vulnerabilities and runs daily in the background. This patch forces the feature off regardless of the stored user preference.",
+      "description": "Disables the periodic Kaspersky background device scan.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -107,7 +107,7 @@
     },
     {
       "name": "Disable gaming profile",
-      "description": "Disables the Game Center profile screen (game usage statistics) by blocking navigation from the Mine screen. Both MineViewModel (V1) and MineV2ViewModel (V2/V3) navigation to GameCenterStatsDestination is disabled. The 'Game Profile' menu item will no longer open the gaming statistics screen.",
+      "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -131,8 +131,33 @@
       "options": []
     },
     {
-      "name": "Enable Premium",
-      "description": "Enables app features locked behind the subscription paywall.",
+      "name": "Skip update auth",
+      "description": "Removes the login requirement when updating apps.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features.",
       "default": true,
       "dependencies": [
         "BytecodePatch"
@@ -158,33 +183,8 @@
       "options": []
     },
     {
-      "name": "Skip update auth",
-      "description": "Skips the authorization modal when tapping \"Update all\" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.103.0.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Unlock Premium",
-      "description": "Unlocks all premium features including unlimited dependents, medfriends, custom ringtones and theme colors.",
+      "description": "Unlocks all premium features.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -209,7 +209,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks premium features and removes ads by forcing subscription state to always be active.",
+      "description": "Unlocks premium features and removes ads.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
