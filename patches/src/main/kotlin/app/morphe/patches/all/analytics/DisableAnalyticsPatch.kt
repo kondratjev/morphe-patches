@@ -4,6 +4,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import org.w3c.dom.Element
+import java.util.logging.Logger
+
+private val logger = Logger.getLogger("DisableAnalytics")
 
 // ═════════════════════════════════════════════════════════════════
 // Manifest — disables analytics components & sets opt-out metadata
@@ -14,7 +17,6 @@ private val disableAnalyticsManifestPatch = resourcePatch {
         document("AndroidManifest.xml").use { document ->
             val manifest = document.documentElement
             val application = manifest.childrenNamed("application").single() as Element
-            var disabled = 0
 
             // AppMetrica (Yandex)
             val appMetrica: (String) -> Boolean = {
@@ -22,20 +24,21 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                     it.startsWith("com.yandex.metrica.") ||
                     it.startsWith("com.yandex.preinstallsatellite.appmetrica.")
             }
-            application.removeChildren(
-                application.childrenNamed("activity", "provider", "service", "receiver")
-                    .filter { appMetrica(it.getAttribute("android:name")) },
-            )
-            disabled += application.disableComponentsWhere(appMetrica)
+            val amRemoved = application.childrenNamed("activity", "provider", "service", "receiver")
+                .filter { appMetrica(it.getAttribute("android:name")) }
+            application.removeChildren(amRemoved)
+            val amDisabled = application.disableComponentsWhere(appMetrica)
             application.setApplicationMetaData("io.appmetrica.analytics.auto_tracking_enabled", "false")
             application.setApplicationMetaData("io.appmetrica.analytics.location_tracking_enabled", "false")
+            logger.info("AppMetrica: removed ${amRemoved.size}, disabled $amDisabled components")
 
             // MyTracker (VK / Mail.ru)
-            disabled += application.disableComponentsWhere {
+            val mtDisabled = application.disableComponentsWhere {
                 it.startsWith("com.my.tracker.") ||
                     it.startsWith("ru.mail.mytracker.") ||
                     it.contains(".mytracker.", ignoreCase = true)
             }
+            logger.info("MyTracker: disabled $mtDisabled components")
 
             // Firebase Analytics (Google)
             mapOf(
@@ -47,44 +50,50 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                 "google_analytics_adid_collection_enabled" to "false",
                 "google_analytics_deferred_deep_link_enabled" to "false",
             ).forEach { (k, v) -> application.setApplicationMetaData(k, v) }
-            disabled += application.disableComponentsByName(
+            val fbDisabled = application.disableComponentsByName(
                 "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
                 "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
                 "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
                 "com.google.firebase.sessions.SessionLifecycleService",
             )
+            logger.info("Firebase: disabled $fbDisabled components")
 
             // Google Analytics (legacy)
-            disabled += application.disableComponentsByPrefix(
+            val gaDisabled = application.disableComponentsByPrefix(
                 "com.google.android.gms.analytics.",
                 "com.google.android.gms.tagmanager.",
             )
+            logger.info("Google Analytics: disabled $gaDisabled components")
 
             // Sentry
             application.setApplicationMetaData("io.sentry.enabled", "false")
             application.setApplicationMetaData("io.sentry.dsn", "")
-            disabled += application.disableComponentsWhere {
+            val sentryDisabled = application.disableComponentsWhere {
                 it.startsWith("io.sentry.") || it.contains(".Sentry")
             }
+            logger.info("Sentry: disabled $sentryDisabled components")
 
-            // Adjust — remove permissions + disable components
-            manifest.removeChildren(
-                manifest.childrenNamed("uses-permission")
-                    .filter { it.getAttribute("android:name").startsWith("com.adjust.") },
-            )
+            // Adjust
+            val adjPerms = manifest.childrenNamed("uses-permission")
+                .filter { it.getAttribute("android:name").startsWith("com.adjust.") }
+            manifest.removeChildren(adjPerms)
+            val adjDisabled = application.disableComponentsByPrefix("com.adjust.")
+            logger.info("Adjust: removed ${adjPerms.size} permissions, disabled $adjDisabled components")
 
-            // AppsFlyer — remove permission + disable components
-            manifest.removeChildren(
-                manifest.childrenNamed("uses-permission")
-                    .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" },
-            )
+            // AppsFlyer
+            val afPerms = manifest.childrenNamed("uses-permission")
+                .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" }
+            manifest.removeChildren(afPerms)
+            val afDisabled = application.disableComponentsByPrefix("com.appsflyer.")
+            logger.info("AppsFlyer: removed ${afPerms.size} permissions, disabled $afDisabled components")
 
-            // Adjust, AppsFlyer, Amplitude, Mixpanel — disable by prefix
-            for (prefix in listOf("com.adjust.", "com.appsflyer.", "com.amplitude.", "com.mixpanel.")) {
-                disabled += application.disableComponentsByPrefix(prefix)
-            }
+            // Amplitude
+            val ampDisabled = application.disableComponentsByPrefix("com.amplitude.")
+            logger.info("Amplitude: disabled $ampDisabled components")
 
-            println("Disable analytics: disabled $disabled manifest components.")
+            // Mixpanel
+            val mpDisabled = application.disableComponentsByPrefix("com.mixpanel.")
+            logger.info("Mixpanel: disabled $mpDisabled components")
         }
     }
 }
@@ -105,29 +114,51 @@ val disableAnalyticsPatch = bytecodePatch(
 
     execute {
         // AppMetrica public API — all void methods
-        AppMetricaPublicApiFingerprint.methodOrNull?.addInstructions(0, "return-void")
+        if (AppMetricaPublicApiFingerprint.methodOrNull != null) {
+            AppMetricaPublicApiFingerprint.method.addInstructions(0, "return-void")
+            logger.info("Patched AppMetrica public API")
+        } else {
+            logger.info("Skipped AppMetrica public API (not found)")
+        }
 
         // AppMetrica internal — reportData / sendCrash
-        AppMetricaInternalReportFingerprint.methodOrNull?.addInstructions(0, "return-void")
+        if (AppMetricaInternalReportFingerprint.methodOrNull != null) {
+            AppMetricaInternalReportFingerprint.method.addInstructions(0, "return-void")
+            logger.info("Patched AppMetrica internal (reportData/sendCrash)")
+        } else {
+            logger.info("Skipped AppMetrica internal (not found)")
+        }
 
-        // AppMetrica internal — queue* Future methods → return completedFuture(null)
-        AppMetricaInternalQueueFingerprint.methodOrNull?.addInstructions(
-            0,
-            """
-                const/4 p0, 0x0
-                invoke-static {p0}, Ljava/util/concurrent/CompletableFuture;->completedFuture(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
-                move-result-object p0
-                return-object p0
-            """,
-        )
+        // AppMetrica internal — queue* Future methods
+        if (AppMetricaInternalQueueFingerprint.methodOrNull != null) {
+            AppMetricaInternalQueueFingerprint.method.addInstructions(
+                0,
+                """
+                    const/4 p0, 0x0
+                    invoke-static {p0}, Ljava/util/concurrent/CompletableFuture;->completedFuture(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+                    move-result-object p0
+                    return-object p0
+                """,
+            )
+            logger.info("Patched AppMetrica internal (queue*)")
+        } else {
+            logger.info("Skipped AppMetrica internal (queue*) (not found)")
+        }
 
-        // AppMetrica internal — U1$g.call() → return null
-        AppMetricaInternalCallbackFingerprint.methodOrNull?.addInstructions(
-            0,
-            "const/4 p0, 0x0\nreturn-object p0",
-        )
+        // AppMetrica internal — U1$g.call()
+        if (AppMetricaInternalCallbackFingerprint.methodOrNull != null) {
+            AppMetricaInternalCallbackFingerprint.method.addInstructions(0, "const/4 p0, 0x0\nreturn-object p0")
+            logger.info("Patched AppMetrica internal (U1\$g callback)")
+        } else {
+            logger.info("Skipped AppMetrica internal (U1\$g callback) (not found)")
+        }
 
-        // MyTracker — initTracker (prevents singleton creation)
-        MyTrackerInitFingerprint.methodOrNull?.addInstructions(0, "return-void")
+        // MyTracker — initTracker
+        if (MyTrackerInitFingerprint.methodOrNull != null) {
+            MyTrackerInitFingerprint.method.addInstructions(0, "return-void")
+            logger.info("Patched MyTracker initTracker")
+        } else {
+            logger.info("Skipped MyTracker initTracker (not found)")
+        }
     }
 }

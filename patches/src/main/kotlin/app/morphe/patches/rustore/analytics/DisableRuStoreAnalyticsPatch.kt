@@ -8,6 +8,9 @@ import app.morphe.patches.all.analytics.disableComponentsByPrefix
 import app.morphe.patches.all.analytics.disableComponentsWhere
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
 import org.w3c.dom.Element
+import java.util.logging.Logger
+
+private val logger = Logger.getLogger("DisableRuStoreAnalytics")
 
 // ═══════════════════════════════════════════════════════════════════
 // Manifest — disables VK-specific analytics components
@@ -19,14 +22,14 @@ private val disableRuStoreAnalyticsManifestPatch = resourcePatch {
     execute {
         document("AndroidManifest.xml").use { document ->
             val application = document.documentElement.childrenNamed("application").single() as Element
-            var disabled = 0
 
-            disabled += application.disableComponentsWhere { name ->
+            val altDisabled = application.disableComponentsWhere { name ->
                 name.startsWith("ru.vk.store.lib.analytics.")
             }
-            disabled += application.disableComponentsByPrefix("ru.rustore.sdk.metrics.")
+            logger.info("AltCraft: disabled $altDisabled components")
 
-            println("Disable RuStore analytics: disabled $disabled manifest components.")
+            val radarDisabled = application.disableComponentsByPrefix("ru.rustore.sdk.metrics.")
+            logger.info("RuStore Metrics: disabled $radarDisabled components")
         }
     }
 }
@@ -46,10 +49,18 @@ val disableRuStoreAnalyticsPatch = bytecodePatch(
     dependsOn(disableRuStoreAnalyticsManifestPatch)
 
     execute {
-        AltCraftSendFingerprint.methodOrNull?.addInstructions(0, "return-void")
-        RadarDoWorkFingerprint.methodOrNull?.addInstructions(
-            0,
-            "const/4 v0, 0x0\nreturn-object v0",
-        )
+        if (AltCraftSendFingerprint.methodOrNull != null) {
+            AltCraftSendFingerprint.method.addInstructions(0, "return-void")
+            logger.info("Patched AltCraft send method")
+        } else {
+            logger.info("Skipped AltCraft (not found)")
+        }
+
+        if (RadarDoWorkFingerprint.methodOrNull != null) {
+            RadarDoWorkFingerprint.method.addInstructions(0, "const/4 v0, 0x0\nreturn-object v0")
+            logger.info("Patched Radar doWork")
+        } else {
+            logger.info("Skipped Radar (not found)")
+        }
     }
 }
