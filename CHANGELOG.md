@@ -1,3 +1,16 @@
+## [1.5.0](https://github.com/kondratjev/morphe-patches/compare/v1.4.0...v1.5.0) (2026-06-12)
+
+### 🐛 Bug Fixes
+
+* Fix rustore patches ([47d4ea4](https://github.com/kondratjev/morphe-patches/commit/47d4ea4c9b4f6bf8a52eea1546089cfed5aebf18))
+* Replace suppressNotificationBannerPatch to suppressPermissionDialogsPatch ([b197944](https://github.com/kondratjev/morphe-patches/commit/b197944f3801b9e6b2da3fb9b482e24e6310d604))
+* Update MineRedesign patch ([2d97bf6](https://github.com/kondratjev/morphe-patches/commit/2d97bf6711dcb97a1605827f88c87d729ef3e2c6))
+
+### ✨ New Features
+
+* Add new RuStore patches ([174e44c](https://github.com/kondratjev/morphe-patches/commit/174e44c91c2569341ff504371de75fc27b6f6ca5))
+* Remove suppressPermissionDialogsPatch ([6757e17](https://github.com/kondratjev/morphe-patches/commit/6757e1751fb65b09828e50c9add65c22b5cf0f2d))
+
 ## [1.5.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-06-12)
 
 ### 🐛 Bug Fixes
