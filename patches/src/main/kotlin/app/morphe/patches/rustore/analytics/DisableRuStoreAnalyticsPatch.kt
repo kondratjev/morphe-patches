@@ -2,54 +2,54 @@ package app.morphe.patches.rustore.analytics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.analytics.childrenNamed
+import app.morphe.patches.all.analytics.disableComponentsByPrefix
+import app.morphe.patches.all.analytics.disableComponentsWhere
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
-import java.util.logging.Logger
+import org.w3c.dom.Element
 
-private val logger = Logger.getLogger("DisableRuStoreAnalytics")
+// ═══════════════════════════════════════════════════════════════════
+// Manifest — disables VK-specific analytics components
+// ═══════════════════════════════════════════════════════════════════
 
-/**
- * Disables VK-specific analytics systems found in RuStore that are not
- * covered by the universal [DisableAnalyticsPatch]:
- *
- * - **AltCraft Analytics** — VK's internal event analytics
- * - **Radar Telemetry** — device/network snapshot collection
- */
+private val disableRuStoreAnalyticsManifestPatch = resourcePatch {
+    compatibleWith(COMPATIBILITY_RUSTORE)
+
+    execute {
+        document("AndroidManifest.xml").use { document ->
+            val application = document.documentElement.childrenNamed("application").single() as Element
+            var disabled = 0
+
+            disabled += application.disableComponentsWhere { name ->
+                name.startsWith("ru.vk.store.lib.analytics.")
+            }
+            disabled += application.disableComponentsByPrefix("ru.rustore.sdk.metrics.")
+
+            println("Disable RuStore analytics: disabled $disabled manifest components.")
+        }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// Bytecode — neutralizes VK-specific analytics entry points
+// ═══════════════════════════════════════════════════════════════════
+
 @Suppress("unused")
 val disableRuStoreAnalyticsPatch = bytecodePatch(
     name = "Disable RuStore analytics",
     description = "Disables VK-specific analytics in RuStore, " +
-            "including AltCraft event tracking and Radar device telemetry.",
+        "including AltCraft event tracking and Radar device telemetry.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
+    dependsOn(disableRuStoreAnalyticsManifestPatch)
 
     execute {
-        var patched = 0
-        var skipped = 0
-
-        fun Fingerprint.patchOrWarn(name: String, smali: String): Boolean {
-            val method = methodOrNull
-            return if (method != null) {
-                method.addInstructions(0, smali)
-                logger.info("Patched: $name")
-                true
-            } else {
-                logger.warning("SDK not found, skipped: $name")
-                false
-            }
-        }
-
-        // ── AltCraft Analytics ───────────────────────────────────
-        if (AltCraftAnalyticsSendFingerprint.patchOrWarn("AltCraftAnalytics.send()", "return-void")) patched++ else skipped++
-
-        // ── Radar Telemetry ──────────────────────────────────────
-        if (RadarFlushSnapshotDoWorkFingerprint.patchOrWarn(
-                "RadarFlushSnapshotWorker.doWork()",
-                "const/4 v0, 0x0\nreturn-object v0"
-            )
-        ) patched++ else skipped++
-
-        logger.info("RuStore analytics patch summary: $patched patched, $skipped skipped")
+        AltCraftSendFingerprint.methodOrNull?.addInstructions(0, "return-void")
+        RadarDoWorkFingerprint.methodOrNull?.addInstructions(
+            0,
+            "const/4 v0, 0x0\nreturn-object v0",
+        )
     }
 }

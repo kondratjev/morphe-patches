@@ -2,93 +2,132 @@ package app.morphe.patches.all.analytics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.Fingerprint
-import java.util.logging.Logger
+import app.morphe.patcher.patch.resourcePatch
+import org.w3c.dom.Element
 
-private val logger = Logger.getLogger("DisableAnalytics")
+// ═════════════════════════════════════════════════════════════════
+// Manifest — disables analytics components & sets opt-out metadata
+// ═════════════════════════════════════════════════════════════════
 
-/**
- * Universal bytecode patch that disables analytics and tracking from
- * the most common SDKs found in Android apps.
- *
- * Each SDK is targeted via its public API class and neutralized by
- * inserting an early return at the beginning of the tracking method.
- * All fingerprints use [Fingerprint.methodOrNull] so that the patch
- * gracefully skips SDKs that are not present in the target APK,
- * logging a warning for each skipped SDK.
- *
- * ## SDKs covered
- *
- * ### Tier 1 — Most common (high priority)
- * - **AppMetrica** (Yandex): `io.appmetrica.analytics.AppMetrica`
- * - **MyTracker** (VK / Mail.ru): `com.my.tracker.MyTracker`
- * - **Firebase Analytics** (Google): `com.google.firebase.analytics.FirebaseAnalytics`
- *
- * ### Tier 2 — Common (medium priority)
- * - **Amplitude**: `com.amplitude.api.AmplitudeClient`
- * - **Mixpanel**: `com.mixpanel.android.mpmetrics.MixpanelAPI`
- * - **Adjust**: `com.adjust.sdk.Adjust`
- * - **AppsFlyer**: `com.appsflyer.AppsFlyerLib`
- */
+private val disableAnalyticsManifestPatch = resourcePatch {
+    execute {
+        document("AndroidManifest.xml").use { document ->
+            val manifest = document.documentElement
+            val application = manifest.childrenNamed("application").single() as Element
+            var disabled = 0
+
+            // AppMetrica (Yandex)
+            val appMetrica: (String) -> Boolean = {
+                it.startsWith("io.appmetrica.analytics.") ||
+                    it.startsWith("com.yandex.metrica.") ||
+                    it.startsWith("com.yandex.preinstallsatellite.appmetrica.")
+            }
+            application.removeChildren(
+                application.childrenNamed("activity", "provider", "service", "receiver")
+                    .filter { appMetrica(it.getAttribute("android:name")) },
+            )
+            disabled += application.disableComponentsWhere(appMetrica)
+            application.setApplicationMetaData("io.appmetrica.analytics.auto_tracking_enabled", "false")
+            application.setApplicationMetaData("io.appmetrica.analytics.location_tracking_enabled", "false")
+
+            // MyTracker (VK / Mail.ru)
+            disabled += application.disableComponentsWhere {
+                it.startsWith("com.my.tracker.") ||
+                    it.startsWith("ru.mail.mytracker.") ||
+                    it.contains(".mytracker.", ignoreCase = true)
+            }
+
+            // Firebase Analytics (Google)
+            mapOf(
+                "firebase_analytics_collection_enabled" to "false",
+                "firebase_crashlytics_collection_enabled" to "false",
+                "firebase_performance_collection_enabled" to "false",
+                "firebase_performance_logcat_enabled" to "false",
+                "firebase_data_collection_default_enabled" to "false",
+                "google_analytics_adid_collection_enabled" to "false",
+                "google_analytics_deferred_deep_link_enabled" to "false",
+            ).forEach { (k, v) -> application.setApplicationMetaData(k, v) }
+            disabled += application.disableComponentsByName(
+                "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
+                "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
+                "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
+                "com.google.firebase.sessions.SessionLifecycleService",
+            )
+
+            // Google Analytics (legacy)
+            disabled += application.disableComponentsByPrefix(
+                "com.google.android.gms.analytics.",
+                "com.google.android.gms.tagmanager.",
+            )
+
+            // Sentry
+            application.setApplicationMetaData("io.sentry.enabled", "false")
+            application.setApplicationMetaData("io.sentry.dsn", "")
+            disabled += application.disableComponentsWhere {
+                it.startsWith("io.sentry.") || it.contains(".Sentry")
+            }
+
+            // Adjust — remove permissions + disable components
+            manifest.removeChildren(
+                manifest.childrenNamed("uses-permission")
+                    .filter { it.getAttribute("android:name").startsWith("com.adjust.") },
+            )
+
+            // AppsFlyer — remove permission + disable components
+            manifest.removeChildren(
+                manifest.childrenNamed("uses-permission")
+                    .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" },
+            )
+
+            // Adjust, AppsFlyer, Amplitude, Mixpanel — disable by prefix
+            for (prefix in listOf("com.adjust.", "com.appsflyer.", "com.amplitude.", "com.mixpanel.")) {
+                disabled += application.disableComponentsByPrefix(prefix)
+            }
+
+            println("Disable analytics: disabled $disabled manifest components.")
+        }
+    }
+}
+
+// ═════════════════════════════════════════════════════════════════
+// Bytecode — neutralizes analytics entry-point methods
+// ═════════════════════════════════════════════════════════════════
+
 @Suppress("unused")
 val disableAnalyticsPatch = bytecodePatch(
     name = "Disable analytics",
     description = "Disables analytics and tracking from multiple SDKs, " +
-            "including AppMetrica, MyTracker, Firebase, Amplitude, Mixpanel, " +
-            "Adjust, and AppsFlyer",
+        "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
+        "Amplitude, Mixpanel, Adjust, and AppsFlyer.",
     default = true,
 ) {
+    dependsOn(disableAnalyticsManifestPatch)
+
     execute {
-        var patched = 0
-        var skipped = 0
+        // AppMetrica public API — all void methods
+        AppMetricaPublicApiFingerprint.methodOrNull?.addInstructions(0, "return-void")
 
-        /**
-         * Patches a fingerprint if found, or logs a warning if not.
-         * Returns true if patched, false if skipped.
-         */
-        fun Fingerprint.patchOrWarn(name: String, smali: String): Boolean {
-            val method = methodOrNull
-            return if (method != null) {
-                method.addInstructions(0, smali)
-                logger.info("Patched: $name")
-                true
-            } else {
-                logger.warning("SDK not found, skipped: $name")
-                false
-            }
-        }
+        // AppMetrica internal — reportData / sendCrash
+        AppMetricaInternalReportFingerprint.methodOrNull?.addInstructions(0, "return-void")
 
-        // ── AppMetrica (Yandex) ───────────────────────────────────
-        if (AppMetricaReportEvent1Fingerprint.patchOrWarn("AppMetrica.reportEvent(String)", "return-void")) patched++ else skipped++
-        if (AppMetricaReportEvent2Fingerprint.patchOrWarn("AppMetrica.reportEvent(String, String)", "return-void")) patched++ else skipped++
-        if (AppMetricaReportEvent3Fingerprint.patchOrWarn("AppMetrica.reportEvent(String, Map)", "return-void")) patched++ else skipped++
-        if (AppMetricaSendEventsBufferFingerprint.patchOrWarn("AppMetrica.sendEventsBuffer()", "return-void")) patched++ else skipped++
+        // AppMetrica internal — queue* Future methods → return completedFuture(null)
+        AppMetricaInternalQueueFingerprint.methodOrNull?.addInstructions(
+            0,
+            """
+                const/4 p0, 0x0
+                invoke-static {p0}, Ljava/util/concurrent/CompletableFuture;->completedFuture(Ljava/lang/Object;)Ljava/util/concurrent/CompletableFuture;
+                move-result-object p0
+                return-object p0
+            """,
+        )
 
-        // ── AppMetrica ModulesFacade ──────────────────────────────
-        if (ModulesFacadeReportEventFingerprint.patchOrWarn("ModulesFacade.reportEvent()", "return-void")) patched++ else skipped++
-        if (ModulesFacadeSendEventsBufferFingerprint.patchOrWarn("ModulesFacade.sendEventsBuffer()", "return-void")) patched++ else skipped++
+        // AppMetrica internal — U1$g.call() → return null
+        AppMetricaInternalCallbackFingerprint.methodOrNull?.addInstructions(
+            0,
+            "const/4 p0, 0x0\nreturn-object p0",
+        )
 
-        // ── MyTracker (VK / Mail.ru) ─────────────────────────────
-        // Neutralize initTracker so the internal singleton is never
-        // created. All track* methods bail out if singleton is null.
-        if (MyTrackerInitTrackerFingerprint.patchOrWarn("MyTracker.initTracker()", "return-void")) patched++ else skipped++
-
-        // ── Firebase Analytics (Google) ──────────────────────────
-        if (FirebaseAnalyticsLogEventFingerprint.patchOrWarn("FirebaseAnalytics.logEvent()", "return-void")) patched++ else skipped++
-
-        // ── Amplitude ────────────────────────────────────────────
-        if (AmplitudeLogEventFingerprint.patchOrWarn("AmplitudeClient.logEvent()", "return-void")) patched++ else skipped++
-
-        // ── Mixpanel ─────────────────────────────────────────────
-        if (MixpanelTrackFingerprint.patchOrWarn("MixpanelAPI.track()", "return-void")) patched++ else skipped++
-
-        // ── Adjust ───────────────────────────────────────────────
-        if (AdjustTrackEventFingerprint.patchOrWarn("Adjust.trackEvent()", "return-void")) patched++ else skipped++
-
-        // ── AppsFlyer ────────────────────────────────────────────
-        if (AppsFlyerTrackEventFingerprint.patchOrWarn("AppsFlyerLib.trackEvent()", "return-void")) patched++ else skipped++
-
-        // ── Summary ──────────────────────────────────────────────
-        logger.info("Analytics patch summary: $patched patched, $skipped skipped")
+        // MyTracker — initTracker (prevents singleton creation)
+        MyTrackerInitFingerprint.methodOrNull?.addInstructions(0, "return-void")
     }
 }

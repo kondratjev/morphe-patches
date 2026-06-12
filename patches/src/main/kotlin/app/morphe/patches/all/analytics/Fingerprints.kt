@@ -3,202 +3,84 @@ package app.morphe.patches.all.analytics
 import app.morphe.patcher.Fingerprint
 
 // ═══════════════════════════════════════════════════════════════════
-// AppMetrica (Yandex) — io.appmetrica.analytics
+// AppMetrica (Yandex) — public API classes
 // ═══════════════════════════════════════════════════════════════════
 
 /**
- * Matches `AppMetrica.reportEvent(String)` — the single-argument overload
- * that reports a custom event to Yandex AppMetrica.
+ * Matches all void methods in AppMetrica public API classes.
+ * These classes expose `reportEvent`, `sendEventsBuffer`, `activate`,
+ * and other entry points that route to the internal implementation.
  */
-object AppMetricaReportEvent1Fingerprint : Fingerprint(
+object AppMetricaPublicApiFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/AppMetrica;" &&
-                method.name == "reportEvent" &&
-                method.parameterTypes.size == 1 &&
-                method.parameterTypes[0] == "Ljava/lang/String;"
-    }
-)
-
-/**
- * Matches `AppMetrica.reportEvent(String, String)` — the two-argument
- * overload with event name and JSON string value.
- */
-object AppMetricaReportEvent2Fingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/AppMetrica;" &&
-                method.name == "reportEvent" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;" &&
-                method.parameterTypes[1] == "Ljava/lang/String;"
-    }
-)
-
-/**
- * Matches `AppMetrica.reportEvent(String, Map)` — the two-argument
- * overload with event name and attributes map.
- */
-object AppMetricaReportEvent3Fingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/AppMetrica;" &&
-                method.name == "reportEvent" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;" &&
-                method.parameterTypes[1] == "Ljava/util/Map;"
-    }
-)
-
-/**
- * Matches `AppMetrica.sendEventsBuffer()` — forces any buffered
- * events to be sent immediately. Neutralizing this prevents
- * on-demand event flushing.
- */
-object AppMetricaSendEventsBufferFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/AppMetrica;" &&
-                method.name == "sendEventsBuffer" &&
-                method.parameterTypes.isEmpty()
+        (classDef.type == "Lcom/yandex/metrica/YandexMetrica;" ||
+            classDef.type == "Lcom/yandex/metrica/AppMetricaJsInterface;" ||
+            classDef.type == "Lcom/yandex/metrica/AppMetricaInitializerJsInterface;") &&
+            method.name != "<init>" &&
+            method.returnType == "V" &&
+            method.implementation != null
     }
 )
 
 // ═══════════════════════════════════════════════════════════════════
-// AppMetrica ModulesFacade — module-level analytics API
+// AppMetrica — internal implementation (U1)
 // ═══════════════════════════════════════════════════════════════════
 
 /**
- * Matches `ModulesFacade.reportEvent(ModuleEvent)` — the module-level
- * event reporting entry point that routes through the same internal
- * implementation as AppMetrica.reportEvent.
+ * Matches `U1.reportData()` and `U1.sendCrash()` — void methods
+ * that process queued analytics data and crash reports.
  */
-object ModulesFacadeReportEventFingerprint : Fingerprint(
+object AppMetricaInternalReportFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/ModulesFacade;" &&
-                method.name == "reportEvent" &&
-                method.parameterTypes.size == 1 &&
-                method.parameterTypes[0] == "Lio/appmetrica/analytics/ModuleEvent;"
+        classDef.type == "Lcom/yandex/metrica/impl/ob/U1;" &&
+            method.name in setOf("reportData", "sendCrash") &&
+            method.returnType == "V" &&
+            method.implementation != null
     }
 )
 
 /**
- * Matches `ModulesFacade.sendEventsBuffer()` — module-level event
- * buffer flushing. Delegates to AppMetrica.sendEventsBuffer().
+ * Matches `U1.queuePauseUserSession()`, `U1.queueReport()`,
+ * `U1.queueResumeUserSession()` — Future-returning methods that
+ * enqueue analytics reports for background processing.
  */
-object ModulesFacadeSendEventsBufferFingerprint : Fingerprint(
+object AppMetricaInternalQueueFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lio/appmetrica/analytics/ModulesFacade;" &&
-                method.name == "sendEventsBuffer" &&
-                method.parameterTypes.isEmpty()
+        classDef.type == "Lcom/yandex/metrica/impl/ob/U1;" &&
+            method.name in setOf("queuePauseUserSession", "queueReport", "queueResumeUserSession") &&
+            method.returnType == "Ljava/util/concurrent/Future;" &&
+            method.implementation != null
+    }
+)
+
+/**
+ * Matches `U1$g.call()` — inner callback class with Void return type.
+ * Used internally by AppMetrica for async task execution.
+ */
+object AppMetricaInternalCallbackFingerprint : Fingerprint(
+    custom = { method, classDef ->
+        classDef.type == "Lcom/yandex/metrica/impl/ob/U1\$g;" &&
+            method.name == "call" &&
+            method.returnType == "Ljava/lang/Void;" &&
+            method.implementation != null
     }
 )
 
 // ═══════════════════════════════════════════════════════════════════
-// MyTracker (VK / Mail.ru) — com.my.tracker
+// MyTracker (VK / Mail.ru)
 // ═══════════════════════════════════════════════════════════════════
 
 /**
  * Matches `MyTracker.initTracker(String, Application)` — the single
- * initialization method that creates the internal [c1] singleton.
- *
- * All tracking methods (trackEvent, trackAdEvent, trackPurchaseEvent,
- * trackLoginEvent, trackRegistrationEvent, trackInviteEvent,
- * trackLevelEvent, trackMiniAppEvent) check whether the singleton is
- * initialized first. By neutralizing initTracker, the singleton never
- * gets created, and all tracking calls bail out immediately with a
- * log message.
- *
- * This single fingerprint covers *all* MyTracker tracking methods.
+ * initialization method that creates the internal singleton. All
+ * tracking methods (trackEvent, trackAdEvent, etc.) check this
+ * singleton first — if it's null, they bail out immediately.
  */
-object MyTrackerInitTrackerFingerprint : Fingerprint(
+object MyTrackerInitFingerprint : Fingerprint(
     custom = { method, classDef ->
         classDef.type == "Lcom/my/tracker/MyTracker;" &&
-                method.name == "initTracker" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;"
+            method.name == "initTracker" &&
+            method.returnType == "V" &&
+            method.implementation != null
     }
 )
-
-// ═══════════════════════════════════════════════════════════════════
-// Firebase Analytics — com.google.firebase.analytics
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Matches `FirebaseAnalytics.logEvent(String, Bundle)` — the primary
- * event logging method for Google Firebase Analytics.
- */
-object FirebaseAnalyticsLogEventFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/google/firebase/analytics/FirebaseAnalytics;" &&
-                method.name == "logEvent" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;"
-    }
-)
-
-// ═══════════════════════════════════════════════════════════════════
-// Amplitude — com.amplitude.api
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Matches `AmplitudeClient.logEvent(String, JSONObject)` — the
- * two-argument overload that is the core implementation. The single-
- * argument `logEvent(String)` delegates to this method.
- */
-object AmplitudeLogEventFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/amplitude/api/AmplitudeClient;" &&
-                method.name == "logEvent" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;"
-    }
-)
-
-// ═══════════════════════════════════════════════════════════════════
-// Mixpanel — com.mixpanel.android.mpmetrics
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Matches `MixpanelAPI.track(String, JSONObject)` — the two-argument
- * overload that is the core implementation. The single-argument
- * `track(String)` delegates to this method.
- */
-object MixpanelTrackFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/mixpanel/android/mpmetrics/MixpanelAPI;" &&
-                method.name == "track" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Ljava/lang/String;"
-    }
-)
-
-// ═══════════════════════════════════════════════════════════════════
-// Adjust — com.adjust.sdk
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Matches `Adjust.trackEvent(AdjustEvent)` — the single event
- * tracking method in the Adjust attribution SDK.
- */
-object AdjustTrackEventFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/adjust/sdk/Adjust;" &&
-                method.name == "trackEvent" &&
-                method.parameterTypes.size == 1
-    }
-)
-
-// ═══════════════════════════════════════════════════════════════════
-// AppsFlyer — com.appsflyer
-// ═══════════════════════════════════════════════════════════════════
-
-/**
- * Matches `AppsFlyerLib.trackEvent(Context, String, Map)` — the
- * primary event tracking method in the AppsFlyer attribution SDK.
- */
-object AppsFlyerTrackEventFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/appsflyer/AppsFlyerLib;" &&
-                method.name == "trackEvent" &&
-                method.parameterTypes.size == 3
-    }
-)
-
-
