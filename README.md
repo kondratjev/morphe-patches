@@ -9,9 +9,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.5.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.5.0-dev.1)**  •  `dev`  •  8 patches total
+> **[v1.5.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.5.0-dev.2)**  •  `dev`  •  10 patches total
 <details open>
-<summary>📦 RuStore  •  3 patches</summary>
+<summary>📦 RuStore  •  5 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -21,8 +21,10 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
+| [Disable Mine redesign](#disable-mine-redesign) | Forces the app to use the original V1 Mine screen by disabling the Mine V2/V3 redesign feature toggle. The `featureMineRedesignV3Enabled` remote toggle is intercepted before it can update the navigation tab state, so the app always falls back to the classic MineViewModel/MineScreen layout. The V2/V3 redesigned UI with the profile menu, Connect integration, and restructured layout is suppressed. |  |
 | [Disable ads](#disable-ads) | Disables all advertisements (banners, native ads, MyTarget, SSP, VKR) by blocking the ad repository at the data source. |  |
 | [Disable background scan](#disable-background-scan) | Disables the Kaspersky-powered periodic device scan. The scan checks all files for vulnerabilities and runs daily in the background. This patch forces the feature off regardless of the stored user preference. |  |
+| [Disable gaming profile](#disable-gaming-profile) | Disables the Game Center profile screen (game usage statistics) by blocking navigation from the Mine screen. Both MineViewModel (V1) and MineV2ViewModel (V2/V3) navigation to GameCenterStatsDestination is disabled. The 'Game Profile' menu item will no longer open the gaming statistics screen. |  |
 | [Skip update auth](#skip-update-auth) | Skips the authorization modal when tapping "Update all" or individual update buttons. The update will proceed without requiring login. If the update API requires auth tokens, the download will fail gracefully. |  |
 
 </details>

@@ -1,3 +1,9 @@
+## [1.5.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.1...v1.5.0-dev.2) (2026-06-12)
+
+### ✨ New Features
+
+* Add new RuStore patches ([174e44c](https://github.com/kondratjev/morphe-patches/commit/174e44c91c2569341ff504371de75fc27b6f6ca5))
+
 ## [1.5.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.4.1-dev.1...v1.5.0-dev.1) (2026-06-11)
 
 ### ✨ New Features
