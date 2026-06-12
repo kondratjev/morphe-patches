@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0-dev.2",
   "patches": [
     {
       "name": "Change version code",
@@ -56,6 +56,33 @@
       "options": []
     },
     {
+      "name": "Disable RuStore analytics",
+      "description": "Disables VK-specific analytics in RuStore, including AltCraft event tracking and Radar device telemetry.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable ads",
       "description": "Removes all advertisements from the app.",
       "default": true,
@@ -78,6 +105,16 @@
           ]
         }
       ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, and AppsFlyer.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": null,
       "options": []
     },
     {

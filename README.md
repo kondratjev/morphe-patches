@@ -9,9 +9,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.5.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.5.0)**  •  `main`  •  10 patches total
+> **[v1.6.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.6.0-dev.2)**  •  `dev`  •  12 patches total
 <details open>
-<summary>📦 RuStore  •  5 patches</summary>
+<summary>📦 RuStore  •  6 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -22,6 +22,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Disable Mine redesign](#disable-mine-redesign) | Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface. |  |
+| [Disable RuStore analytics](#disable-rustore-analytics) | Disables VK-specific analytics in RuStore, including AltCraft event tracking and Radar device telemetry. |  |
 | [Disable ads](#disable-ads) | Removes all advertisements from the app. |  |
 | [Disable background scan](#disable-background-scan) | Disables the periodic Kaspersky background device scan. |  |
 | [Disable gaming profile](#disable-gaming-profile) | Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen. |  |
@@ -75,13 +76,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
-<summary>🌐 Universal  •  2 patches</summary>
+<summary>🌐 Universal  •  3 patches</summary>
 <br>
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
 | [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
+| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, and AppsFlyer. |  |
 
 </details>
 

@@ -1,3 +1,15 @@
+## [1.6.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.6.0-dev.1...v1.6.0-dev.2) (2026-06-12)
+
+### ✨ New Features
+
+* Improve disable analytics patches ([c53bf90](https://github.com/kondratjev/morphe-patches/commit/c53bf908e32c9cda2a0819113483cb27f5d20350))
+
+## [1.6.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.5.0...v1.6.0-dev.1) (2026-06-12)
+
+### ✨ New Features
+
+* Add disable analytics patches ([ec08178](https://github.com/kondratjev/morphe-patches/commit/ec08178e8ce2ba1aeb13020b0e43bed7ce074cf0))
+
 ## [1.5.0](https://github.com/kondratjev/morphe-patches/compare/v1.4.0...v1.5.0) (2026-06-12)
 
 ### 🐛 Bug Fixes
