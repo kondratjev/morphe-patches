@@ -1,3 +1,9 @@
+## [1.5.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-06-12)
+
+### 🐛 Bug Fixes
+
+* Fix rustore patches ([47d4ea4](https://github.com/kondratjev/morphe-patches/commit/47d4ea4c9b4f6bf8a52eea1546089cfed5aebf18))
+
 ## [1.5.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.2...v1.5.0-dev.3) (2026-06-12)
 
 ### 🐛 Bug Fixes

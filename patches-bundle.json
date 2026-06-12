@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-12T09:37:45",
-  "description": "## [1.5.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.2...v1.5.0-dev.3) (2026-06-12)\n\n### 🐛 Bug Fixes\n\n* Update MineRedesign patch ([2d97bf6](https://github.com/kondratjev/morphe-patches/commit/2d97bf6711dcb97a1605827f88c87d729ef3e2c6))",
-  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.5.0-dev.3/patches-1.5.0-dev.3.mpp",
+  "created_at": "2026-06-12T10:06:35",
+  "description": "## [1.5.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-06-12)\n\n### 🐛 Bug Fixes\n\n* Fix rustore patches ([47d4ea4](https://github.com/kondratjev/morphe-patches/commit/47d4ea4c9b4f6bf8a52eea1546089cfed5aebf18))",
+  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.5.0-dev.4/patches-1.5.0-dev.4.mpp",
   "signature_download_url": "",
-  "version": "1.5.0-dev.3"
+  "version": "1.5.0-dev.4"
 }
