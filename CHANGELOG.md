@@ -1,3 +1,9 @@
+## [1.5.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.2...v1.5.0-dev.3) (2026-06-12)
+
+### 🐛 Bug Fixes
+
+* Update MineRedesign patch ([2d97bf6](https://github.com/kondratjev/morphe-patches/commit/2d97bf6711dcb97a1605827f88c87d729ef3e2c6))
+
 ## [1.5.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.5.0-dev.1...v1.5.0-dev.2) (2026-06-12)
 
 ### ✨ New Features
