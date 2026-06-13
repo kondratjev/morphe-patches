@@ -1,3 +1,9 @@
+## [1.9.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix fingerprints ([0b2b121](https://github.com/kondratjev/morphe-patches/commit/0b2b1216ecff930084b18050e296067fcccfce21))
+
 ## [1.9.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-06-13)
 
 ### ✨ New Features
