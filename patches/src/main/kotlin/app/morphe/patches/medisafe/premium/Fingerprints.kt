@@ -18,8 +18,6 @@ object IsPaidBundleFingerprint : Fingerprint(
  * that checks Google Play for real subscriptions every 24 hours.
  */
 object PurchaseRestoreWorkerDoWorkFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/medisafe/android/base/service/PurchaseRestoreWorker;" &&
-                method.name == "doWork"
-    }
+    definingClass = "Lcom/medisafe/android/base/service/PurchaseRestoreWorker;",
+    name = "doWork",
 )

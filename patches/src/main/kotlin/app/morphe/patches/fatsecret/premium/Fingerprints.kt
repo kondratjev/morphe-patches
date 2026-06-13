@@ -9,12 +9,10 @@ import app.morphe.patcher.Fingerprint
  * DEX: classes2.dex, t0;->h()Z (PUBLIC FINAL DECLARED_SYNCHRONIZED)
  */
 object IsPremiumFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;" &&
-            method.name == "h" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.isEmpty()
-    }
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
+    name = "h",
+    returnType = "Z",
+    parameters = emptyList(),
 )
 
 /**
@@ -23,12 +21,10 @@ object IsPremiumFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->g()Z
  */
 object IsPremiumLoadedFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;" &&
-            method.name == "g" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.isEmpty()
-    }
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
+    name = "g",
+    returnType = "Z",
+    parameters = emptyList(),
 )
 
 /**
@@ -37,12 +33,10 @@ object IsPremiumLoadedFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->e()Z
  */
 object IsInvalidSubscriptionFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;" &&
-            method.name == "e" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.isEmpty()
-    }
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
+    name = "e",
+    returnType = "Z",
+    parameters = emptyList(),
 )
 
 /**
@@ -54,12 +48,8 @@ object IsInvalidSubscriptionFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->m(ZZ)V (PRIVATE FINAL)
  */
 object PremiumStatusEmitterFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;" &&
-            method.name == "m" &&
-            method.returnType == "V" &&
-            method.parameterTypes.size == 2 &&
-            method.parameterTypes[0] == "Z" &&
-            method.parameterTypes[1] == "Z"
-    }
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
+    name = "m",
+    returnType = "V",
+    parameters = listOf("Z", "Z"),
 )

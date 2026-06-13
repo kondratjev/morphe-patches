@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "v1.8.0",
   "patches": [
     {
       "name": "Change version code",
@@ -185,6 +185,56 @@
           "targets": [
             {
               "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable telemetry",
+      "description": "Disables SoundCloud's telemetry system.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.06.03-release",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Enable SoundCloud Go+",
+      "description": "Enables all premium features, hides upsell UI and ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.06.03-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null

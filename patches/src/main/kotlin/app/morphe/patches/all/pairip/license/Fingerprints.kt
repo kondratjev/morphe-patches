@@ -5,10 +5,8 @@ import app.morphe.patcher.fieldAccess
 import com.android.tools.smali.dexlib2.Opcode
 
 object ProcessLicenseResponseFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/pairip/licensecheck/LicenseClient;" &&
-                method.name == "processResponse"
-    }
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "processResponse",
 )
 
 object RepeatedCheckFingerprint : Fingerprint(

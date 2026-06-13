@@ -12,9 +12,7 @@ import app.morphe.patcher.Fingerprint
  * Method `a` = get() — fetches ads from 3 sources concurrently.
  */
 object RawAdvertisementRepoGetFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lj41/n0;" &&
-                method.name == "a" &&
-                method.parameters.size >= 7
-    }
+    definingClass = "Lj41/n0;",
+    name = "a",
+    custom = { method, _ -> method.parameters.size >= 7 },
 )
