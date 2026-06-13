@@ -1,9 +1,9 @@
 package app.morphe.patches.yazio.premium
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.yazio.shared.Constants.COMPATIBILITY_YAZIO
 import app.morphe.util.returnEarly
-import app.morphe.util.returnBoxedBooleanEarly
 
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
@@ -30,6 +30,15 @@ val unlockPremiumPatch = bytecodePatch(
 
         // 6. ooe.h(Continuation) — PremiumType null check (inverted)
         //    Returns Boolean.TRUE when NOT premium → return FALSE
-        PremiumTypeNullCheckFingerprint.methodOrNull?.returnBoxedBooleanEarly(false)
+        //    Return type is Object (coroutine), not Boolean — can't use returnBoxedBooleanEarly
+        PremiumTypeNullCheckFingerprint.methodOrNull?.addInstructions(
+            0,
+            """
+                const/4 v0, 0x0
+                invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                move-result-object v0
+                return-object v0
+            """,
+        )
     }
 }
