@@ -12,7 +12,7 @@ import app.morphe.patcher.Fingerprint
  */
 object SubscriptionCheckFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Ldefpackage/j18;" &&
+        classDef.type == "Lj18;" &&
             method.name == "M" &&
             method.returnType == "Z" &&
             method.parameterTypes.size == 1 &&
@@ -31,7 +31,7 @@ object SubscriptionCheckFingerprint : Fingerprint(
  */
 object SubscriptionCheckLenientFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Ldefpackage/j18;" &&
+        classDef.type == "Lj18;" &&
             method.name == "H" &&
             method.returnType == "Z" &&
             method.parameterTypes.size == 1 &&
