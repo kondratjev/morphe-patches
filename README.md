@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.8.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.8.0)**  •  `main`  •  15 patches total
+> **[v1.9.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.9.0-dev.1)**  •  `dev`  •  17 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -43,6 +43,22 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Disable community tab](#disable-community-tab) | Hides the News/Community tab from the bottom navigation. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all FatSecret Gold features and hides the Premium tab. |  |
+
+</details>
+
+<details open>
+<summary>📦 SoundCloud  •  2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2026.06.03-release |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Disable telemetry](#disable-telemetry) | Disables SoundCloud's telemetry system. |  |
+| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
 
 </details>
 

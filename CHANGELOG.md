@@ -1,3 +1,9 @@
+## [1.9.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-06-13)
+
+### ✨ New Features
+
+* Add Soundcloud pathces ([1d3beb1](https://github.com/kondratjev/morphe-patches/commit/1d3beb1e7ad42fa7fc43596b8835675d6cd7f7e7))
+
 ## [1.8.0](https://github.com/kondratjev/morphe-patches/compare/v1.7.0...v1.8.0) (2026-06-13)
 
 ### 🐛 Bug Fixes
