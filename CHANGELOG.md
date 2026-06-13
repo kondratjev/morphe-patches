@@ -1,3 +1,9 @@
+## [1.7.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.6.0...v1.7.0-dev.1) (2026-06-13)
+
+### ✨ New Features
+
+* Add Unlock Premium patch for Yazio ([47126e5](https://github.com/kondratjev/morphe-patches/commit/47126e5d5deb8c76de5e7430bfdb69f0d49830a5))
+
 ## [1.6.0](https://github.com/kondratjev/morphe-patches/compare/v1.5.0...v1.6.0) (2026-06-12)
 
 ### ✨ New Features
