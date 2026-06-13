@@ -12,10 +12,8 @@ import app.morphe.patcher.Fingerprint
  * -> fetchIndexInBottomNav()I
  */
 object NewsTabIndexFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lcom/fatsecret/android/cores/core_entity/domain/BottomNavTab\$News;" &&
-            method.name == "fetchIndexInBottomNav" &&
-            method.returnType == "I" &&
-            method.parameterTypes.isEmpty()
-    }
+    definingClass = "Lcom/fatsecret/android/cores/core_entity/domain/BottomNavTab\$News;",
+    name = "fetchIndexInBottomNav",
+    returnType = "I",
+    parameters = emptyList(),
 )

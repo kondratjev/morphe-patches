@@ -34,15 +34,9 @@ val changeVersionCodePatch = resourcePatch(
             )
 
         val versionCodeString = versionCode!!
-        val versionCode: Int
+        val versionCode = versionCodeString.toIntOrNull()
 
-        try {
-            versionCode = Integer.parseInt(versionCodeString)
-        } catch (e: NumberFormatException) {
-            throw throwVersionCodeException(versionCodeString)
-        }
-
-        if (versionCode < 1) {
+        if (versionCode == null || versionCode < 1) {
             throw throwVersionCodeException(versionCodeString)
         }
 

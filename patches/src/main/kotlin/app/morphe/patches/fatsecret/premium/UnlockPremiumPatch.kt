@@ -4,23 +4,15 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.fatsecret.shared.Constants.COMPATIBILITY_FATSECRET
-import org.w3c.dom.Element
+import app.morphe.patches.fatsecret.shared.hideMenuItem
+import app.morphe.util.returnEarly
 
 private val hidePremiumTabResourcePatch = resourcePatch {
     compatibleWith(COMPATIBILITY_FATSECRET)
 
     execute {
         document("res/menu/bottom_nav_menu.xml").use { document ->
-            val menu = document.documentElement
-            val nodes = menu.childNodes
-            for (i in 0 until nodes.length) {
-                val node = nodes.item(i)
-                if (node is Element && node.tagName == "item" &&
-                    node.getAttribute("android:id") == "@id/tab_premium"
-                ) {
-                    node.setAttribute("android:visible", "false")
-                }
-            }
+            document.documentElement.hideMenuItem("tab_premium")
         }
     }
 }
@@ -35,19 +27,13 @@ val unlockPremiumPatch = bytecodePatch(
 
     execute {
         // t0.h() — primary isPremium check → always true
-        IsPremiumFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x1\nreturn v0",
-        )
+        IsPremiumFingerprint.methodOrNull?.returnEarly(true)
 
         // t0.g() — premium status loaded → always true
-        IsPremiumLoadedFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x1\nreturn v0",
-        )
+        IsPremiumLoadedFingerprint.methodOrNull?.returnEarly(true)
 
         // t0.e() — invalid subscription check → always false
-        IsInvalidSubscriptionFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x0\nreturn v0",
-        )
+        IsInvalidSubscriptionFingerprint.methodOrNull?.returnEarly(false)
 
         // t0.m(boolean, boolean) — StateFlow emitter
         PremiumStatusEmitterFingerprint.methodOrNull?.addInstructions(

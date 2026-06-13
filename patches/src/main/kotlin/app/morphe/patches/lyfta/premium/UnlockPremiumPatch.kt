@@ -5,6 +5,7 @@ import app.morphe.util.returnEarly
 import app.morphe.patches.all.pairip.license.disableLicenseCheckPatch
 import app.morphe.patches.lyfta.shared.Constants.COMPATIBILITY_LYFTA
 
+@Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
     description = "Unlocks all premium features.",

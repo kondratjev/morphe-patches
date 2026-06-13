@@ -9,12 +9,10 @@ import app.morphe.patcher.Fingerprint
  * works for both new and existing installs.
  */
 object KasperskyScannerDtoIsPeriodicScanEnabledFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lru/vk/store/feature/kaspersky/impl/data/KasperskyScannerDto;" &&
-                method.name == "isPeriodicScanEnabled" &&
-                method.returnType == "Z" &&
-                method.parameters.isEmpty()
-    }
+    definingClass = "Lru/vk/store/feature/kaspersky/impl/data/KasperskyScannerDto;",
+    name = "isPeriodicScanEnabled",
+    returnType = "Z",
+    parameters = emptyList(),
 )
 
 /**
@@ -23,10 +21,10 @@ object KasperskyScannerDtoIsPeriodicScanEnabledFingerprint : Fingerprint(
  * a no-op prevents the scan from ever being enqueued.
  */
 object KasperskyScannerWorkerEnqueuePeriodicFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lru/vk/store/feature/kaspersky/impl/presentation/KasperskyScannerWorker\$a;" &&
-                method.name == "a" &&
-                method.parameterTypes.size == 2 &&
-                method.parameterTypes[0] == "Lhb/l0;"
-    }
+    definingClass = "Lru/vk/store/feature/kaspersky/impl/presentation/KasperskyScannerWorker\$a;",
+    name = "a",
+    custom = { method, _ ->
+        method.parameterTypes.size == 2 &&
+            method.parameterTypes[0] == "Lhb/l0;"
+    },
 )

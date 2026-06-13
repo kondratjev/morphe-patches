@@ -1,8 +1,8 @@
 package app.morphe.patches.rustore.mine
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
+import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val disableMineRedesignPatch = bytecodePatch(
@@ -34,10 +34,6 @@ val disableMineRedesignPatch = bytecodePatch(
         // null is semantically equivalent to Unit for a launch {}
         // coroutine — the coroutine framework treats any non-
         // COROUTINE_SUSPENDED value as a successful result.
-        MainViewStateMineRedesignFingerprint.method.addInstructions(
-            0,
-            "const/4 v0, 0x0\n" +
-                    "return-object v0"
-        )
+        MainViewStateMineRedesignFingerprint.method.returnEarly(null as Void?)
     }
 }

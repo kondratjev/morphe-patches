@@ -1,3 +1,81 @@
+## [1.9.0-dev.13](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.12...v1.9.0-dev.13) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Small refactor ([ac468f5](https://github.com/kondratjev/morphe-patches/commit/ac468f53d631f86f0a1d79818d8a31a9d588232d))
+
+## [1.9.0-dev.12](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.11...v1.9.0-dev.12) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Small refactor ([1068bac](https://github.com/kondratjev/morphe-patches/commit/1068bacea97dd8a863d1c2e96c687062f5efe073))
+
+## [1.9.0-dev.11](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.10...v1.9.0-dev.11) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([df233b9](https://github.com/kondratjev/morphe-patches/commit/df233b91aa7af6981900a37167af588037f83f80))
+
+## [1.9.0-dev.10](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.9...v1.9.0-dev.10) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([d69b723](https://github.com/kondratjev/morphe-patches/commit/d69b7238d9cdda51c268f4e30b73e84723ee1ed9))
+
+## [1.9.0-dev.9](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.8...v1.9.0-dev.9) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([8065fbb](https://github.com/kondratjev/morphe-patches/commit/8065fbb8866bbec3ed94e1be57a13a6b95140eb3))
+
+## [1.9.0-dev.8](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.7...v1.9.0-dev.8) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([99b39d8](https://github.com/kondratjev/morphe-patches/commit/99b39d8abf6a91731650ef7821a088580399e374))
+
+## [1.9.0-dev.7](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.6...v1.9.0-dev.7) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([83b3286](https://github.com/kondratjev/morphe-patches/commit/83b32866c7e4ca05c0157ccb8ab653f7470b19cb))
+
+## [1.9.0-dev.6](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.5...v1.9.0-dev.6) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([74d0873](https://github.com/kondratjev/morphe-patches/commit/74d0873ad0a49b3148acc32f990bb6891ae6846c))
+
+## [1.9.0-dev.5](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.4...v1.9.0-dev.5) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([92922b8](https://github.com/kondratjev/morphe-patches/commit/92922b8173f45614422d4ecd57863ef7114e7cf9))
+
+## [1.9.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([0e123eb](https://github.com/kondratjev/morphe-patches/commit/0e123eba7eb6318d3c70b75179feb8662d961646))
+
+## [1.9.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([b897de9](https://github.com/kondratjev/morphe-patches/commit/b897de983cbd262ac2884d4d7c88fcb3236a13e3))
+
+## [1.9.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.1...v1.9.0-dev.2) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix fingerprints ([0b2b121](https://github.com/kondratjev/morphe-patches/commit/0b2b1216ecff930084b18050e296067fcccfce21))
+
+## [1.9.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-06-13)
+
+### ✨ New Features
+
+* Add Soundcloud pathces ([1d3beb1](https://github.com/kondratjev/morphe-patches/commit/1d3beb1e7ad42fa7fc43596b8835675d6cd7f7e7))
+
 ## [1.8.0](https://github.com/kondratjev/morphe-patches/compare/v1.7.0...v1.8.0) (2026-06-13)
 
 ### 🐛 Bug Fixes

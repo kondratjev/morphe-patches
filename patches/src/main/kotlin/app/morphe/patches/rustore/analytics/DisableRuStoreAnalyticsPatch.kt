@@ -1,12 +1,12 @@
 package app.morphe.patches.rustore.analytics
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.analytics.childrenNamed
 import app.morphe.patches.all.analytics.disableComponentsByPrefix
 import app.morphe.patches.all.analytics.disableComponentsWhere
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
+import app.morphe.util.returnEarly
 import org.w3c.dom.Element
 import java.util.logging.Logger
 
@@ -50,14 +50,14 @@ val disableRuStoreAnalyticsPatch = bytecodePatch(
 
     execute {
         if (AltCraftSendFingerprint.methodOrNull != null) {
-            AltCraftSendFingerprint.method.addInstructions(0, "return-void")
+            AltCraftSendFingerprint.method.returnEarly()
             logger.info("Patched AltCraft send method")
         } else {
             logger.info("Skipped AltCraft (not found)")
         }
 
         if (RadarDoWorkFingerprint.methodOrNull != null) {
-            RadarDoWorkFingerprint.method.addInstructions(0, "const/4 v0, 0x0\nreturn-object v0")
+            RadarDoWorkFingerprint.method.returnEarly(null as Void?)
             logger.info("Patched Radar doWork")
         } else {
             logger.info("Skipped Radar (not found)")

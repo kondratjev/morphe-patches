@@ -8,13 +8,10 @@ import app.morphe.patcher.Fingerprint
  * DEX: classes5.dex, Lj18;->M(Lyazio/subscription/api/SubscriptionStatus;)Z
  */
 object SubscriptionCheckFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lj18;" &&
-            method.name == "M" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.size == 1 &&
-            method.parameterTypes[0] == "Lyazio/subscription/api/SubscriptionStatus;"
-    }
+    definingClass = "Lj18;",
+    name = "M",
+    returnType = "Z",
+    parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
 )
 
 /**
@@ -23,13 +20,10 @@ object SubscriptionCheckFingerprint : Fingerprint(
  * DEX: classes5.dex, Lj18;->H(Lyazio/subscription/api/SubscriptionStatus;)Z
  */
 object SubscriptionCheckLenientFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lj18;" &&
-            method.name == "H" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.size == 1 &&
-            method.parameterTypes[0] == "Lyazio/subscription/api/SubscriptionStatus;"
-    }
+    definingClass = "Lj18;",
+    name = "H",
+    returnType = "Z",
+    parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
 )
 
 /**
@@ -38,13 +32,10 @@ object SubscriptionCheckLenientFingerprint : Fingerprint(
  * DEX: classes5.dex, Lyz7;->N(Llhi;)Z
  */
 object IsNotPremiumFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Lyz7;" &&
-            method.name == "N" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.size == 1 &&
-            method.parameterTypes[0] == "Llhi;"
-    }
+    definingClass = "Lyz7;",
+    name = "N",
+    returnType = "Z",
+    parameters = listOf("Llhi;"),
 )
 
 /**
@@ -53,13 +44,10 @@ object IsNotPremiumFingerprint : Fingerprint(
  * DEX: classes.dex, Le08;->a0(Llhi;)Z
  */
 object IsPremiumFingerprintA : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Le08;" &&
-            method.name == "a0" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.size == 1 &&
-            method.parameterTypes[0] == "Llhi;"
-    }
+    definingClass = "Le08;",
+    name = "a0",
+    returnType = "Z",
+    parameters = listOf("Llhi;"),
 )
 
 /**
@@ -68,13 +56,10 @@ object IsPremiumFingerprintA : Fingerprint(
  * DEX: classes.dex, Le08;->b0(Llhi;)Z
  */
 object IsPremiumFingerprintB : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Le08;" &&
-            method.name == "b0" &&
-            method.returnType == "Z" &&
-            method.parameterTypes.size == 1 &&
-            method.parameterTypes[0] == "Llhi;"
-    }
+    definingClass = "Le08;",
+    name = "b0",
+    returnType = "Z",
+    parameters = listOf("Llhi;"),
 )
 
 /**
@@ -83,10 +68,8 @@ object IsPremiumFingerprintB : Fingerprint(
  * DEX: classes.dex, Looe;->h(Lfv3;)Ljava/lang/Object;
  */
 object PremiumTypeNullCheckFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Looe;" &&
-            method.name == "h" &&
-            method.returnType == "Ljava/lang/Object;" &&
-            method.parameterTypes.size == 1
-    }
+    definingClass = "Looe;",
+    name = "h",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Lfv3;"),
 )

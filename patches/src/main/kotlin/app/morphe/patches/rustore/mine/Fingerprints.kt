@@ -24,9 +24,7 @@ import app.morphe.patcher.Fingerprint
  * V1/V2 screen selection. This fingerprint targets the correct code path.
  */
 object MainViewStateMineRedesignFingerprint : Fingerprint(
-    custom = { method, classDef ->
-        classDef.type == "Le31/h0;" &&
-                method.name == "invokeSuspend" &&
-                method.returnType == "Ljava/lang/Object;"
-    }
+    definingClass = "Le31/h0;",
+    name = "invokeSuspend",
+    returnType = "Ljava/lang/Object;",
 )
