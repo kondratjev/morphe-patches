@@ -8,7 +8,7 @@ import app.morphe.patcher.Fingerprint
  * DEX: classes5.dex, Lj18;->M(Lyazio/subscription/api/SubscriptionStatus;)Z
  */
 object SubscriptionCheckFingerprint : Fingerprint(
-    definingClass = "Lj18;",
+    definingClass = "j18;",
     name = "M",
     returnType = "Z",
     parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
@@ -20,7 +20,7 @@ object SubscriptionCheckFingerprint : Fingerprint(
  * DEX: classes5.dex, Lj18;->H(Lyazio/subscription/api/SubscriptionStatus;)Z
  */
 object SubscriptionCheckLenientFingerprint : Fingerprint(
-    definingClass = "Lj18;",
+    definingClass = "j18;",
     name = "H",
     returnType = "Z",
     parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
@@ -32,7 +32,7 @@ object SubscriptionCheckLenientFingerprint : Fingerprint(
  * DEX: classes5.dex, Lyz7;->N(Llhi;)Z
  */
 object IsNotPremiumFingerprint : Fingerprint(
-    definingClass = "Lyz7;",
+    definingClass = "yz7;",
     name = "N",
     returnType = "Z",
     parameters = listOf("Llhi;"),
@@ -44,7 +44,7 @@ object IsNotPremiumFingerprint : Fingerprint(
  * DEX: classes.dex, Le08;->a0(Llhi;)Z
  */
 object IsPremiumFingerprintA : Fingerprint(
-    definingClass = "Le08;",
+    definingClass = "e08;",
     name = "a0",
     returnType = "Z",
     parameters = listOf("Llhi;"),
@@ -56,7 +56,7 @@ object IsPremiumFingerprintA : Fingerprint(
  * DEX: classes.dex, Le08;->b0(Llhi;)Z
  */
 object IsPremiumFingerprintB : Fingerprint(
-    definingClass = "Le08;",
+    definingClass = "e08;",
     name = "b0",
     returnType = "Z",
     parameters = listOf("Llhi;"),
@@ -68,7 +68,7 @@ object IsPremiumFingerprintB : Fingerprint(
  * DEX: classes.dex, Looe;->h(Lfv3;)Ljava/lang/Object;
  */
 object PremiumTypeNullCheckFingerprint : Fingerprint(
-    definingClass = "Looe;",
+    definingClass = "ooe;",
     name = "h",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("Lfv3;"),

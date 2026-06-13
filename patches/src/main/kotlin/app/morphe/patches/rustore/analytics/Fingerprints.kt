@@ -8,7 +8,7 @@ import app.morphe.patcher.Fingerprint
  * Class `mg2.b` is the obfuscated name.
  */
 object AltCraftSendFingerprint : Fingerprint(
-    definingClass = "Lmg2/b;",
+    definingClass = "b;",
     name = "a",
     custom = { method, _ ->
         method.parameterTypes.size == 5 &&
@@ -23,7 +23,7 @@ object AltCraftSendFingerprint : Fingerprint(
  * treat it as a failure after retries.
  */
 object RadarDoWorkFingerprint : Fingerprint(
-    definingClass = "Lru/vk/store/lib/analytics/system/radar/presentation/RadarFlushSnapshotWorker;",
+    definingClass = "RadarFlushSnapshotWorker;",
     name = "b",
     returnType = "Ljava/lang/Object;",
     custom = { method, _ ->

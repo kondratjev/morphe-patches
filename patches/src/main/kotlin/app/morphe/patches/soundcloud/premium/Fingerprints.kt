@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
  * Patching to return true enables all feature flags unconditionally.
  */
 object FlagFeatureEvaluationFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/features/Feature\$FlagFeature;",
+    definingClass = "Feature\$FlagFeature;",
     name = "i",
     returnType = "Z",
     parameters = listOf(
@@ -28,7 +28,7 @@ object FlagFeatureEvaluationFingerprint : Fingerprint(
  * Patching forces go-plus tier and display name.
  */
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/configuration/plans/UserConsumerPlan;",
+    definingClass = "UserConsumerPlan;",
     name = "<init>",
     parameters = listOf(
         "Ljava/lang/String;",
@@ -46,7 +46,7 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
  * Patching returns Tier.HIGH to prevent offboarding screen.
  */
 object GetDowngradeTierFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/configuration/ConfigurationSettingsStorage;",
+    definingClass = "ConfigurationSettingsStorage;",
     returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
@@ -57,7 +57,7 @@ object GetDowngradeTierFingerprint : Fingerprint(
  * Patching returns UpsellType.None to hide all upsell UI.
  */
 object MapToPlanFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/upsell/RemoteUpsellVisibilityController;",
+    definingClass = "RemoteUpsellVisibilityController;",
     name = "mapToPlan",
 )
 
@@ -66,7 +66,7 @@ object MapToPlanFingerprint : Fingerprint(
  * Patching zeroes out boolean + config params to disable ads.
  */
 object AdPlacementConfigCtorFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/ads/aditude/AdPlacementConfiguration;",
+    definingClass = "AdPlacementConfiguration;",
     name = "<init>",
     returnType = "V",
 )

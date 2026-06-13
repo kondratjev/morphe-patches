@@ -47,7 +47,7 @@ val enablePremiumPatch = bytecodePatch(
         )
 
         // 5. AdPlacementConfiguration constructors — zero out ads
-        AdPlacementConfigCtorFingerprint.matchAll().forEach { match ->
+        AdPlacementConfigCtorFingerprint.matchAllOrNull()?.forEach { match ->
             val offset = if (match.method.parameterTypes.first() == "I") 1 else 0
             match.method.addInstructions(
                 0,

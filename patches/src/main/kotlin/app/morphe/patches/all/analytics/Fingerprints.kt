@@ -31,7 +31,7 @@ object AppMetricaPublicApiFingerprint : Fingerprint(
  * that process queued analytics data and crash reports.
  */
 object AppMetricaInternalReportFingerprint : Fingerprint(
-    definingClass = "Lcom/yandex/metrica/impl/ob/U1;",
+    definingClass = "U1;",
     returnType = "V",
     custom = { method, _ ->
         method.name in setOf("reportData", "sendCrash") &&
@@ -45,7 +45,7 @@ object AppMetricaInternalReportFingerprint : Fingerprint(
  * enqueue analytics reports for background processing.
  */
 object AppMetricaInternalQueueFingerprint : Fingerprint(
-    definingClass = "Lcom/yandex/metrica/impl/ob/U1;",
+    definingClass = "U1;",
     returnType = "Ljava/util/concurrent/Future;",
     custom = { method, _ ->
         method.name in setOf("queuePauseUserSession", "queueReport", "queueResumeUserSession") &&
@@ -58,7 +58,7 @@ object AppMetricaInternalQueueFingerprint : Fingerprint(
  * Used internally by AppMetrica for async task execution.
  */
 object AppMetricaInternalCallbackFingerprint : Fingerprint(
-    definingClass = "Lcom/yandex/metrica/impl/ob/U1\$g;",
+    definingClass = "U1\$g;",
     name = "call",
     returnType = "Ljava/lang/Void;",
     custom = { method, _ -> method.implementation != null },
@@ -75,7 +75,7 @@ object AppMetricaInternalCallbackFingerprint : Fingerprint(
  * singleton first — if it's null, they bail out immediately.
  */
 object MyTrackerInitFingerprint : Fingerprint(
-    definingClass = "Lcom/my/tracker/MyTracker;",
+    definingClass = "MyTracker;",
     name = "initTracker",
     returnType = "V",
     custom = { method, _ -> method.implementation != null },

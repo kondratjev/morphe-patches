@@ -7,7 +7,7 @@ import app.morphe.patcher.Fingerprint
  * that all premium checks in Medisafe funnel through.
  */
 object IsPaidBundleFingerprint : Fingerprint(
-    definingClass = "Lcom/medisafe/android/implementations/FlowIapHelper;",
+    definingClass = "FlowIapHelper;",
     name = "isPaidBundle",
     returnType = "Z",
     parameters = listOf("Landroid/content/Context;"),
@@ -18,6 +18,6 @@ object IsPaidBundleFingerprint : Fingerprint(
  * that checks Google Play for real subscriptions every 24 hours.
  */
 object PurchaseRestoreWorkerDoWorkFingerprint : Fingerprint(
-    definingClass = "Lcom/medisafe/android/base/service/PurchaseRestoreWorker;",
+    definingClass = "PurchaseRestoreWorker;",
     name = "doWork",
 )

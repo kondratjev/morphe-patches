@@ -8,7 +8,7 @@ import app.morphe.patcher.methodCall
  * Return type is Job, not void — the method returns the launched coroutine.
  */
 object SetIsPremiumStateFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
+    definingClass = "SubscriptionStateProvider;",
     name = "setIsPremiumState",
     returnType = "Lkotlinx/coroutines/Job;",
     parameters = listOf("Z"),
@@ -18,7 +18,7 @@ object SetIsPremiumStateFingerprint : Fingerprint(
  * Matches `Job setIsAdfreeState(boolean)` in SubscriptionStateProvider.
  */
 object SetIsAdfreeStateFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
+    definingClass = "SubscriptionStateProvider;",
     name = "setIsAdfreeState",
     returnType = "Lkotlinx/coroutines/Job;",
     parameters = listOf("Z"),
@@ -29,16 +29,16 @@ object SetIsAdfreeStateFingerprint : Fingerprint(
  * by looking for calls to both Preferences methods inside the constructor body.
  */
 object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
+    definingClass = "SubscriptionStateProvider;",
     name = "<init>",
     returnType = "V",
     filters = listOf(
         methodCall(
-            definingClass = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;",
+            definingClass = "Preferences;",
             name = "getLastIsPremiumSubscriptionState",
         ),
         methodCall(
-            definingClass = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;",
+            definingClass = "Preferences;",
             name = "getLastIsAdfreeSubscriptionState",
         ),
     ),

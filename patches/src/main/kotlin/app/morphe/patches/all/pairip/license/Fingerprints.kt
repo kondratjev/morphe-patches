@@ -5,7 +5,7 @@ import app.morphe.patcher.fieldAccess
 import com.android.tools.smali.dexlib2.Opcode
 
 object ProcessLicenseResponseFingerprint : Fingerprint(
-    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    definingClass = "LicenseClient;",
     name = "processResponse",
 )
 

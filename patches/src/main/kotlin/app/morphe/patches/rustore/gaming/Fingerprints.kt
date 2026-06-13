@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
  * Method `p0` = openGameCenter()V — the `o6` interface callback.
  */
 object MineV2ViewModelOpenGameCenterFingerprint : Fingerprint(
-    definingClass = "Lpi1/j8;",
+    definingClass = "j8;",
     name = "p0",
     returnType = "V",
     parameters = emptyList(),
@@ -26,7 +26,7 @@ object MineV2ViewModelOpenGameCenterFingerprint : Fingerprint(
  * Method `p5` = openGameCenter()V — the `v` interface callback.
  */
 object MineViewModelOpenGameCenterFingerprint : Fingerprint(
-    definingClass = "Lpi1/h9;",
+    definingClass = "h9;",
     name = "p5",
     returnType = "V",
     parameters = emptyList(),
@@ -46,7 +46,7 @@ object MineViewModelOpenGameCenterFingerprint : Fingerprint(
  * from the V2 Mine screen without affecting any other UI.
  */
 object GameCenterV2ButtonComposableFingerprint : Fingerprint(
-    definingClass = "Lwb1/i0;",
+    definingClass = "i0;",
     name = "d",
     returnType = "V",
 )
@@ -67,7 +67,7 @@ object GameCenterV2ButtonComposableFingerprint : Fingerprint(
  * from the V1 Mine screen without affecting any other UI.
  */
 object GameCenterV1ButtonComposableFingerprint : Fingerprint(
-    definingClass = "Lwb1/o;",
+    definingClass = "o;",
     name = "e",
     returnType = "V",
 )
