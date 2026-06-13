@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "v1.7.0",
   "patches": [
     {
       "name": "Change version code",
@@ -183,6 +183,31 @@
           "targets": [
             {
               "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all FatSecret Gold features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fatsecret.android",
+          "name": "FatSecret",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.5.0.4",
               "isExperimental": false,
               "minSdk": null,
               "description": null
