@@ -3,6 +3,7 @@ package app.morphe.patches.all.analytics
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.util.returnEarly
 import org.w3c.dom.Element
 import java.util.logging.Logger
 
@@ -119,11 +120,11 @@ val disableAnalyticsPatch = bytecodePatch(
 
     execute {
         AppMetricaPublicApiFingerprint.methodOrNull
-            ?.addInstructions(0, "return-void")
+            ?.returnEarly()
             .also { logger.info("AppMetrica public API: ${if (it != null) "patched" else "not found"}") }
 
         AppMetricaInternalReportFingerprint.methodOrNull
-            ?.addInstructions(0, "return-void")
+            ?.returnEarly()
             .also { logger.info("AppMetrica internal: ${if (it != null) "patched" else "not found"}") }
 
         AppMetricaInternalQueueFingerprint.methodOrNull
@@ -143,7 +144,7 @@ val disableAnalyticsPatch = bytecodePatch(
             .also { logger.info("AppMetrica callback: ${if (it != null) "patched" else "not found"}") }
 
         MyTrackerInitFingerprint.methodOrNull
-            ?.addInstructions(0, "return-void")
+            ?.returnEarly()
             .also { logger.info("MyTracker: ${if (it != null) "patched" else "not found"}") }
     }
 }

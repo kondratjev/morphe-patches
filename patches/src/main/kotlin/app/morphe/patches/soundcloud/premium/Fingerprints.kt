@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 
 // ── Plan / tier ─────────────────────────────────────────────────
 
+/** Matches `UserConsumerPlan.<init>()` — constructs the user's plan object from backend data. */
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/plans/UserConsumerPlan;",
     name = "<init>",
@@ -17,12 +18,14 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
     ),
 )
 
+/** Matches `ConfigurationSettingsStorage.getDowngradeTier()` — returns the downgrade tier plan. */
 object GetDowngradeTierFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/ConfigurationSettingsStorage;",
     returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
 
+/** Matches `RemoteUpsellVisibilityController.mapToPlan()` — maps backend upselling data to plan visibility. */
 object MapToPlanFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/upsell/RemoteUpsellVisibilityController;",
     name = "mapToPlan",
@@ -30,12 +33,14 @@ object MapToPlanFingerprint : Fingerprint(
 
 // ── Tier/plan state ────────────────────────────────────────────
 
+/** Matches `DefaultFeatureOperations.getCurrentTier()` — returns the active tier from local config. */
 object GetCurrentTierFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
 
+/** Matches `DefaultFeatureOperations.getCurrentConsumerPlan()` — returns the active ConsumerPlan from local config. */
 object GetCurrentConsumerPlanFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     returnType = "Lcom/soundcloud/android/configuration/plans/ConsumerPlan;",
@@ -44,6 +49,7 @@ object GetCurrentConsumerPlanFingerprint : Fingerprint(
 
 // ── Offboarding / transitions ──────────────────────────────────
 
+/** Matches `DefaultConfigurationUpdatesLifecycleObserver.b(RootActivity)` — observes plan changes and triggers transition UI. */
 object ConfigurationUpdatesLifecycleObserverFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/DefaultConfigurationUpdatesLifecycleObserver;",
     name = "b",
@@ -53,6 +59,7 @@ object ConfigurationUpdatesLifecycleObserverFingerprint : Fingerprint(
 
 // ── Ad blocking ────────────────────────────────────────────────
 
+/** Matches `DefaultFeatureOperations.getShouldRequestAds()` — determines whether ads should be requested. */
 object GetShouldRequestAdsFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     name = "getShouldRequestAds",
@@ -60,6 +67,7 @@ object GetShouldRequestAdsFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
+/** Matches `DefaultFeatureOperations.isMonetizableAdGeo()` — checks if current geo is eligible for monetizable ads. */
 object IsMonetizableAdGeoFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     name = "isMonetizableAdGeo",
@@ -67,6 +75,7 @@ object IsMonetizableAdGeoFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
+/** Matches `AdPlacementConfiguration.<init>()` — constructs ad placement configuration for the player. */
 object AdPlacementConfigCtorFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/ads/display/data/config/AdPlacementConfiguration;",
     name = "<init>",

@@ -1,8 +1,8 @@
 package app.morphe.patches.soundcloud.telemetry
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.soundcloud.shared.Constants.COMPATIBILITY_SOUNDCLOUD
+import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val disableTelemetryPatch = bytecodePatch(
@@ -12,6 +12,6 @@ val disableTelemetryPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        HandleMessageFingerprint.methodOrNull?.addInstructions(0, "return-void")
+        HandleMessageFingerprint.methodOrNull?.returnEarly()
     }
 }

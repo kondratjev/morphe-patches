@@ -1,8 +1,8 @@
 package app.morphe.patches.rustore.ads
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
+import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val disableAdsPatch = bytecodePatch(
@@ -13,9 +13,6 @@ val disableAdsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_RUSTORE)
 
     execute {
-        RawAdvertisementRepoGetFingerprint.method.addInstructions(
-            0,
-            "const/4 v0, 0x0\nreturn-object v0"
-        )
+        RawAdvertisementRepoGetFingerprint.method.returnEarly(null as Void?)
     }
 }

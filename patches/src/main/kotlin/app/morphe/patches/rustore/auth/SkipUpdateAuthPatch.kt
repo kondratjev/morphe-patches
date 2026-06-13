@@ -1,8 +1,8 @@
 package app.morphe.patches.rustore.auth
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
+import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val skipUpdateAuthPatch = bytecodePatch(
@@ -13,9 +13,6 @@ val skipUpdateAuthPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_RUSTORE)
 
     execute {
-        AuthSuggestShownFingerprint.method.addInstructions(
-            0,
-            "const/4 v0, 0x0\nreturn-object v0"
-        )
+        AuthSuggestShownFingerprint.method.returnEarly(null as Void?)
     }
 }

@@ -3,6 +3,7 @@ package app.morphe.patches.soundcloud.premium
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.soundcloud.shared.Constants.COMPATIBILITY_SOUNDCLOUD
+import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val enablePremiumPatch = bytecodePatch(
@@ -58,24 +59,18 @@ val enablePremiumPatch = bytecodePatch(
         // ── Block offboarding ───────────────────────────────────
         // Lifecycle observer — THE single source of ALL transition UI
         // (onboarding + offboarding + fullscreen + bottom sheet)
-        ConfigurationUpdatesLifecycleObserverFingerprint.methodOrNull?.addInstructions(
-            0, "return-void",
-        )
+        ConfigurationUpdatesLifecycleObserverFingerprint.methodOrNull?.returnEarly()
 
         // ── Ad blocking ─────────────────────────────────────────
-        GetShouldRequestAdsFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x0\nreturn v0",
-        )
+        GetShouldRequestAdsFingerprint.methodOrNull?.returnEarly(false)
 
-        IsMonetizableAdGeoFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x0\nreturn v0",
-        )
+        IsMonetizableAdGeoFingerprint.methodOrNull?.returnEarly(false)
 
         AdPlacementConfigCtorFingerprint.matchAllOrNull()?.forEach { match ->
             val offset = if (match.method.parameterTypes.first() == "I") 1 else 0
             match.method.addInstructions(
                 0,
-                listOf(1, 2, 3).joinToString("\n") { "const/4 p${offset + it}, 0x0" },
+                (1..3).joinToString("\n") { "const/4 p${offset + it}, 0x0" },
             )
         }
     }
