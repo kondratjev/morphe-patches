@@ -1,3 +1,9 @@
+## [1.8.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-06-13)
+
+### ✨ New Features
+
+* Add unlock FatSecret Gold patch ([4a9929f](https://github.com/kondratjev/morphe-patches/commit/4a9929f47e4e6222546982fc6fad5761210a410b))
+
 ## [1.7.0](https://github.com/kondratjev/morphe-patches/compare/v1.6.0...v1.7.0) (2026-06-13)
 
 ### 🐛 Bug Fixes

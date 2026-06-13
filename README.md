@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.7.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.7.0)**  •  `main`  •  13 patches total
+> **[v1.8.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.8.0-dev.1)**  •  `dev`  •  14 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -27,6 +27,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | [Disable background scan](#disable-background-scan) | Disables the periodic Kaspersky background device scan. |  |
 | [Disable gaming profile](#disable-gaming-profile) | Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen. |  |
 | [Skip update auth](#skip-update-auth) | Removes the login requirement when updating apps. |  |
+
+</details>
+
+<details open>
+<summary>📦 FatSecret  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 11.5.0.4 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all FatSecret Gold features. |  |
 
 </details>
 
