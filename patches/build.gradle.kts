@@ -2,7 +2,7 @@ group = "app.morphe"
 
 patches {
     about {
-        name = "kondratjev Morphe Patches"
+        name = "Kondratjev Patches"
         description = "Patches for Lyfta and other apps"
         source = "git@github.com:kondratjev/morphe-patches.git"
         author = "kondratjev"

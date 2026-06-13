@@ -24,21 +24,24 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                     it.startsWith("com.yandex.metrica.") ||
                     it.startsWith("com.yandex.preinstallsatellite.appmetrica.")
             }
-            val amRemoved = application.childrenNamed("activity", "provider", "service", "receiver")
-                .filter { appMetrica(it.getAttribute("android:name")) }
-            application.removeChildren(amRemoved)
-            val amDisabled = application.disableComponentsWhere(appMetrica)
+            val amFound = application.childrenNamed("activity", "provider", "service", "receiver")
+                .any { appMetrica(it.getAttribute("android:name")) }
+            application.removeChildren(
+                application.childrenNamed("activity", "provider", "service", "receiver")
+                    .filter { appMetrica(it.getAttribute("android:name")) },
+            )
+            application.disableComponentsWhere(appMetrica)
             application.setApplicationMetaData("io.appmetrica.analytics.auto_tracking_enabled", "false")
             application.setApplicationMetaData("io.appmetrica.analytics.location_tracking_enabled", "false")
-            logger.info("AppMetrica: removed ${amRemoved.size}, disabled $amDisabled components")
+            logger.info("AppMetrica: ${if (amFound) "patched" else "not found"}")
 
             // MyTracker (VK / Mail.ru)
-            val mtDisabled = application.disableComponentsWhere {
+            val mtFound = application.disableComponentsWhere {
                 it.startsWith("com.my.tracker.") ||
                     it.startsWith("ru.mail.mytracker.") ||
                     it.contains(".mytracker.", ignoreCase = true)
-            }
-            logger.info("MyTracker: disabled $mtDisabled components")
+            } > 0
+            logger.info("MyTracker: ${if (mtFound) "patched" else "not found"}")
 
             // Firebase Analytics (Google)
             mapOf(
@@ -50,50 +53,52 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                 "google_analytics_adid_collection_enabled" to "false",
                 "google_analytics_deferred_deep_link_enabled" to "false",
             ).forEach { (k, v) -> application.setApplicationMetaData(k, v) }
-            val fbDisabled = application.disableComponentsByName(
+            application.disableComponentsByName(
                 "com.google.android.datatransport.runtime.backends.TransportBackendDiscovery",
                 "com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService",
                 "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
                 "com.google.firebase.sessions.SessionLifecycleService",
             )
-            logger.info("Firebase: disabled $fbDisabled components")
+            logger.info("Firebase: patched")
 
             // Google Analytics (legacy)
-            val gaDisabled = application.disableComponentsByPrefix(
+            val gaFound = application.disableComponentsByPrefix(
                 "com.google.android.gms.analytics.",
                 "com.google.android.gms.tagmanager.",
-            )
-            logger.info("Google Analytics: disabled $gaDisabled components")
+            ) > 0
+            logger.info("Google Analytics: ${if (gaFound) "patched" else "not found"}")
 
             // Sentry
             application.setApplicationMetaData("io.sentry.enabled", "false")
             application.setApplicationMetaData("io.sentry.dsn", "")
-            val sentryDisabled = application.disableComponentsWhere {
+            val sentryFound = application.disableComponentsWhere {
                 it.startsWith("io.sentry.") || it.contains(".Sentry")
-            }
-            logger.info("Sentry: disabled $sentryDisabled components")
+            } > 0
+            logger.info("Sentry: ${if (sentryFound) "patched" else "not found"}")
 
             // Adjust
-            val adjPerms = manifest.childrenNamed("uses-permission")
-                .filter { it.getAttribute("android:name").startsWith("com.adjust.") }
-            manifest.removeChildren(adjPerms)
-            val adjDisabled = application.disableComponentsByPrefix("com.adjust.")
-            logger.info("Adjust: removed ${adjPerms.size} permissions, disabled $adjDisabled components")
+            manifest.removeChildren(
+                manifest.childrenNamed("uses-permission")
+                    .filter { it.getAttribute("android:name").startsWith("com.adjust.") },
+            )
+            val adjFound = application.disableComponentsByPrefix("com.adjust.") > 0
+            logger.info("Adjust: ${if (adjFound) "patched" else "not found"}")
 
             // AppsFlyer
-            val afPerms = manifest.childrenNamed("uses-permission")
-                .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" }
-            manifest.removeChildren(afPerms)
-            val afDisabled = application.disableComponentsByPrefix("com.appsflyer.")
-            logger.info("AppsFlyer: removed ${afPerms.size} permissions, disabled $afDisabled components")
+            manifest.removeChildren(
+                manifest.childrenNamed("uses-permission")
+                    .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" },
+            )
+            val afFound = application.disableComponentsByPrefix("com.appsflyer.") > 0
+            logger.info("AppsFlyer: ${if (afFound) "patched" else "not found"}")
 
             // Amplitude
-            val ampDisabled = application.disableComponentsByPrefix("com.amplitude.")
-            logger.info("Amplitude: disabled $ampDisabled components")
+            val ampFound = application.disableComponentsByPrefix("com.amplitude.") > 0
+            logger.info("Amplitude: ${if (ampFound) "patched" else "not found"}")
 
             // Mixpanel
-            val mpDisabled = application.disableComponentsByPrefix("com.mixpanel.")
-            logger.info("Mixpanel: disabled $mpDisabled components")
+            val mpFound = application.disableComponentsByPrefix("com.mixpanel.") > 0
+            logger.info("Mixpanel: ${if (mpFound) "patched" else "not found"}")
         }
     }
 }
@@ -113,25 +118,16 @@ val disableAnalyticsPatch = bytecodePatch(
     dependsOn(disableAnalyticsManifestPatch)
 
     execute {
-        // AppMetrica public API — all void methods
-        if (AppMetricaPublicApiFingerprint.methodOrNull != null) {
-            AppMetricaPublicApiFingerprint.method.addInstructions(0, "return-void")
-            logger.info("Patched AppMetrica public API")
-        } else {
-            logger.info("Skipped AppMetrica public API (not found)")
-        }
+        AppMetricaPublicApiFingerprint.methodOrNull
+            ?.addInstructions(0, "return-void")
+            .also { logger.info("AppMetrica public API: ${if (it != null) "patched" else "not found"}") }
 
-        // AppMetrica internal — reportData / sendCrash
-        if (AppMetricaInternalReportFingerprint.methodOrNull != null) {
-            AppMetricaInternalReportFingerprint.method.addInstructions(0, "return-void")
-            logger.info("Patched AppMetrica internal (reportData/sendCrash)")
-        } else {
-            logger.info("Skipped AppMetrica internal (not found)")
-        }
+        AppMetricaInternalReportFingerprint.methodOrNull
+            ?.addInstructions(0, "return-void")
+            .also { logger.info("AppMetrica internal: ${if (it != null) "patched" else "not found"}") }
 
-        // AppMetrica internal — queue* Future methods
-        if (AppMetricaInternalQueueFingerprint.methodOrNull != null) {
-            AppMetricaInternalQueueFingerprint.method.addInstructions(
+        AppMetricaInternalQueueFingerprint.methodOrNull
+            ?.addInstructions(
                 0,
                 """
                     const/4 p0, 0x0
@@ -140,25 +136,14 @@ val disableAnalyticsPatch = bytecodePatch(
                     return-object p0
                 """,
             )
-            logger.info("Patched AppMetrica internal (queue*)")
-        } else {
-            logger.info("Skipped AppMetrica internal (queue*) (not found)")
-        }
+            .also { logger.info("AppMetrica queue: ${if (it != null) "patched" else "not found"}") }
 
-        // AppMetrica internal — U1$g.call()
-        if (AppMetricaInternalCallbackFingerprint.methodOrNull != null) {
-            AppMetricaInternalCallbackFingerprint.method.addInstructions(0, "const/4 p0, 0x0\nreturn-object p0")
-            logger.info("Patched AppMetrica internal (U1\$g callback)")
-        } else {
-            logger.info("Skipped AppMetrica internal (U1\$g callback) (not found)")
-        }
+        AppMetricaInternalCallbackFingerprint.methodOrNull
+            ?.addInstructions(0, "const/4 p0, 0x0\nreturn-object p0")
+            .also { logger.info("AppMetrica callback: ${if (it != null) "patched" else "not found"}") }
 
-        // MyTracker — initTracker
-        if (MyTrackerInitFingerprint.methodOrNull != null) {
-            MyTrackerInitFingerprint.method.addInstructions(0, "return-void")
-            logger.info("Patched MyTracker initTracker")
-        } else {
-            logger.info("Skipped MyTracker initTracker (not found)")
-        }
+        MyTrackerInitFingerprint.methodOrNull
+            ?.addInstructions(0, "return-void")
+            .also { logger.info("MyTracker: ${if (it != null) "patched" else "not found"}") }
     }
 }

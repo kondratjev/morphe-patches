@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0-dev.2",
+  "version": "v1.8.0-dev.2",
   "patches": [
     {
       "name": "Change version code",
@@ -146,7 +146,9 @@
       "name": "Disable community tab",
       "description": "Hides the News/Community tab from the bottom navigation.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.fatsecret.android",
