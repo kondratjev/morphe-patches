@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.7.0-dev.4](https://github.com/kondratjev/morphe-patches/releases/tag/v1.7.0-dev.4)**  •  `dev`  •  13 patches total
+> **[v1.7.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.7.0)**  •  `main`  •  13 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>

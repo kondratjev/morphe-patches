@@ -1,3 +1,15 @@
+## [1.7.0](https://github.com/kondratjev/morphe-patches/compare/v1.6.0...v1.7.0) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Unlock Premium patch for Yazio fingerprint ([8b9ab6a](https://github.com/kondratjev/morphe-patches/commit/8b9ab6adde57453fecadf212a57d2a922e125cee))
+* Fix Unlock Premium patch for Yazio fingerprint ([88fadb0](https://github.com/kondratjev/morphe-patches/commit/88fadb0422a41040dba777954cdba4716586897f))
+* Fix Unlock Premium patch for Yazio fingerprint ([b2537c9](https://github.com/kondratjev/morphe-patches/commit/b2537c9dc094788b5e380ca5b436d41860588aba))
+
+### ✨ New Features
+
+* Add Unlock Premium patch for Yazio ([47126e5](https://github.com/kondratjev/morphe-patches/commit/47126e5d5deb8c76de5e7430bfdb69f0d49830a5))
+
 ## [1.7.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.7.0-dev.3...v1.7.0-dev.4) (2026-06-13)
 
 ### 🐛 Bug Fixes
