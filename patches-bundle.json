@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-13T14:31:26",
-  "description": "## [1.8.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-06-13)\n\n### ✨ New Features\n\n* Add additional fatsecrte patches ([470369b](https://github.com/kondratjev/morphe-patches/commit/470369b6d570d583271628ff8a1d9b432d329ede))",
-  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.8.0-dev.2/patches-1.8.0-dev.2.mpp",
+  "created_at": "2026-06-13T14:43:35",
+  "description": "## [1.8.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.2...v1.8.0-dev.3) (2026-06-13)\n\n### ✨ New Features\n\n* Add additional fatsecrte patches ([b53eb60](https://github.com/kondratjev/morphe-patches/commit/b53eb60de703c2a9cc897704f20045fd4499af7d))",
+  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.8.0-dev.3/patches-1.8.0-dev.3.mpp",
   "signature_download_url": "",
-  "version": "1.8.0-dev.2"
+  "version": "1.8.0-dev.3"
 }
