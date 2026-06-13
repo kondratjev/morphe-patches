@@ -2,19 +2,6 @@ package app.morphe.patches.soundcloud.premium
 
 import app.morphe.patcher.Fingerprint
 
-// ── Feature flags ───────────────────────────────────────────────
-
-object FlagFeatureEvaluationFingerprint : Fingerprint(
-    definingClass = "Feature\$FlagFeature;",
-    name = "i",
-    returnType = "Z",
-    parameters = listOf(
-        "Lcom/soundcloud/android/properties/RemoteFlagProvider;",
-        "Lcom/soundcloud/android/properties/LocalFlagProvider;",
-        "Lcom/soundcloud/appconfig/DeviceConfiguration;",
-    ),
-)
-
 // ── Plan / tier ─────────────────────────────────────────────────
 
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
@@ -55,11 +42,18 @@ object GetCurrentConsumerPlanFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
-object TierChangeDetectorFingerprint : Fingerprint(
+object TierChangeDetectorBFingerprint : Fingerprint(
     definingClass = "DefaultTierChangeDetector;",
     name = "b",
     returnType = "V",
     parameters = listOf("Tier;", "Ljava/lang/String;"),
+)
+
+object TierChangeDetectorAFingerprint : Fingerprint(
+    definingClass = "DefaultTierChangeDetector;",
+    name = "a",
+    returnType = "V",
+    parameters = listOf("DetectedFor;", "DetectedTransition;", "DetectedVia;"),
 )
 
 // ── Ad blocking ─────────────────────────────────────────────────
@@ -82,11 +76,4 @@ object AdPlacementConfigCtorFingerprint : Fingerprint(
     definingClass = "AdPlacementConfiguration;",
     name = "<init>",
     returnType = "V",
-)
-
-// ── Banner filtering ────────────────────────────────────────────
-
-object BannerSectionMapperFingerprint : Fingerprint(
-    definingClass = "BannerSectionMapper;",
-    strings = listOf("BannerSection"),
 )

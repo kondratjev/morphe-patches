@@ -12,11 +12,6 @@ val enablePremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        // ── Feature flags ───────────────────────────────────────
-        FlagFeatureEvaluationFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x1\nreturn v0",
-        )
-
         // ── Plan override ───────────────────────────────────────
         UserConsumerPlanConstructorFingerprint.methodOrNull?.addInstructions(
             0,
@@ -43,7 +38,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // ── Tier/plan state (prevents expiration dialog) ────────
+        // ── Tier/plan state ─────────────────────────────────────
         GetCurrentTierFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -60,9 +55,12 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        TierChangeDetectorFingerprint.methodOrNull?.addInstructions(
-            0, "return-void",
-        )
+        // ── Block all tier change detection paths ───────────────
+        // Path 1: direct tier comparison
+        TierChangeDetectorBFingerprint.methodOrNull?.addInstructions(0, "return-void")
+
+        // Path 2: reactive plan update emitter (EventBus source)
+        TierChangeDetectorAFingerprint.methodOrNull?.addInstructions(0, "return-void")
 
         // ── Ad blocking ─────────────────────────────────────────
         GetShouldRequestAdsFingerprint.methodOrNull?.addInstructions(
