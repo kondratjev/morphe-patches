@@ -1,3 +1,9 @@
+## [1.9.0-dev.12](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.11...v1.9.0-dev.12) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Small refactor ([1068bac](https://github.com/kondratjev/morphe-patches/commit/1068bacea97dd8a863d1c2e96c687062f5efe073))
+
 ## [1.9.0-dev.11](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.10...v1.9.0-dev.11) (2026-06-13)
 
 ### 🐛 Bug Fixes
