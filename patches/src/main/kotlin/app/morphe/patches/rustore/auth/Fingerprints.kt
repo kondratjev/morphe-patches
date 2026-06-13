@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
  * Method `a` = ensureAuthSuggestShown(Continuation): Object
  */
 object AuthSuggestShownFingerprint : Fingerprint(
-    definingClass = "e;",
+    definingClass = "Lb61/e;",
     name = "a",
     returnType = "Ljava/lang/Object;",
     custom = { method, _ -> method.parameters.size == 1 },

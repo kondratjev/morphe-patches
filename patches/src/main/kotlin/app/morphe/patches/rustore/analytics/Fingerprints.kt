@@ -8,7 +8,7 @@ import app.morphe.patcher.Fingerprint
  * Class `mg2.b` is the obfuscated name.
  */
 object AltCraftSendFingerprint : Fingerprint(
-    definingClass = "b;",
+    definingClass = "Lmg2/b;",
     name = "a",
     custom = { method, _ ->
         method.parameterTypes.size == 5 &&

@@ -9,7 +9,7 @@ import app.morphe.patcher.Fingerprint
  * DEX: classes2.dex, t0;->h()Z (PUBLIC FINAL DECLARED_SYNCHRONIZED)
  */
 object IsPremiumFingerprint : Fingerprint(
-    definingClass = "t0;",
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
     name = "h",
     returnType = "Z",
     parameters = emptyList(),
@@ -21,7 +21,7 @@ object IsPremiumFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->g()Z
  */
 object IsPremiumLoadedFingerprint : Fingerprint(
-    definingClass = "t0;",
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
     name = "g",
     returnType = "Z",
     parameters = emptyList(),
@@ -33,7 +33,7 @@ object IsPremiumLoadedFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->e()Z
  */
 object IsInvalidSubscriptionFingerprint : Fingerprint(
-    definingClass = "t0;",
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
     name = "e",
     returnType = "Z",
     parameters = emptyList(),
@@ -48,7 +48,7 @@ object IsInvalidSubscriptionFingerprint : Fingerprint(
  * DEX: classes2.dex, t0;->m(ZZ)V (PRIVATE FINAL)
  */
 object PremiumStatusEmitterFingerprint : Fingerprint(
-    definingClass = "t0;",
+    definingClass = "Lcom/fatsecret/android/cores/core_common_utils/abstract_entity/t0;",
     name = "m",
     returnType = "V",
     parameters = listOf("Z", "Z"),
