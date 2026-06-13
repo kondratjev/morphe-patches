@@ -63,7 +63,7 @@ object TierChangeDetectorAFingerprint : Fingerprint(
     ),
 )
 
-// ── Plan transitions experiment (routes to bottom sheet, not fullscreen) ──
+// ── Offboarding blocking ────────────────────────────────────────
 
 object PlanTransitionsExperimentsFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/payments/plantransitions/experiment/DefaultPlanTransitionsExperiments;",
@@ -71,6 +71,15 @@ object PlanTransitionsExperimentsFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(
         "Lcom/soundcloud/android/payments/plantransitions/experiment/PlanTransitionExperiment;",
+    ),
+)
+
+object PlanTransitionManagerOffboardingFingerprint : Fingerprint(
+    definingClass = "Lcom/soundcloud/android/payments/plantransitions/ui/PlanTransitionManager;",
+    name = "e",
+    returnType = "V",
+    parameters = listOf(
+        "Lcom/soundcloud/android/payments/plantransitions/ui/PlanTransitionManager\$OffboardingBehaviour;",
     ),
 )
 

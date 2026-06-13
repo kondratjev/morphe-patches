@@ -68,6 +68,13 @@ val enablePremiumPatch = bytecodePatch(
             0, "const/4 v0, 0x1\nreturn v0",
         )
 
+        // Path 4: no-op PlanTransitionManager.offboardingCompleted — the actual
+        // bottom sheet display method. Even if EventBus events slip through,
+        // this prevents the "Don't stop the music" modal from showing.
+        PlanTransitionManagerOffboardingFingerprint.methodOrNull?.addInstructions(
+            0, "return-void",
+        )
+
         // ── Ad blocking ─────────────────────────────────────────
         GetShouldRequestAdsFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x0\nreturn v0",
