@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-13T17:30:54",
-  "description": "## [1.9.0-dev.5](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.4...v1.9.0-dev.5) (2026-06-13)\n\n### 🐛 Bug Fixes\n\n* Fix Soundcloud ([92922b8](https://github.com/kondratjev/morphe-patches/commit/92922b8173f45614422d4ecd57863ef7114e7cf9))",
-  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.9.0-dev.5/patches-1.9.0-dev.5.mpp",
+  "created_at": "2026-06-13T17:37:05",
+  "description": "## [1.9.0-dev.6](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.5...v1.9.0-dev.6) (2026-06-13)\n\n### 🐛 Bug Fixes\n\n* Fix Soundcloud ([74d0873](https://github.com/kondratjev/morphe-patches/commit/74d0873ad0a49b3148acc32f990bb6891ae6846c))",
+  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.9.0-dev.6/patches-1.9.0-dev.6.mpp",
   "signature_download_url": "",
-  "version": "1.9.0-dev.5"
+  "version": "1.9.0-dev.6"
 }
