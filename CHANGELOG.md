@@ -1,3 +1,9 @@
+## [1.8.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-06-13)
+
+### ✨ New Features
+
+* Add additional fatsecrte patches ([470369b](https://github.com/kondratjev/morphe-patches/commit/470369b6d570d583271628ff8a1d9b432d329ede))
+
 ## [1.8.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-06-13)
 
 ### ✨ New Features

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-06-13T14:12:32",
-  "description": "## [1.8.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-06-13)\n\n### ✨ New Features\n\n* Add unlock FatSecret Gold patch ([4a9929f](https://github.com/kondratjev/morphe-patches/commit/4a9929f47e4e6222546982fc6fad5761210a410b))",
-  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.8.0-dev.1/patches-1.8.0-dev.1.mpp",
+  "created_at": "2026-06-13T14:31:26",
+  "description": "## [1.8.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-06-13)\n\n### ✨ New Features\n\n* Add additional fatsecrte patches ([470369b](https://github.com/kondratjev/morphe-patches/commit/470369b6d570d583271628ff8a1d9b432d329ede))",
+  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.8.0-dev.2/patches-1.8.0-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.8.0-dev.1"
+  "version": "1.8.0-dev.2"
 }

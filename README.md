@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.8.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.8.0-dev.1)**  •  `dev`  •  14 patches total
+> **[v1.8.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.8.0-dev.2)**  •  `dev`  •  15 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -31,7 +31,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
-<summary>📦 FatSecret  •  1 patch</summary>
+<summary>📦 FatSecret  •  2 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -41,6 +41,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
+| [Disable community tab](#disable-community-tab) | Hides the News/Community tab from the bottom navigation. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all FatSecret Gold features. |  |
 
 </details>
