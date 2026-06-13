@@ -1,3 +1,9 @@
+## [1.9.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.3...v1.9.0-dev.4) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix Soundcloud ([0e123eb](https://github.com/kondratjev/morphe-patches/commit/0e123eba7eb6318d3c70b75179feb8662d961646))
+
 ## [1.9.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.9.0-dev.2...v1.9.0-dev.3) (2026-06-13)
 
 ### 🐛 Bug Fixes
