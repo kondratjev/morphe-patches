@@ -55,23 +55,10 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // ── Block all tier change detection paths ───────────────
-        // Path 1: direct tier comparison
-        TierChangeDetectorBFingerprint.methodOrNull?.addInstructions(0, "return-void")
-
-        // Path 2: reactive plan update emitter (EventBus source)
-        TierChangeDetectorAFingerprint.methodOrNull?.addInstructions(0, "return-void")
-
-        // Path 3: route offboarding to bottom sheet (not fullscreen GoOffboardingActivity)
-        // so TierChangeDetector.a() no-op actually blocks it
-        PlanTransitionsExperimentsFingerprint.methodOrNull?.addInstructions(
-            0, "const/4 v0, 0x1\nreturn v0",
-        )
-
-        // Path 4: no-op PlanTransitionManager.offboardingCompleted — the actual
-        // bottom sheet display method. Even if EventBus events slip through,
-        // this prevents the "Don't stop the music" modal from showing.
-        PlanTransitionManagerOffboardingFingerprint.methodOrNull?.addInstructions(
+        // ── Block offboarding ───────────────────────────────────
+        // Lifecycle observer — THE single source of ALL transition UI
+        // (onboarding + offboarding + fullscreen + bottom sheet)
+        ConfigurationUpdatesLifecycleObserverFingerprint.methodOrNull?.addInstructions(
             0, "return-void",
         )
 

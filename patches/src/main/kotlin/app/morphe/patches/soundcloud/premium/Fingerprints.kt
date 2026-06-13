@@ -28,7 +28,7 @@ object MapToPlanFingerprint : Fingerprint(
     name = "mapToPlan",
 )
 
-// ── Tier detection (prevents expiration dialog) ─────────────────
+// ── Tier/plan state ────────────────────────────────────────────
 
 object GetCurrentTierFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
@@ -42,48 +42,16 @@ object GetCurrentConsumerPlanFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
-object TierChangeDetectorBFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/configuration/DefaultTierChangeDetector;",
+// ── Offboarding / transitions ──────────────────────────────────
+
+object ConfigurationUpdatesLifecycleObserverFingerprint : Fingerprint(
+    definingClass = "Lcom/soundcloud/android/configuration/DefaultConfigurationUpdatesLifecycleObserver;",
     name = "b",
     returnType = "V",
-    parameters = listOf(
-        "Lcom/soundcloud/android/configuration/plans/Tier;",
-        "Ljava/lang/String;",
-    ),
+    parameters = listOf("Lcom/soundcloud/android/architecture/view/RootActivity;"),
 )
 
-object TierChangeDetectorAFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/configuration/DefaultTierChangeDetector;",
-    name = "a",
-    returnType = "V",
-    parameters = listOf(
-        "Lcom/soundcloud/android/configuration/data/DetectedFor;",
-        "Lcom/soundcloud/android/configuration/data/DetectedTransition;",
-        "Lcom/soundcloud/android/configuration/data/DetectedVia;",
-    ),
-)
-
-// ── Offboarding blocking ────────────────────────────────────────
-
-object PlanTransitionsExperimentsFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/payments/plantransitions/experiment/DefaultPlanTransitionsExperiments;",
-    name = "a",
-    returnType = "Z",
-    parameters = listOf(
-        "Lcom/soundcloud/android/payments/plantransitions/experiment/PlanTransitionExperiment;",
-    ),
-)
-
-object PlanTransitionManagerOffboardingFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/payments/plantransitions/ui/PlanTransitionManager;",
-    name = "e",
-    returnType = "V",
-    parameters = listOf(
-        "Lcom/soundcloud/android/payments/plantransitions/ui/PlanTransitionManager\$OffboardingBehaviour;",
-    ),
-)
-
-// ── Ad blocking ─────────────────────────────────────────────────
+// ── Ad blocking ────────────────────────────────────────────────
 
 object GetShouldRequestAdsFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
