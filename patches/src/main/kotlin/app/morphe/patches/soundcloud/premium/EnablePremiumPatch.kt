@@ -62,6 +62,12 @@ val enablePremiumPatch = bytecodePatch(
         // Path 2: reactive plan update emitter (EventBus source)
         TierChangeDetectorAFingerprint.methodOrNull?.addInstructions(0, "return-void")
 
+        // Path 3: route offboarding to bottom sheet (not fullscreen GoOffboardingActivity)
+        // so TierChangeDetector.a() no-op actually blocks it
+        PlanTransitionsExperimentsFingerprint.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x1\nreturn v0",
+        )
+
         // ── Ad blocking ─────────────────────────────────────────
         GetShouldRequestAdsFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x0\nreturn v0",

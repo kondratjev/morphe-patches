@@ -63,6 +63,17 @@ object TierChangeDetectorAFingerprint : Fingerprint(
     ),
 )
 
+// ── Plan transitions experiment (routes to bottom sheet, not fullscreen) ──
+
+object PlanTransitionsExperimentsFingerprint : Fingerprint(
+    definingClass = "Lcom/soundcloud/android/payments/plantransitions/experiment/DefaultPlanTransitionsExperiments;",
+    name = "a",
+    returnType = "Z",
+    parameters = listOf(
+        "Lcom/soundcloud/android/payments/plantransitions/experiment/PlanTransitionExperiment;",
+    ),
+)
+
 // ── Ad blocking ─────────────────────────────────────────────────
 
 object GetShouldRequestAdsFingerprint : Fingerprint(
