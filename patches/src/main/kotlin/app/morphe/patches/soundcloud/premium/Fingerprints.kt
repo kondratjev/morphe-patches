@@ -5,7 +5,7 @@ import app.morphe.patcher.Fingerprint
 // ── Plan / tier ─────────────────────────────────────────────────
 
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
-    definingClass = "UserConsumerPlan;",
+    definingClass = "Lcom/soundcloud/android/configuration/plans/UserConsumerPlan;",
     name = "<init>",
     parameters = listOf(
         "Ljava/lang/String;",
@@ -18,62 +18,69 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
 )
 
 object GetDowngradeTierFingerprint : Fingerprint(
-    definingClass = "ConfigurationSettingsStorage;",
-    returnType = "Tier;",
+    definingClass = "Lcom/soundcloud/android/configuration/ConfigurationSettingsStorage;",
+    returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
 
 object MapToPlanFingerprint : Fingerprint(
-    definingClass = "RemoteUpsellVisibilityController;",
+    definingClass = "Lcom/soundcloud/android/upsell/RemoteUpsellVisibilityController;",
     name = "mapToPlan",
 )
 
 // ── Tier detection (prevents expiration dialog) ─────────────────
 
 object GetCurrentTierFingerprint : Fingerprint(
-    definingClass = "DefaultFeatureOperations;",
-    returnType = "Tier;",
+    definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
+    returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
 
 object GetCurrentConsumerPlanFingerprint : Fingerprint(
-    definingClass = "DefaultFeatureOperations;",
-    returnType = "ConsumerPlan;",
+    definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
+    returnType = "Lcom/soundcloud/android/configuration/plans/ConsumerPlan;",
     parameters = emptyList(),
 )
 
 object TierChangeDetectorBFingerprint : Fingerprint(
-    definingClass = "DefaultTierChangeDetector;",
+    definingClass = "Lcom/soundcloud/android/configuration/DefaultTierChangeDetector;",
     name = "b",
     returnType = "V",
-    parameters = listOf("Tier;", "Ljava/lang/String;"),
+    parameters = listOf(
+        "Lcom/soundcloud/android/configuration/plans/Tier;",
+        "Ljava/lang/String;",
+    ),
 )
 
 object TierChangeDetectorAFingerprint : Fingerprint(
-    definingClass = "DefaultTierChangeDetector;",
+    definingClass = "Lcom/soundcloud/android/configuration/DefaultTierChangeDetector;",
     name = "a",
     returnType = "V",
-    parameters = listOf("DetectedFor;", "DetectedTransition;", "DetectedVia;"),
+    parameters = listOf(
+        "Lcom/soundcloud/android/configuration/data/DetectedFor;",
+        "Lcom/soundcloud/android/configuration/data/DetectedTransition;",
+        "Lcom/soundcloud/android/configuration/data/DetectedVia;",
+    ),
 )
 
 // ── Ad blocking ─────────────────────────────────────────────────
 
 object GetShouldRequestAdsFingerprint : Fingerprint(
-    definingClass = "DefaultFeatureOperations;",
+    definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     name = "getShouldRequestAds",
     returnType = "Z",
     parameters = emptyList(),
 )
 
 object IsMonetizableAdGeoFingerprint : Fingerprint(
-    definingClass = "DefaultFeatureOperations;",
+    definingClass = "Lcom/soundcloud/android/configuration/features/DefaultFeatureOperations;",
     name = "isMonetizableAdGeo",
     returnType = "Z",
     parameters = emptyList(),
 )
 
 object AdPlacementConfigCtorFingerprint : Fingerprint(
-    definingClass = "AdPlacementConfiguration;",
+    definingClass = "Lcom/soundcloud/android/ads/display/data/config/AdPlacementConfiguration;",
     name = "<init>",
     returnType = "V",
 )

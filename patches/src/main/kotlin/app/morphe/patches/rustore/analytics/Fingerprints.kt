@@ -23,7 +23,7 @@ object AltCraftSendFingerprint : Fingerprint(
  * treat it as a failure after retries.
  */
 object RadarDoWorkFingerprint : Fingerprint(
-    definingClass = "RadarFlushSnapshotWorker;",
+    definingClass = "Lru/vk/store/lib/analytics/system/radar/presentation/RadarFlushSnapshotWorker;",
     name = "b",
     returnType = "Ljava/lang/Object;",
     custom = { method, _ ->
