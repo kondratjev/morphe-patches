@@ -26,5 +26,16 @@ val unlockPremiumPatch = bytecodePatch(
         IsInvalidSubscriptionFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x0\nreturn v0",
         )
+
+        // t0.m(boolean, boolean) — StateFlow emitter
+        // Forces PremiumStatus(true, true) — both isStatusLoaded and isPremium
+        // This ensures the reactive stream always reports premium active
+        PremiumStatusEmitterFingerprint.methodOrNull?.addInstructions(
+            0,
+            """
+                const/4 p1, 0x1
+                const/4 p2, 0x1
+            """,
+        )
     }
 }

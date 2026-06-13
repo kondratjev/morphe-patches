@@ -143,6 +143,31 @@
       "options": []
     },
     {
+      "name": "Disable community tab",
+      "description": "Hides the News/Community tab from the bottom navigation.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.fatsecret.android",
+          "name": "FatSecret",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00897B",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "11.5.0.4",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable gaming profile",
       "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
       "default": true,
