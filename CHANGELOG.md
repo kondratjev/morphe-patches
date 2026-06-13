@@ -1,3 +1,13 @@
+## [1.8.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.3...v1.8.0-dev.4) (2026-06-13)
+
+### 🐛 Bug Fixes
+
+* Fix CI ([e1f7b89](https://github.com/kondratjev/morphe-patches/commit/e1f7b89198937ec7706f822d9d991bde69fab8b7))
+
+### ✨ New Features
+
+* Add additional fatsecrte patches ([fa97bb3](https://github.com/kondratjev/morphe-patches/commit/fa97bb36e59800209e44963a8ddf58b7549d5e21))
+
 ## [1.8.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.8.0-dev.2...v1.8.0-dev.3) (2026-06-13)
 
 ### ✨ New Features
