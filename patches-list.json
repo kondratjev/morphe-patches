@@ -221,9 +221,11 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks all FatSecret Gold features.",
+      "description": "Unlocks all FatSecret Gold features and hides the Premium tab.",
       "default": true,
-      "dependencies": [],
+      "dependencies": [
+        "ResourcePatch"
+      ],
       "compatiblePackages": [
         {
           "packageName": "com.fatsecret.android",

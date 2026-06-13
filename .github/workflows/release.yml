@@ -29,22 +29,19 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Cache Gradle
-        uses: burrunan/gradle-cache-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:buildAndroid generatePatchesList clean
+        run: ./gradlew :patches:buildAndroid generatePatchesList
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: npm install
+        run: bun install --frozen-lockfile
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v5
