@@ -12,19 +12,33 @@ val unlockPremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YAZIO)
 
     execute {
-        // j18.M(SubscriptionStatus) — primary premium check
+        // 1. j18.M(SubscriptionStatus) — subscription check → always true
         SubscriptionCheckFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x1\nreturn v0",
         )
 
-        // j18.H(SubscriptionStatus) — lenient check (includes WillExpire)
+        // 2. j18.H(SubscriptionStatus) — lenient check → always true
         SubscriptionCheckLenientFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x1\nreturn v0",
         )
 
-        // ooe.h(Continuation) — PremiumType null check (inverted logic)
-        // Returns Boolean.TRUE when NOT premium. We return FALSE to
-        // indicate "user IS premium". Coroutine → return-object.
+        // 3. yz7.N(lhi) — "is NOT premium" → force false (user IS premium)
+        IsNotPremiumFingerprint.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x0\nreturn v0",
+        )
+
+        // 4. e08.a0(lhi) — "IS premium" → force true
+        IsPremiumFingerprintA.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x1\nreturn v0",
+        )
+
+        // 5. e08.b0(lhi) — "IS premium" → force true
+        IsPremiumFingerprintB.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x1\nreturn v0",
+        )
+
+        // 6. ooe.h(Continuation) — PremiumType null check (inverted)
+        //    Returns Boolean.TRUE when NOT premium → return FALSE
         PremiumTypeNullCheckFingerprint.methodOrNull?.addInstructions(
             0,
             """
