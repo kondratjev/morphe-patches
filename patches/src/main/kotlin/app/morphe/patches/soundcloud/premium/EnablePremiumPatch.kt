@@ -78,16 +78,5 @@ val enablePremiumPatch = bytecodePatch(
                 listOf(1, 2, 3).joinToString("\n") { "const/4 p${offset + it}, 0x0" },
             )
         }
-
-        // ── Geo-block bypass ────────────────────────────────────
-        // Force blocked=false (p1) and snipped=false (p6) in API response
-        // NOTE: may not bypass server-side geo-blocking on stream URLs
-        ApiGraphTrackAuthorizationCtorFingerprint.methodOrNull?.addInstructions(
-            0,
-            """
-                const/4 p1, 0x0
-                const/4 p6, 0x0
-            """,
-        )
     }
 }

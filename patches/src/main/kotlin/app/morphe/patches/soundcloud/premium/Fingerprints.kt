@@ -77,15 +77,3 @@ object AdPlacementConfigCtorFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
 )
-
-// ── Geo-block bypass ────────────────────────────────────────────
-
-object ApiGraphTrackAuthorizationCtorFingerprint : Fingerprint(
-    definingClass = "ApiGraphTrackAuthorization;",
-    name = "<init>",
-    parameters = listOf(
-        "Z", "Z", "Z",
-        "Ljava/lang/String;", "Ljava/lang/String;",
-        "Z", "Z", "Z", "Z",
-    ),
-)
