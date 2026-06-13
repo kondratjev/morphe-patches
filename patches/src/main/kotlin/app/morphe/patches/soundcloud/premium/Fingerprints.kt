@@ -2,14 +2,8 @@ package app.morphe.patches.soundcloud.premium
 
 import app.morphe.patcher.Fingerprint
 
-/**
- * Matches `Feature$FlagFeature.i(RemoteFlagProvider, LocalFlagProvider, DeviceConfiguration)`
- * — the single evaluation point for every boolean feature flag.
- * Covers ~80 FlagFeatures + all KillSwitches.
- *
- * The method evaluates: remote config → local override → boolean result.
- * Patching to return true enables all feature flags unconditionally.
- */
+// ── Feature flags ───────────────────────────────────────────────
+
 object FlagFeatureEvaluationFingerprint : Fingerprint(
     definingClass = "Feature\$FlagFeature;",
     name = "i",
@@ -21,12 +15,8 @@ object FlagFeatureEvaluationFingerprint : Fingerprint(
     ),
 )
 
-/**
- * Matches `UserConsumerPlan` constructor with @JsonCreator annotation.
- * Parameters: (String planId, boolean autoRenew, String tierId,
- *              List<Upsell> upsells, String planName, String displayName).
- * Patching forces go-plus tier and display name.
- */
+// ── Plan / tier ─────────────────────────────────────────────────
+
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
     definingClass = "UserConsumerPlan;",
     name = "<init>",
@@ -40,33 +30,63 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
     ),
 )
 
-/**
- * Matches `ConfigurationSettingsStorage` method that reads
- * "pending_plan_downgrade" string and returns Tier.
- * Patching returns Tier.HIGH to prevent offboarding screen.
- */
 object GetDowngradeTierFingerprint : Fingerprint(
     definingClass = "ConfigurationSettingsStorage;",
-    returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
+    returnType = "Tier;",
     parameters = emptyList(),
 )
 
-/**
- * Matches `RemoteUpsellVisibilityController.mapToPlan`
- * — maps API upsell graph to internal UpsellType.
- * Patching returns UpsellType.None to hide all upsell UI.
- */
 object MapToPlanFingerprint : Fingerprint(
     definingClass = "RemoteUpsellVisibilityController;",
     name = "mapToPlan",
 )
 
-/**
- * Matches `AdPlacementConfiguration` constructors.
- * Patching zeroes out boolean + config params to disable ads.
- */
+// ── Tier detection (prevents expiration dialog) ─────────────────
+
+object GetCurrentTierFingerprint : Fingerprint(
+    definingClass = "DefaultFeatureOperations;",
+    returnType = "Tier;",
+    parameters = emptyList(),
+)
+
+object GetCurrentConsumerPlanFingerprint : Fingerprint(
+    definingClass = "DefaultFeatureOperations;",
+    returnType = "ConsumerPlan;",
+    parameters = emptyList(),
+)
+
+object TierChangeDetectorFingerprint : Fingerprint(
+    definingClass = "DefaultTierChangeDetector;",
+    name = "b",
+    returnType = "V",
+    parameters = listOf("Tier;", "Ljava/lang/String;"),
+)
+
+// ── Ad blocking ─────────────────────────────────────────────────
+
+object GetShouldRequestAdsFingerprint : Fingerprint(
+    definingClass = "DefaultFeatureOperations;",
+    name = "getShouldRequestAds",
+    returnType = "Z",
+    parameters = emptyList(),
+)
+
+object IsMonetizableAdGeoFingerprint : Fingerprint(
+    definingClass = "DefaultFeatureOperations;",
+    name = "isMonetizableAdGeo",
+    returnType = "Z",
+    parameters = emptyList(),
+)
+
 object AdPlacementConfigCtorFingerprint : Fingerprint(
     definingClass = "AdPlacementConfiguration;",
     name = "<init>",
     returnType = "V",
+)
+
+// ── Banner filtering ────────────────────────────────────────────
+
+object BannerSectionMapperFingerprint : Fingerprint(
+    definingClass = "BannerSectionMapper;",
+    strings = listOf("BannerSection"),
 )

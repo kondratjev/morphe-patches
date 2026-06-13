@@ -12,13 +12,12 @@ val enablePremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        // 1. FlagFeature.i() — single evaluation point for ~80 feature flags
-        //    Always return true to enable all features
+        // ── Feature flags ───────────────────────────────────────
         FlagFeatureEvaluationFingerprint.methodOrNull?.addInstructions(
             0, "const/4 v0, 0x1\nreturn v0",
         )
 
-        // 2. UserConsumerPlan constructor — force go-plus tier
+        // ── Plan override ───────────────────────────────────────
         UserConsumerPlanConstructorFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -28,7 +27,6 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // 3. "pending_plan_downgrade" → Tier.HIGH (prevent offboarding screen)
         GetDowngradeTierFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -37,7 +35,6 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // 4. mapToPlan → UpsellType.None (hide all upgrade UI)
         MapToPlanFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -46,7 +43,36 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // 5. AdPlacementConfiguration constructors — zero out ads
+        // ── Tier/plan state (prevents expiration dialog) ────────
+        GetCurrentTierFingerprint.methodOrNull?.addInstructions(
+            0,
+            """
+                sget-object v0, Lcom/soundcloud/android/configuration/plans/Tier;->HIGH:Lcom/soundcloud/android/configuration/plans/Tier;
+                return-object v0
+            """,
+        )
+
+        GetCurrentConsumerPlanFingerprint.methodOrNull?.addInstructions(
+            0,
+            """
+                sget-object v0, Lcom/soundcloud/android/configuration/plans/ConsumerPlan;->GO_PLUS:Lcom/soundcloud/android/configuration/plans/ConsumerPlan;
+                return-object v0
+            """,
+        )
+
+        TierChangeDetectorFingerprint.methodOrNull?.addInstructions(
+            0, "return-void",
+        )
+
+        // ── Ad blocking ─────────────────────────────────────────
+        GetShouldRequestAdsFingerprint.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x0\nreturn v0",
+        )
+
+        IsMonetizableAdGeoFingerprint.methodOrNull?.addInstructions(
+            0, "const/4 v0, 0x0\nreturn v0",
+        )
+
         AdPlacementConfigCtorFingerprint.matchAllOrNull()?.forEach { match ->
             val offset = if (match.method.parameterTypes.first() == "I") 1 else 0
             match.method.addInstructions(
