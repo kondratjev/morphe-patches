@@ -397,6 +397,31 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all premium features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.sillens.shapeupclub",
+          "name": "Lifesum",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#00C853",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "20.6.1",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     }
   ]
 }
