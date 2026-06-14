@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/kondratjev/morphe-patches/compare/v1.9.0...v1.10.0) (2026-06-14)
+
+### ✨ New Features
+
+* Add Lifesum Premium patch ([a1377a6](https://github.com/kondratjev/morphe-patches/commit/a1377a6361fe3dfabd453d35037727303cfd8fcd))
+* Add WiseMeal Premium patch ([b4f0798](https://github.com/kondratjev/morphe-patches/commit/b4f07983fd2cc6922bdd8457ca3d22e98fec89d0))
+
 ## [1.10.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.10.0-dev.1...v1.10.0-dev.2) (2026-06-14)
 
 ### ✨ New Features
