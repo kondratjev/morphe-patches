@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.10.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.10.0-dev.1)**  •  `dev`  •  18 patches total
+> **[v1.10.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.10.0-dev.2)**  •  `dev`  •  19 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -119,6 +119,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
+
+</details>
+
+<details open>
+<summary>📦 WiseMeal  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.0 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. Need root for Google Sign-In working. |  |
 
 </details>
 
