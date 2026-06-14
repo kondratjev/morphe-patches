@@ -1,5 +1,5 @@
 {
-  "version": "1.10.0",
+  "version": "1.11.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -56,33 +56,6 @@
       "options": []
     },
     {
-      "name": "Disable RuStore analytics",
-      "description": "Disables VK-specific analytics in RuStore, including AltCraft event tracking and Radar device telemetry.",
-      "default": true,
-      "dependencies": [
-        "ResourcePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "ru.vk.store",
-          "name": "RuStore",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#0077FF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.103.0.3",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Disable ads",
       "description": "Removes all advertisements from the app.",
       "default": true,
@@ -115,6 +88,33 @@
         "ResourcePatch"
       ],
       "compatiblePackages": null,
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables VK-specific analytics.",
+      "default": true,
+      "dependencies": [
+        "ResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "ru.vk.store",
+          "name": "RuStore",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#0077FF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
       "options": []
     },
     {
@@ -342,6 +342,48 @@
               "isExperimental": false,
               "minSdk": null,
               "description": null
+            },
+            {
+              "version": "1.570",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.568",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.564",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.560",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.557",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.554",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.551",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
             }
           ]
         }
@@ -364,6 +406,33 @@
           "targets": [
             {
               "version": "9.50.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks premium features.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.brightstripe.parcels",
+          "name": "Parcels",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#6B4EFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.0.11",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -400,7 +469,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks all premium features. Need root for Google Sign-In working.",
+      "description": "ROOT ONLY. Unlocks all premium features.",
       "default": true,
       "dependencies": [
         "BytecodePatch"

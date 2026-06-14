@@ -1,6 +1,6 @@
 # 👋 Contribution guidelines
 
-This document describes how to contribute to kondratjev Morphe Patches.
+This document describes how to contribute to Kondratjev Patches.
 
 ## 📖 Resources to help you get started
 
@@ -13,13 +13,13 @@ Features can be requested by opening an issue using the
 
 ## 🐞 Submitting a bug report
 
-If you encounter a bug while using kondratjev Morphe Patches, open an issue using the
+If you encounter a bug while using Kondratjev Patches, open an issue using the
 [Bug report issue template](https://github.com/kondratjev/morphe-patches/issues/new?labels=Bug+report&template=bug_report.yml&title=bug%3A+).
 
 ## 📝 How to contribute
 
 1. Before contributing, it is recommended to open an issue to discuss your change
-   with the maintainers of kondratjev Morphe Patches
+   with the maintainers of Kondratjev Patches
 2. Development happens on the `dev` branch. Fork the repository and create your branch from `dev`
 3. Commit your changes
 4. Submit a pull request to the `dev` branch of the repository and reference issues
@@ -27,4 +27,4 @@ If you encounter a bug while using kondratjev Morphe Patches, open an issue usin
 5. Our team will review your pull request and provide feedback. Once your pull request is approved,
    it will be merged into the `dev` branch and will be included in the next release
 
-❤️ Thank you for considering contributing to kondratjev Morphe Patches
+❤️ Thank you for considering contributing to Kondratjev Patches
