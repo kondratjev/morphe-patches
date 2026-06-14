@@ -1,3 +1,9 @@
+## [1.11.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.10.0...v1.11.0-dev.1) (2026-06-14)
+
+### ✨ New Features
+
+* Add Parcels Premium patch ([49e524c](https://github.com/kondratjev/morphe-patches/commit/49e524c03ffa7b0434d205b3c01b5f7fb04a18dc))
+
 ## [1.10.0](https://github.com/kondratjev/morphe-patches/compare/v1.9.0...v1.10.0) (2026-06-14)
 
 ### ✨ New Features

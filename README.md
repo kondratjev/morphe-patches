@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.10.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.10.0)**  •  `main`  •  19 patches total
+> **[v1.11.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.11.0-dev.1)**  •  `dev`  •  20 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -22,8 +22,8 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Disable Mine redesign](#disable-mine-redesign) | Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface. |  |
-| [Disable RuStore analytics](#disable-rustore-analytics) | Disables VK-specific analytics in RuStore, including AltCraft event tracking and Radar device telemetry. |  |
 | [Disable ads](#disable-ads) | Removes all advertisements from the app. |  |
+| [Disable analytics](#disable-analytics) | Disables VK-specific analytics. |  |
 | [Disable background scan](#disable-background-scan) | Disables the periodic Kaspersky background device scan. |  |
 | [Disable gaming profile](#disable-gaming-profile) | Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen. |  |
 | [Skip update auth](#skip-update-auth) | Removes the login requirement when updating apps. |  |
@@ -83,8 +83,8 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 1.572 |
-| :---: |
+| 1.572 | 1.570 | 1.568 | 1.564 | 1.560 | 1.557 | 1.554 | 1.551 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
@@ -104,6 +104,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
+
+</details>
+
+<details open>
+<summary>📦 Parcels  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.0.11 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks premium features. |  |
 
 </details>
 
@@ -133,7 +148,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks all premium features. Need root for Google Sign-In working. |  |
+| [Unlock Premium](#unlock-premium) | ROOT ONLY. Unlocks all premium features. |  |
 
 </details>
 
