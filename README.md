@@ -1,4 +1,4 @@
-# 🧩 kondratjev Morphe Patches
+# 🧩 Kondratjev Patches
 
 Patches for use with [Morphe](https://morphe.software).
 
@@ -198,4 +198,4 @@ The built `.mpp` file will be at `patches/build/libs/`.
 
 ## 📜 License
 
-kondratjev Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+Kondratjev Patches are licensed under the [GNU General Public License v3.0](LICENSE)

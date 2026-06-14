@@ -40,9 +40,8 @@ private val disableRuStoreAnalyticsManifestPatch = resourcePatch {
 
 @Suppress("unused")
 val disableRuStoreAnalyticsPatch = bytecodePatch(
-    name = "Disable RuStore analytics",
-    description = "Disables VK-specific analytics in RuStore, " +
-        "including AltCraft event tracking and Radar device telemetry.",
+    name = "Disable analytics",
+    description = "Disables VK-specific analytics.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)

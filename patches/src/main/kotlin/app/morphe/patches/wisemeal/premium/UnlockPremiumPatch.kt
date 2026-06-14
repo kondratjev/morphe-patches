@@ -8,7 +8,7 @@ import app.morphe.util.returnEarly
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks all premium features. Need root for Google Sign-In working.",
+    description = "ROOT ONLY. Unlocks all premium features.",
 ) {
     compatibleWith(COMPATIBILITY_WISEMEAL)
 
