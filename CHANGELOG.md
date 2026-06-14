@@ -1,3 +1,9 @@
+## [1.10.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.9.0...v1.10.0-dev.1) (2026-06-14)
+
+### ✨ New Features
+
+* Add Lifesum Premium patch ([a1377a6](https://github.com/kondratjev/morphe-patches/commit/a1377a6361fe3dfabd453d35037727303cfd8fcd))
+
 ## [1.9.0](https://github.com/kondratjev/morphe-patches/compare/v1.8.0...v1.9.0) (2026-06-13)
 
 ### 🐛 Bug Fixes

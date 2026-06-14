@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.9.0)**  •  `main`  •  17 patches total
+> **[v1.10.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.10.0-dev.1)**  •  `dev`  •  18 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -59,6 +59,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Disable telemetry](#disable-telemetry) | Disables SoundCloud's telemetry system. |  |
 | [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
+
+</details>
+
+<details open>
+<summary>📦 Lifesum  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 20.6.1 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
