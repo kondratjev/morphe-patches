@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.9.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.9.0)**  •  `main`  •  17 patches total
+> **[v1.10.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.10.0-dev.2)**  •  `dev`  •  19 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -63,6 +63,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
+<summary>📦 Lifesum  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 20.6.1 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
+
+</details>
+
+<details open>
 <summary>📦 Lyfta  •  1 patch</summary>
 <br>
 
@@ -104,6 +119,21 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊 Patch | 📜 Description | ⚙️ Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
+
+</details>
+
+<details open>
+<summary>📦 WiseMeal  •  1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 1.3.0 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features. Need root for Google Sign-In working. |  |
 
 </details>
 
