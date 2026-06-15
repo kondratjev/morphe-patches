@@ -1,3 +1,9 @@
+## [1.12.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2026-06-15)
+
+### ✨ New Features
+
+* Add Soundcloud and Pillo patches ([cea0a8a](https://github.com/kondratjev/morphe-patches/commit/cea0a8ace694acc58fa248d075808055ef44adc8))
+
 ## [1.12.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-06-15)
 
 ### ✨ New Features

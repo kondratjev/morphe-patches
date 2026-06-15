@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.12.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.12.0-dev.1)**  •  `dev`  •  20 patches total
+> **[v1.12.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.12.0-dev.2)**  •  `dev`  •  22 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -31,6 +31,39 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
+<summary>📦 SoundCloud  •  3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2026.06.03-release |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Disable OneTrust consent popup](#disable-onetrust-consent-popup) | Disables the OneTrust consent/cookies popup on first launch. |  |
+| [Disable telemetry](#disable-telemetry) | Disables SoundCloud's telemetry system. |  |
+| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
+
+</details>
+
+<details open>
+<summary>📦 Pillo  •  2 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 0.6.10 |
+| :---: |
+
+| 💊 Patch | 📜 Description | ⚙️ Options |
+|----------|----------------|-----------|
+| [Disable Pulse tracking](#disable-pulse-tracking) | Disables PulseSDK analytics sending events to events.pillo.care. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
+
+</details>
+
+<details open>
 <summary>📦 FatSecret  •  2 patches</summary>
 <br>
 
@@ -43,22 +76,6 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Disable community tab](#disable-community-tab) | Hides the News/Community tab from the bottom navigation. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all FatSecret Gold features and hides the Premium tab. |  |
-
-</details>
-
-<details open>
-<summary>📦 SoundCloud  •  2 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 2026.06.03-release |
-| :---: |
-
-| 💊 Patch | 📜 Description | ⚙️ Options |
-|----------|----------------|-----------|
-| [Disable telemetry](#disable-telemetry) | Disables SoundCloud's telemetry system. |  |
-| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
 
 </details>
 
@@ -123,21 +140,6 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
-<summary>📦 Pillo  •  1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 0.6.10 |
-| :---: |
-
-| 💊 Patch | 📜 Description | ⚙️ Options |
-|----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
-
-</details>
-
-<details open>
 <summary>📦 WiseMeal  •  1 patch</summary>
 <br>
 
@@ -175,7 +177,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
 | [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
-| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, and AppsFlyer. |  |
+| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, and Facebook. |  |
 
 </details>
 
