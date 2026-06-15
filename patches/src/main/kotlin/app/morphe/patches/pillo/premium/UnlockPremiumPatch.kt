@@ -5,6 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.pillo.shared.Constants.COMPATIBILITY_PILLO
+import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -29,6 +30,9 @@ val unlockPremiumPatch = bytecodePatch(
             "getLastIsPremiumSubscriptionState",
             "getLastIsAdfreeSubscriptionState",
         )
+
+        // ── Block Adapty SDK init (subscription/paywall tracking) ──
+        AdaptyInitializerCreateFingerprint.methodOrNull?.returnEarly()
     }
 }
 

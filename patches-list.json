@@ -82,7 +82,7 @@
     },
     {
       "name": "Disable analytics",
-      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, and AppsFlyer.",
+      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, and Facebook.",
       "default": true,
       "dependencies": [
         "ResourcePatch"
@@ -185,6 +185,31 @@
           "targets": [
             {
               "version": "1.103.0.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable consent popup (OneTrust)",
+      "description": "Disables the OneTrust consent/cookies popup on first launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.06.03-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -403,6 +428,31 @@
     {
       "name": "Unlock Premium",
       "description": "Unlocks premium features and removes ads.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.6.10",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable Pulse tracking",
+      "description": "Disables PulseSDK analytics sending events to events.pillo.care.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [

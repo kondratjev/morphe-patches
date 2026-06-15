@@ -46,3 +46,14 @@ object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
         ),
     ),
 )
+
+/**
+ * Matches `AdaptyInitializer.create2(Context)` — blocks Adapty SDK
+ * initialization (subscription/paywall tracking).
+ */
+object AdaptyInitializerCreateFingerprint : Fingerprint(
+    definingClass = "Lxyz/rtrvr/pillo/initializers/AdaptyInitializer;",
+    name = "create2",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;"),
+)

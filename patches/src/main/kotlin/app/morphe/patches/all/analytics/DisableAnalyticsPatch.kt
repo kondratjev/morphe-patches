@@ -93,6 +93,13 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             val afFound = application.disableComponentsByPrefix("com.appsflyer.") > 0
             logger.info("AppsFlyer: ${if (afFound) "patched" else "not found"}")
 
+            // Facebook
+            application.setApplicationMetaData("com.facebook.sdk.AutoLogAppEventsEnabled", "false")
+            application.setApplicationMetaData("com.facebook.sdk.AdvertiserIDCollectionEnabled", "false")
+            application.disableComponentsByPrefix("com.facebook.appevents.")
+            val fbFound = application.disableComponentsByPrefix("com.facebook.analytics.") > 0
+            logger.info("Facebook: ${if (fbFound) "patched" else "not found"}")
+
             // Amplitude
             val ampFound = application.disableComponentsByPrefix("com.amplitude.") > 0
             logger.info("Amplitude: ${if (ampFound) "patched" else "not found"}")
@@ -113,7 +120,7 @@ val disableAnalyticsPatch = bytecodePatch(
     name = "Disable analytics",
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
-        "Amplitude, Mixpanel, Adjust, and AppsFlyer.",
+        "Amplitude, Mixpanel, Adjust, AppsFlyer, and Facebook.",
     default = true,
 ) {
     dependsOn(disableAnalyticsManifestPatch)
@@ -146,5 +153,13 @@ val disableAnalyticsPatch = bytecodePatch(
         MyTrackerInitFingerprint.methodOrNull
             ?.returnEarly()
             .also { logger.info("MyTracker: ${if (it != null) "patched" else "not found"}") }
+
+        FirebaseCrashlyticsCollectionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Firebase Crashlytics collection: ${if (it != null) "patched" else "not found"}") }
+
+        FirebasePerformanceCollectionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Firebase Performance collection: ${if (it != null) "patched" else "not found"}") }
     }
 }
