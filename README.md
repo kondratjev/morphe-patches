@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.12.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.12.0-dev.2)**  •  `dev`  •  22 patches total
+> **[v1.12.0-dev.3](https://github.com/kondratjev/morphe-patches/releases/tag/v1.12.0-dev.3)**  •  `dev`  •  22 patches total
 <details open>
 <summary>📦 RuStore  •  6 patches</summary>
 <br>
@@ -177,7 +177,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
 | [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
-| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, and Facebook. |  |
+| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore. |  |
 
 </details>
 
