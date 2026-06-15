@@ -80,3 +80,32 @@ object MyTrackerInitFingerprint : Fingerprint(
     returnType = "V",
     custom = { method, _ -> method.implementation != null }
 )
+
+// ═══════════════════════════════════════════════════════════════════
+// Firebase — Crashlytics & Performance collection switches
+// ═══════════════════════════════════════════════════════════════════
+
+/**
+ * Matches `FirebaseCrashlytics.setCrashlyticsCollectionEnabled(boolean)` —
+ * explicitly enables or disables crash report collection at runtime.
+ * Some apps (e.g. Pillo) set this to `true` in an Initializer, overriding
+ * the manifest meta-data `firebase_crashlytics_collection_enabled=false`.
+ */
+object FirebaseCrashlyticsCollectionFingerprint : Fingerprint(
+    definingClass = "Lcom/google/firebase/crashlytics/FirebaseCrashlytics;",
+    name = "setCrashlyticsCollectionEnabled",
+    returnType = "V",
+    parameters = listOf("Z"),
+)
+
+/**
+ * Matches `FirebasePerformance.setPerformanceCollectionEnabled(boolean)` —
+ * explicitly enables or disables Firebase Performance monitoring at runtime.
+ * Same pattern as Crashlytics — some apps override the manifest default.
+ */
+object FirebasePerformanceCollectionFingerprint : Fingerprint(
+    definingClass = "Lcom/google/firebase/perf/FirebasePerformance;",
+    name = "setPerformanceCollectionEnabled",
+    returnType = "V",
+    parameters = listOf("Z"),
+)

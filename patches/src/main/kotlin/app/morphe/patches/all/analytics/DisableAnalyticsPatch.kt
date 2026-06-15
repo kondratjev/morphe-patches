@@ -93,6 +93,27 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             val afFound = application.disableComponentsByPrefix("com.appsflyer.") > 0
             logger.info("AppsFlyer: ${if (afFound) "patched" else "not found"}")
 
+            // Facebook
+            application.setApplicationMetaData("com.facebook.sdk.AutoLogAppEventsEnabled", "false")
+            application.setApplicationMetaData("com.facebook.sdk.AdvertiserIDCollectionEnabled", "false")
+            application.disableComponentsByPrefix("com.facebook.appevents.")
+            val fbFound = application.disableComponentsByPrefix("com.facebook.analytics.") > 0
+            logger.info("Facebook: ${if (fbFound) "patched" else "not found"}")
+
+            // MoEngage
+            application.setApplicationMetaData("com_moengage_core_file_based_initialisation_enabled", "false")
+            application.setApplicationMetaData("com_moengage_core_background_data_sync_enabled", "false")
+            application.setApplicationMetaData("com_moengage_core_carrier_tracking_enabled", "false")
+            application.setApplicationMetaData("com_moengage_core_device_attribute_tracking_enabled", "false")
+            application.setApplicationMetaData("com_moengage_core_user_registration_enabled", "false")
+            application.setApplicationMetaData("com_moengage_fcm_registration_enabled", "false")
+            val moFound = application.disableComponentsByPrefix("com.moengage.") > 0
+            logger.info("MoEngage: ${if (moFound) "patched" else "not found"}")
+
+            // comScore
+            val csFound = application.disableComponentsByPrefix("com.comscore.") > 0
+            logger.info("comScore: ${if (csFound) "patched" else "not found"}")
+
             // Amplitude
             val ampFound = application.disableComponentsByPrefix("com.amplitude.") > 0
             logger.info("Amplitude: ${if (ampFound) "patched" else "not found"}")
@@ -113,7 +134,7 @@ val disableAnalyticsPatch = bytecodePatch(
     name = "Disable analytics",
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
-        "Amplitude, Mixpanel, Adjust, and AppsFlyer.",
+        "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
     default = true,
 ) {
     dependsOn(disableAnalyticsManifestPatch)
@@ -146,5 +167,13 @@ val disableAnalyticsPatch = bytecodePatch(
         MyTrackerInitFingerprint.methodOrNull
             ?.returnEarly()
             .also { logger.info("MyTracker: ${if (it != null) "patched" else "not found"}") }
+
+        FirebaseCrashlyticsCollectionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Firebase Crashlytics collection: ${if (it != null) "patched" else "not found"}") }
+
+        FirebasePerformanceCollectionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Firebase Performance collection: ${if (it != null) "patched" else "not found"}") }
     }
 }
