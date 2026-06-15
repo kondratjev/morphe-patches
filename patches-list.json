@@ -1,5 +1,5 @@
 {
-  "version": "1.11.0",
+  "version": "1.12.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -338,49 +338,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.572",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.570",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.568",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.564",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.560",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.557",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.554",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            },
-            {
-              "version": "1.551",
+              "version": "1.573",
               "isExperimental": false,
               "minSdk": null,
               "description": null

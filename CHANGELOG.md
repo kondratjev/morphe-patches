@@ -1,3 +1,9 @@
+## [1.12.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-06-15)
+
+### ✨ New Features
+
+* Bump Lyfta patch version ([6a05a7f](https://github.com/kondratjev/morphe-patches/commit/6a05a7f50e546711ae46b9b23f58abc8452afde4))
+
 ## [1.11.0](https://github.com/kondratjev/morphe-patches/compare/v1.10.0...v1.11.0) (2026-06-14)
 
 ### ✨ New Features
