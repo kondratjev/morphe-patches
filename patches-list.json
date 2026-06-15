@@ -132,7 +132,7 @@
     },
     {
       "name": "Disable analytics",
-      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, and Facebook.",
+      "description": "Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
       "default": true,
       "dependencies": [
         "ResourcePatch"

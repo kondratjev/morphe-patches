@@ -48,12 +48,14 @@ object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
 )
 
 /**
- * Matches `AdaptyInitializer.create2(Context)` — blocks Adapty SDK
- * initialization (subscription/paywall tracking).
+ * Matches `AdaptyInitializer.create(Context)` (void, the implementation
+ * method — JADX renames it to `create2` but bytecode name is `create`).
+ * Blocks Adapty SDK initialization (subscription/paywall tracking).
+ * Lives in the premium patch because Adapty is a subscription SDK, not analytics.
  */
 object AdaptyInitializerCreateFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/initializers/AdaptyInitializer;",
-    name = "create2",
+    name = "create",
     returnType = "V",
     parameters = listOf("Landroid/content/Context;"),
 )
