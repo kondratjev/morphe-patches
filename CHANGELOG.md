@@ -1,3 +1,11 @@
+## [1.12.0](https://github.com/kondratjev/morphe-patches/compare/v1.11.0...v1.12.0) (2026-06-15)
+
+### ✨ New Features
+
+* Add Soundcloud and Pillo patches ([23150a0](https://github.com/kondratjev/morphe-patches/commit/23150a05e949ec925d29a31c09c57fa1ea1c4780))
+* Add Soundcloud and Pillo patches ([cea0a8a](https://github.com/kondratjev/morphe-patches/commit/cea0a8ace694acc58fa248d075808055ef44adc8))
+* Bump Lyfta patch version ([6a05a7f](https://github.com/kondratjev/morphe-patches/commit/6a05a7f50e546711ae46b9b23f58abc8452afde4))
+
 ## [1.12.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.12.0-dev.2...v1.12.0-dev.3) (2026-06-15)
 
 ### ✨ New Features
