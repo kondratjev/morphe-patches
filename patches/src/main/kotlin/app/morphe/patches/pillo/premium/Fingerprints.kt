@@ -3,6 +3,9 @@ package app.morphe.patches.pillo.premium
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
 
+/** Internal JVM class descriptor for Pillo's Preferences. */
+internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;"
+
 /**
  * Matches `Job setIsPremiumState(boolean)` in SubscriptionStateProvider.
  * Return type is Job, not void — the method returns the launched coroutine.
@@ -34,11 +37,11 @@ object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         methodCall(
-            definingClass = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;",
+            definingClass = PREFERENCES_CLASS,
             name = "getLastIsPremiumSubscriptionState",
         ),
         methodCall(
-            definingClass = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;",
+            definingClass = PREFERENCES_CLASS,
             name = "getLastIsAdfreeSubscriptionState",
         ),
     ),
