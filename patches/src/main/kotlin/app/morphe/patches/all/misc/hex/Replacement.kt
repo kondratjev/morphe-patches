@@ -5,11 +5,11 @@ import app.morphe.patcher.patch.PatchException
 import kotlin.math.max
 
 /**
- * Represents a pattern to search for and its replacement pattern in a file.
+ * Pattern/replacement pair for byte-level file patching.
  *
- * @property bytes The bytes to search for.
- * @property replacementBytesPadded The bytes to replace [bytes] with, padded to match length.
- * @property targetFilePath The path to the file to make the changes in relative to the APK root.
+ * @property bytes Bytes to search for.
+ * @property replacementBytesPadded Replacement bytes, padded to match [bytes] length.
+ * @property targetFilePath Path relative to APK root.
  */
 class Replacement(
     private val bytes: ByteArray,
@@ -30,7 +30,7 @@ class Replacement(
     )
 
     /**
-     * Replaces the [bytes] with the [replacementBytesPadded] in the [targetFileBytes].
+     * Replace [bytes] with [replacementBytesPadded] in target.
      * Throws [PatchException] if pattern not found.
      */
     internal fun replacePattern(targetFileBytes: ByteArray) {
@@ -45,8 +45,7 @@ class Replacement(
     }
 
     /**
-     * Returns the index of the first occurrence of [bytes] in the haystack
-     * using the Boyer-Moore algorithm.
+     * Returns index of first occurrence of [bytes] using Boyer-Moore.
      */
     private fun indexOfPatternIn(haystack: ByteArray): Int {
         val needle = bytes

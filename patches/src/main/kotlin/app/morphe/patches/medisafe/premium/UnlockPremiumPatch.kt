@@ -13,13 +13,10 @@ val unlockPremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_MEDISAFE)
 
     execute {
-        // ── Hook A: Force isPaidBundle to always return true ──
-        // Every premium check in the app goes through this single method.
+        // Force isPaidBundle — all premium checks funnel through this method.
         IsPaidBundleFingerprint.method.returnEarly(true)
 
-        // ── Hook B: Suppress background subscription verification ──
-        // Prevents the 24h periodic check from detecting the lack of
-        // a real Google Play subscription.
+        // Suppress background subscription verification (24h periodic check).
         PurchaseRestoreWorkerDoWorkFingerprint.method.addInstructions(
             0,
             """

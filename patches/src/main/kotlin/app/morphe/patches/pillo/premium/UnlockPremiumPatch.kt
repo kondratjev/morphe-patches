@@ -19,19 +19,19 @@ val unlockPremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_PILLO)
 
     execute {
-        // ── Force all setIs...State parameters to true ──
+        // Force all setIs...State parameters to true.
         listOf(SetIsPremiumStateFingerprint, SetIsAdfreeStateFingerprint).forEach { f ->
             f.method.addInstruction(0, "const/4 p1, 0x1")
         }
 
-        // ── Force getLastIs...SubscriptionState returns to true in constructor ──
+        // Force getLastIs...SubscriptionState returns to true in constructor.
         SubscriptionStateProviderConstructorFingerprint.method.forceBooleanReturn(
             definingClass = PREFERENCES_CLASS,
             "getLastIsPremiumSubscriptionState",
             "getLastIsAdfreeSubscriptionState",
         )
 
-        // ── Block Adapty SDK init (subscription/paywall tracking) ──
+        // Block Adapty SDK init (subscription/paywall tracking).
         AdaptyInitializerCreateFingerprint.methodOrNull?.returnEarly()
     }
 }

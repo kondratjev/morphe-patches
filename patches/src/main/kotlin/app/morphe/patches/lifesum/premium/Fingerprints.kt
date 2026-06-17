@@ -3,10 +3,8 @@ package app.morphe.patches.lifesum.premium
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `ProfileModelExtensionsKt.hasPremium(ProfileModel)Z` — the single
- * extension function that all premium checks in Lifesum funnel through.
- *
- * DEX: classes.dex, Lcom/sillens/shapeupclub/db/models/ProfileModelExtensionsKt;->hasPremium(Lcom/sillens/shapeupclub/db/models/ProfileModel;)Z
+ * Matches `ProfileModelExtensionsKt.hasPremium(ProfileModel)Z` — single
+ * extension function all premium checks in Lifesum funnel through.
  */
 object HasPremiumFingerprint : Fingerprint(
     definingClass = "Lcom/sillens/shapeupclub/db/models/ProfileModelExtensionsKt;",
@@ -16,18 +14,9 @@ object HasPremiumFingerprint : Fingerprint(
 )
 
 /**
- * Matches `n5c.<init>(Boolean, String, LocalDate, ...)` — the Premium data class constructor.
+ * Matches `n5c.<init>(Boolean, String, LocalDate, ...)` — Premium data class constructor.
  * Multiple code paths read `premium.a` directly instead of going through `hasPremium()`.
- * Patching the constructor to force `this.a = Boolean.TRUE` catches all of them:
- *   - l/jz4.java:205 (Create Food summary — fiber/sugars/carbs lock)
- *   - l/p0.java:92   (Create Meal summary — fiber/sugars lock)
- *   - l/vc3.java:275  (food detail via cr9 → vva)
- *   - l/cbd.java:20   (recipe/food detail PremiumLocked toolbar)
- *   - l/gp8.java:83   (lifestyle week tab)
- *   - l/sib.java:404  (top bar premium button)
- *   - com/sillens/.../CreateRecipeActivity.java:301,356
- *   - com/sillens/.../KetogenicSettingsActivity.java:221,274,326
- *   - com/sillens/.../TrackMeasurementActivity.java:257
+ * Patching the constructor forces `this.a = Boolean.TRUE` for all instances.
  */
 object PremiumConstructorFingerprint : Fingerprint(
     definingClass = "Ll/n5c;",

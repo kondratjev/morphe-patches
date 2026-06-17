@@ -26,7 +26,7 @@ val disableCommunityTabPatch = bytecodePatch(
     dependsOn(disableCommunityTabResourcePatch)
 
     execute {
-        // Belt-and-suspenders: also patch bytecode
+        // Also patch bytecode to return -1 (fallback for resource-only patch).
         NewsTabIndexFingerprint.methodOrNull?.returnEarly(-1)
     }
 }

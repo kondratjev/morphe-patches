@@ -2,7 +2,7 @@ package app.morphe.patches.soundcloud.premium
 
 import app.morphe.patcher.Fingerprint
 
-// ── Plan / tier ─────────────────────────────────────────────────
+// Plan / tier
 
 /** Matches `UserConsumerPlan.<init>()` — constructs the user's plan object from backend data. */
 object UserConsumerPlanConstructorFingerprint : Fingerprint(
@@ -31,7 +31,7 @@ object MapToPlanFingerprint : Fingerprint(
     name = "mapToPlan",
 )
 
-// ── Tier/plan state ────────────────────────────────────────────
+// Tier/plan state
 
 /** Matches `DefaultFeatureOperations.getCurrentTier()` — returns the active tier from local config. */
 object GetCurrentTierFingerprint : Fingerprint(
@@ -47,7 +47,7 @@ object GetCurrentConsumerPlanFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
-// ── Offboarding / transitions ──────────────────────────────────
+// Offboarding / transitions
 
 /** Matches `DefaultConfigurationUpdatesLifecycleObserver.b(RootActivity)` — observes plan changes and triggers transition UI. */
 object ConfigurationUpdatesLifecycleObserverFingerprint : Fingerprint(
@@ -57,7 +57,7 @@ object ConfigurationUpdatesLifecycleObserverFingerprint : Fingerprint(
     parameters = listOf("Lcom/soundcloud/android/architecture/view/RootActivity;"),
 )
 
-// ── Ad blocking ────────────────────────────────────────────────
+// Ad blocking
 
 /** Matches `DefaultFeatureOperations.getShouldRequestAds()` — determines whether ads should be requested. */
 object GetShouldRequestAdsFingerprint : Fingerprint(

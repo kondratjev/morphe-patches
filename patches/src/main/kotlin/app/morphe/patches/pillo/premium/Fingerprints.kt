@@ -8,7 +8,6 @@ internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/persistence/preferences
 
 /**
  * Matches `Job setIsPremiumState(boolean)` in SubscriptionStateProvider.
- * Return type is Job, not void — the method returns the launched coroutine.
  */
 object SetIsPremiumStateFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
@@ -28,8 +27,8 @@ object SetIsAdfreeStateFingerprint : Fingerprint(
 )
 
 /**
- * Matches the constructor `<init>` of SubscriptionStateProvider
- * by looking for calls to both Preferences methods inside the constructor body.
+ * Matches the constructor of SubscriptionStateProvider by looking
+ * for calls to both Preferences methods in the constructor body.
  */
 object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
@@ -48,10 +47,9 @@ object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
 )
 
 /**
- * Matches `AdaptyInitializer.create(Context)` (void, the implementation
- * method — JADX renames it to `create2` but bytecode name is `create`).
- * Blocks Adapty SDK initialization (subscription/paywall tracking).
- * Lives in the premium patch because Adapty is a subscription SDK, not analytics.
+ * Matches `AdaptyInitializer.create(Context)` — initializes Adapty SDK
+ * (subscription/paywall tracking). Lives in premium patch because
+ * Adapty is a subscription SDK, not analytics.
  */
 object AdaptyInitializerCreateFingerprint : Fingerprint(
     definingClass = "Lxyz/rtrvr/pillo/initializers/AdaptyInitializer;",
