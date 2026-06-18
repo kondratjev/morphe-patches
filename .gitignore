@@ -130,3 +130,6 @@ node_modules/
 .idea/
 local.properties
 package-lock.json
+
+# macOS
+.DS_Store
