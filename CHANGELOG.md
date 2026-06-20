@@ -1,3 +1,10 @@
+## [1.13.0](https://github.com/kondratjev/morphe-patches/compare/v1.12.0...v1.13.0) (2026-06-20)
+
+### ✨ New Features
+
+* add ornament patches ([04f79f6](https://github.com/kondratjev/morphe-patches/commit/04f79f6445e6df9bd4d42a60a0e34f3bd5614df1))
+* update pillo and lifesum ([9b732d0](https://github.com/kondratjev/morphe-patches/commit/9b732d082adf4349c0caa55055927b078d75970e))
+
 ## [1.13.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2026-06-20)
 
 ### ✨ New Features
