@@ -1,5 +1,5 @@
 {
-  "version": "v1.12.0",
+  "version": "1.13.0-dev.2",
   "patches": [
     {
       "name": "Change version code",
@@ -414,6 +414,33 @@
           "targets": [
             {
               "version": "9.50.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks part of Ornament Pro features.",
+      "default": true,
+      "dependencies": [
+        "RawResourcePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.ornament.monitor",
+          "name": "Ornament",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#6750A4",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "4.15.1",
               "isExperimental": false,
               "minSdk": null,
               "description": null

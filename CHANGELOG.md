@@ -1,3 +1,9 @@
+## [1.13.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2026-06-20)
+
+### ✨ New Features
+
+* add ornament patches ([04f79f6](https://github.com/kondratjev/morphe-patches/commit/04f79f6445e6df9bd4d42a60a0e34f3bd5614df1))
+
 ## [1.13.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-06-20)
 
 ### ✨ New Features
