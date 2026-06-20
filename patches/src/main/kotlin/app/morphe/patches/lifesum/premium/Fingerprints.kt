@@ -14,12 +14,12 @@ object HasPremiumFingerprint : Fingerprint(
 )
 
 /**
- * Matches `n5c.<init>(Boolean, String, LocalDate, ...)` — Premium data class constructor.
+ * Matches `csc.<init>(Boolean, String, LocalDate, ...)` — Premium data class constructor.
  * Multiple code paths read `premium.a` directly instead of going through `hasPremium()`.
  * Patching the constructor forces `this.a = Boolean.TRUE` for all instances.
  */
 object PremiumConstructorFingerprint : Fingerprint(
-    definingClass = "Ll/n5c;",
+    definingClass = "Ll/csc;",
     name = "<init>",
     returnType = "V",
     parameters = listOf(
@@ -29,7 +29,7 @@ object PremiumConstructorFingerprint : Fingerprint(
         "Lorg/joda/time/LocalDate;",
         "Ljava/lang/Integer;",
         "Ljava/lang/Integer;",
-        "Ll/zdf;",
+        "Le4g;",
         "Ljava/lang/Boolean;",
         "Ljava/lang/Double;",
         "Ljava/util/Map;",
