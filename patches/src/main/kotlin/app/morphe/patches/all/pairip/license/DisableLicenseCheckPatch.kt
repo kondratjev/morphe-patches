@@ -21,7 +21,7 @@ val disableLicenseCheckPatch = bytecodePatch(
         }
 
         ProcessLicenseResponseFingerprint.apply {
-            // Set first parameter (responseCode) to 0 (success status).
+            // Set first parameter (responseCode) to 0 (success).
             method.addInstruction(0, "const/4 p1, 0x0")
 
             // Disable repeated check if present.
@@ -36,7 +36,7 @@ val disableLicenseCheckPatch = bytecodePatch(
             }
         }
 
-        // Short-circuit the license response validation.
+        // Short-circuit license response validation.
         ValidateLicenseResponseFingerprint.method.returnEarly()
     }
 }

@@ -9,8 +9,7 @@ const val JS_BUNDLE_PATH = "assets/index.android.bundle"
 
 /**
  * Plaintext JS bundle patcher with Boyer-Moore byte replacement.
- * Same API as a typical hermes-style patch utility, but no magic-header check
- * and no SHA-1 footer rewrite (those are Hermes-specific).
+ * No magic-header check or SHA-1 footer rewrite (Hermes-specific).
  *
  * Usage:
  * ```

@@ -3,13 +3,8 @@ package app.morphe.patches.fatsecret.community
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `BottomNavTab$News.fetchIndexInBottomNav()` — returns 0
- * (the News/Community tab position). Patching to return -1 effectively
- * disables the community tab from bottom navigation.
- *
- * DEX: classes2.dex,
- * Lcom/fatsecret/android/cores/core_entity/domain/BottomNavTab$News;
- * -> fetchIndexInBottomNav()I
+ * Matches `BottomNavTab$News.fetchIndexInBottomNav()` — returns the
+ * News/Community tab position (0). Patching to -1 disables the tab.
  */
 object NewsTabIndexFingerprint : Fingerprint(
     definingClass = "Lcom/fatsecret/android/cores/core_entity/domain/BottomNavTab\$News;",

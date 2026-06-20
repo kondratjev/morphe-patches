@@ -9,9 +9,7 @@ import java.util.logging.Logger
 
 private val logger = Logger.getLogger("DisableAnalytics")
 
-// ═════════════════════════════════════════════════════════════════
 // Manifest — disables analytics components & sets opt-out metadata
-// ═════════════════════════════════════════════════════════════════
 
 private val disableAnalyticsManifestPatch = resourcePatch {
     execute {
@@ -125,9 +123,7 @@ private val disableAnalyticsManifestPatch = resourcePatch {
     }
 }
 
-// ═════════════════════════════════════════════════════════════════
 // Bytecode — neutralizes analytics entry-point methods
-// ═════════════════════════════════════════════════════════════════
 
 @Suppress("unused")
 val disableAnalyticsPatch = bytecodePatch(

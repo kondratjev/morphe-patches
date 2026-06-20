@@ -2,9 +2,7 @@ package app.morphe.patches.all.misc.util
 
 import app.morphe.patcher.patch.PatchException
 
-/**
- * Convert a string representing a pattern of hexadecimal bytes to a byte array.
- */
+/** Convert a hex string pattern to a byte array. */
 fun byteArrayOf(pattern: String): ByteArray {
     val stripped = pattern.replace(Regex("\\s"), "")
     check(stripped.length % 2 == 0) { "Must have an even length" }
@@ -23,9 +21,7 @@ fun byteArrayOf(pattern: String): ByteArray {
     }
 }
 
-/**
- * Convert a 4-byte array to a signed Int. Little-endian by default.
- */
+/** Convert a 4-byte array to a signed Int. Little-endian by default. */
 fun ByteArray.toInt(littleEndian: Boolean = false): Int {
     if (size != 4) throw IllegalArgumentException("ByteArray must be exactly 4 bytes long")
     val bytes = if (littleEndian) reversedArray() else this

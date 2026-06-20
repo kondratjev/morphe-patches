@@ -26,16 +26,16 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(hidePremiumTabResourcePatch)
 
     execute {
-        // t0.h() — primary isPremium check → always true
+        // Primary isPremium check → always true.
         IsPremiumFingerprint.methodOrNull?.returnEarly(true)
 
-        // t0.g() — premium status loaded → always true
+        // Premium status loaded → always true.
         IsPremiumLoadedFingerprint.methodOrNull?.returnEarly(true)
 
-        // t0.e() — invalid subscription check → always false
+        // Invalid subscription check → always false.
         IsInvalidSubscriptionFingerprint.methodOrNull?.returnEarly(false)
 
-        // t0.m(boolean, boolean) — StateFlow emitter
+        // Force both params true in StateFlow emitter.
         PremiumStatusEmitterFingerprint.methodOrNull?.addInstructions(
             0,
             """

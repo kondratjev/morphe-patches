@@ -13,7 +13,7 @@ val enablePremiumPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        // ── Plan override ───────────────────────────────────────
+        // Override plan construction with Go+ tier.
         UserConsumerPlanConstructorFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -39,7 +39,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // ── Tier/plan state ─────────────────────────────────────
+        // Force current tier to HIGH and plan to Go+.
         GetCurrentTierFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -56,12 +56,10 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // ── Block offboarding ───────────────────────────────────
-        // Lifecycle observer — THE single source of ALL transition UI
-        // (onboarding + offboarding + fullscreen + bottom sheet)
+        // Block offboarding — lifecycle observer controls all transition UI.
         ConfigurationUpdatesLifecycleObserverFingerprint.methodOrNull?.returnEarly()
 
-        // ── Ad blocking ─────────────────────────────────────────
+        // Disable ads.
         GetShouldRequestAdsFingerprint.methodOrNull?.returnEarly(false)
 
         IsMonetizableAdGeoFingerprint.methodOrNull?.returnEarly(false)

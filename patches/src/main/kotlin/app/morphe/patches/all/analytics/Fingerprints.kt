@@ -2,9 +2,7 @@ package app.morphe.patches.all.analytics
 
 import app.morphe.patcher.Fingerprint
 
-// ═══════════════════════════════════════════════════════════════════
 // AppMetrica (Yandex) — public API classes
-// ═══════════════════════════════════════════════════════════════════
 
 /**
  * Matches all void methods in AppMetrica public API classes.
@@ -22,9 +20,7 @@ object AppMetricaPublicApiFingerprint : Fingerprint(
     }
 )
 
-// ═══════════════════════════════════════════════════════════════════
 // AppMetrica — internal implementation (U1)
-// ═══════════════════════════════════════════════════════════════════
 
 /**
  * Matches `U1.reportData()` and `U1.sendCrash()` — void methods
@@ -64,15 +60,11 @@ object AppMetricaInternalCallbackFingerprint : Fingerprint(
     custom = { method, _ -> method.implementation != null }
 )
 
-// ═══════════════════════════════════════════════════════════════════
 // MyTracker (VK / Mail.ru)
-// ═══════════════════════════════════════════════════════════════════
 
 /**
- * Matches `MyTracker.initTracker(String, Application)` — the single
- * initialization method that creates the internal singleton. All
- * tracking methods (trackEvent, trackAdEvent, etc.) check this
- * singleton first — if it's null, they bail out immediately.
+ * Matches `MyTracker.initTracker(String, Application)` — single
+ * initialization method that creates the internal singleton.
  */
 object MyTrackerInitFingerprint : Fingerprint(
     definingClass = "Lcom/my/tracker/MyTracker;",
@@ -81,15 +73,11 @@ object MyTrackerInitFingerprint : Fingerprint(
     custom = { method, _ -> method.implementation != null }
 )
 
-// ═══════════════════════════════════════════════════════════════════
 // Firebase — Crashlytics & Performance collection switches
-// ═══════════════════════════════════════════════════════════════════
 
 /**
  * Matches `FirebaseCrashlytics.setCrashlyticsCollectionEnabled(boolean)` —
- * explicitly enables or disables crash report collection at runtime.
- * Some apps (e.g. Pillo) set this to `true` in an Initializer, overriding
- * the manifest meta-data `firebase_crashlytics_collection_enabled=false`.
+ * explicitly enables/disables crash report collection at runtime.
  */
 object FirebaseCrashlyticsCollectionFingerprint : Fingerprint(
     definingClass = "Lcom/google/firebase/crashlytics/FirebaseCrashlytics;",
@@ -100,8 +88,7 @@ object FirebaseCrashlyticsCollectionFingerprint : Fingerprint(
 
 /**
  * Matches `FirebasePerformance.setPerformanceCollectionEnabled(boolean)` —
- * explicitly enables or disables Firebase Performance monitoring at runtime.
- * Same pattern as Crashlytics — some apps override the manifest default.
+ * explicitly enables/disables Firebase Performance monitoring at runtime.
  */
 object FirebasePerformanceCollectionFingerprint : Fingerprint(
     definingClass = "Lcom/google/firebase/perf/FirebasePerformance;",

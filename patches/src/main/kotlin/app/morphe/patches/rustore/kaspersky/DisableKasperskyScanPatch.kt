@@ -13,14 +13,10 @@ val disableKasperskyScanPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_RUSTORE)
 
     execute {
-        // Hook A: Force the getter to always return false.
-        // Every consumer (UI toggle, WorkManager scheduler, settings)
-        // reads this getter — overriding it ensures scan is OFF globally.
+        // Force isPeriodicScanEnabled to false — all consumers read this getter.
         KasperskyScannerDtoIsPeriodicScanEnabledFingerprint.method.returnEarly(false)
 
-        // Hook B: Prevent enqueuePeriodic from scheduling the daily scan.
-        // Even if the toggle handler somehow tries to enable the scan,
-        // the WorkManager job will never be created.
+        // Prevent enqueuePeriodic from scheduling the daily scan.
         KasperskyScannerWorkerEnqueuePeriodicFingerprint.method.returnEarly(null as Void?)
     }
 }

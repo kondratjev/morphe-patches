@@ -3,9 +3,8 @@ package app.morphe.patches.rustore.kaspersky
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches the getter `isPeriodicScanEnabled()Z` in `KasperskyScannerDto` —
- * the single source of truth that ALL consumers read to determine
- * whether periodic scanning is enabled. Forcing this to return false
+ * Matches `KasperskyScannerDto.isPeriodicScanEnabled()Z` — single source
+ * of truth for whether periodic scanning is enabled. Forcing false
  * works for both new and existing installs.
  */
 object KasperskyScannerDtoIsPeriodicScanEnabledFingerprint : Fingerprint(
@@ -16,9 +15,8 @@ object KasperskyScannerDtoIsPeriodicScanEnabledFingerprint : Fingerprint(
 )
 
 /**
- * Matches `KasperskyScannerWorker$a.a()` — the `enqueuePeriodic` method
- * that schedules the daily background scan via WorkManager. Making this
- * a no-op prevents the scan from ever being enqueued.
+ * Matches `KasperskyScannerWorker$a.a()` — `enqueuePeriodic` method
+ * that schedules the daily background scan via WorkManager.
  */
 object KasperskyScannerWorkerEnqueuePeriodicFingerprint : Fingerprint(
     definingClass = "Lru/vk/store/feature/kaspersky/impl/presentation/KasperskyScannerWorker\$a;",

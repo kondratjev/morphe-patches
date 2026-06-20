@@ -12,9 +12,7 @@ import java.util.logging.Logger
 
 private val logger = Logger.getLogger("DisableRuStoreAnalytics")
 
-// ═══════════════════════════════════════════════════════════════════
 // Manifest — disables VK-specific analytics components
-// ═══════════════════════════════════════════════════════════════════
 
 private val disableRuStoreAnalyticsManifestPatch = resourcePatch {
     compatibleWith(COMPATIBILITY_RUSTORE)
@@ -34,9 +32,7 @@ private val disableRuStoreAnalyticsManifestPatch = resourcePatch {
     }
 }
 
-// ═══════════════════════════════════════════════════════════════════
 // Bytecode — neutralizes VK-specific analytics entry points
-// ═══════════════════════════════════════════════════════════════════
 
 @Suppress("unused")
 val disableRuStoreAnalyticsPatch = bytecodePatch(
