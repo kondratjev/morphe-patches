@@ -85,7 +85,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 20.7.0 |
+| 20.6.1 |
 | :---: |
 
 | 💊 Patch | 📜 Description | ⚙️ Options |
