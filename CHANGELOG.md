@@ -1,3 +1,9 @@
+## [1.14.0](https://github.com/kondratjev/morphe-patches/compare/v1.13.0...v1.14.0) (2026-06-23)
+
+### ✨ New Features
+
+* rollback lifesum ([08565f4](https://github.com/kondratjev/morphe-patches/commit/08565f4d0b88849719d96a3b910df7cd16375edf))
+
 ## [1.14.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.13.0...v1.14.0-dev.1) (2026-06-23)
 
 ### ✨ New Features
