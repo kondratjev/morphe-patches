@@ -23,6 +23,6 @@ object KasperskyScannerWorkerEnqueuePeriodicFingerprint : Fingerprint(
     name = "a",
     custom = { method, _ ->
         method.parameterTypes.size == 2 &&
-            method.parameterTypes[0] == "Lhb/l0;"
+            method.parameterTypes[0] == "Lib/l0;"
     },
 )

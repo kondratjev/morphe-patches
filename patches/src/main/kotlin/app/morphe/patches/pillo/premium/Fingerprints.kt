@@ -57,3 +57,15 @@ object AdaptyInitializerCreateFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/content/Context;"),
 )
+
+/**
+ * Matches `AdmobInitializer.create(Context)` — initializes AdMob / Moloco /
+ * Pangle / Vungle SDKs. No-op'd to skip SDK init at app launch; ad UI is
+ * already gated by SubscriptionStateProvider.isAdfree so this is a perf win.
+ */
+object AdmobInitializerCreateFingerprint : Fingerprint(
+    definingClass = "Lxyz/rtrvr/pillo/initializers/AdmobInitializer;",
+    name = "create",
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;"),
+)

@@ -17,9 +17,6 @@ val disableGameCenterProfilePatch = bytecodePatch(
         // Block navigation from MineV2ViewModel (V2/V3 Mine screen).
         MineV2ViewModelOpenGameCenterFingerprint.method.returnEarly()
 
-        // Block navigation from MineViewModel (V1 Mine screen).
-        MineViewModelOpenGameCenterFingerprint.method.returnEarly()
-
         // Hide Game Center button in V2 Mine screen.
         GameCenterV2ButtonComposableFingerprint.method.returnEarly()
 
