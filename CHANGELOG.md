@@ -1,3 +1,9 @@
+## [1.15.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.14.0...v1.15.0-dev.1) (2026-06-27)
+
+### ✨ New Features
+
+* bump rustore and lyfta ([2340d98](https://github.com/kondratjev/morphe-patches/commit/2340d98c295e73b3bb2679c35cd309dd90141c28))
+
 ## [1.14.0](https://github.com/kondratjev/morphe-patches/compare/v1.13.0...v1.14.0) (2026-06-23)
 
 ### ✨ New Features

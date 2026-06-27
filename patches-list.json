@@ -1,5 +1,5 @@
 {
-  "version": "v1.14.0",
+  "version": "1.15.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -361,7 +361,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "20.7.0",
+              "version": "20.6.1",
               "isExperimental": false,
               "minSdk": null,
               "description": null
