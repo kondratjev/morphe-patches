@@ -1,3 +1,9 @@
+## [1.15.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.15.0-dev.1...v1.15.0-dev.2) (2026-07-03)
+
+### ✨ New Features
+
+* bump pillo and soundcloud ([b917a17](https://github.com/kondratjev/morphe-patches/commit/b917a17d2c7b484748917c0bef6facafeb6f5446))
+
 ## [1.15.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.14.0...v1.15.0-dev.1) (2026-06-27)
 
 ### ✨ New Features
