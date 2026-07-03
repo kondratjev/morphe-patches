@@ -64,11 +64,11 @@ val enablePremiumPatch = bytecodePatch(
 
         IsMonetizableAdGeoFingerprint.methodOrNull?.returnEarly(false)
 
+        // Disable ads — force `enabled` param to false in the data-class ctor.
         AdPlacementConfigCtorFingerprint.matchAllOrNull()?.forEach { match ->
-            val offset = if (match.method.parameterTypes.first() == "I") 1 else 0
             match.method.addInstructions(
                 0,
-                (1..3).joinToString("\n") { "const/4 p${offset + it}, 0x0" },
+                "const/4 p1, 0x0",
             )
         }
     }

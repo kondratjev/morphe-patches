@@ -7,19 +7,8 @@ import app.morphe.patcher.Fingerprint
  * screen to Game Center Stats. Logs "gameProfile.click".
  */
 object MineV2ViewModelOpenGameCenterFingerprint : Fingerprint(
-    definingClass = "Lpi1/j8;",
-    name = "p0",
-    returnType = "V",
-    parameters = emptyList(),
-)
-
-/**
- * Matches `MineViewModel.openGameCenter()` — navigates from the V1 Mine
- * screen to Game Center Stats.
- */
-object MineViewModelOpenGameCenterFingerprint : Fingerprint(
-    definingClass = "Lpi1/h9;",
-    name = "p5",
+    definingClass = "Lvi1/k8;",
+    name = "q0",
     returnType = "V",
     parameters = emptyList(),
 )
@@ -29,7 +18,7 @@ object MineViewModelOpenGameCenterFingerprint : Fingerprint(
  * screen composable that renders the Game Center stats button.
  */
 object GameCenterV2ButtonComposableFingerprint : Fingerprint(
-    definingClass = "Lwb1/i0;",
+    definingClass = "Lcc1/o0;",
     name = "d",
     returnType = "V",
 )
@@ -39,7 +28,7 @@ object GameCenterV2ButtonComposableFingerprint : Fingerprint(
  * screen composable that renders the Game Center stats button.
  */
 object GameCenterV1ButtonComposableFingerprint : Fingerprint(
-    definingClass = "Lwb1/o;",
+    definingClass = "Lcc1/q;",
     name = "e",
     returnType = "V",
 )

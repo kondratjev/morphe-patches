@@ -3,12 +3,12 @@ package app.morphe.patches.rustore.analytics
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `AltCraftAnalyticsImpl.a(String, Map, String, boolean, gg2.f)` —
+ * Matches `AltCraftAnalyticsImpl.b(String, Map, String, boolean, ph2.f)` —
  * the main send method all AltCraft event reporting converges on.
  */
 object AltCraftSendFingerprint : Fingerprint(
-    definingClass = "Lmg2/b;",
-    name = "a",
+    definingClass = "Lvh2/b;",
+    name = "b",
     custom = { method, _ ->
         method.parameterTypes.size == 5 &&
             method.parameterTypes[0] == "Ljava/lang/String;" &&

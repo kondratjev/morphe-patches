@@ -8,7 +8,7 @@ import app.morphe.patcher.Fingerprint
  * `MainViewState.f34480m`. Forcing null return keeps the V1 Mine screen.
  */
 object MainViewStateMineRedesignFingerprint : Fingerprint(
-    definingClass = "Le31/h0;",
+    definingClass = "Lf31/h0;",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
 )

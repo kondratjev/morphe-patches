@@ -1,5 +1,5 @@
 {
-  "version": "1.14.0",
+  "version": "1.15.0-dev.2",
   "patches": [
     {
       "name": "Change version code",
@@ -37,7 +37,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -62,7 +62,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2026.06.03-release",
+              "version": "2026.06.25-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -95,7 +95,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.11",
+              "version": "0.6.12",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -120,7 +120,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -157,7 +157,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -182,7 +182,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -234,7 +234,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -259,7 +259,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2026.06.03-release",
+              "version": "2026.06.25-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -284,7 +284,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "2026.06.03-release",
+              "version": "2026.06.25-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -309,7 +309,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.103.0.3",
+              "version": "1.104.0.2",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -388,7 +388,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.573",
+              "version": "1.575",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -492,7 +492,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.11",
+              "version": "0.6.12",
               "isExperimental": false,
               "minSdk": null,
               "description": null
