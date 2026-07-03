@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.soundcloud.android",
         appIconColor = 0xFF5500,
         targets = listOf(
-            AppTarget("2026.06.03-release")
+            AppTarget("2026.06.25-release")
         )
     )
 }

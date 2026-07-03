@@ -20,7 +20,7 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
 
 /** Matches `ConfigurationSettingsStorage.getDowngradeTier()` — returns the downgrade tier plan. */
 object GetDowngradeTierFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/configuration/ConfigurationSettingsStorage;",
+    definingClass = "Lcom/soundcloud/android/configuration/data/ConfigurationSettingsStorage;",
     returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )
@@ -75,9 +75,14 @@ object IsMonetizableAdGeoFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
-/** Matches `AdPlacementConfiguration.<init>()` — constructs ad placement configuration for the player. */
+/** Matches `AdPlacementConfiguration.<init>(boolean, GamConfiguration, AditudeConfiguration)` — constructs ad placement configuration for the player. */
 object AdPlacementConfigCtorFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/ads/display/data/config/AdPlacementConfiguration;",
     name = "<init>",
     returnType = "V",
+    parameters = listOf(
+        "Z",
+        "Lcom/soundcloud/android/ads/display/data/config/GamConfiguration;",
+        "Lcom/soundcloud/android/ads/display/data/config/AditudeConfiguration;",
+    ),
 )
