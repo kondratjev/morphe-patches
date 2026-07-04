@@ -7,7 +7,7 @@ import app.morphe.patches.fatsecret.shared.Constants.COMPATIBILITY_FATSECRET
 @Suppress("unused")
 val disableForceUpdateDialogPatch = bytecodePatch(
     name = "Disable force update dialog",
-    description = "Makes the 'App must update' dialog skippable by forcing is_cancelable=true.",
+    description = "Makes the 'App must update' dialog skippable.",
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_FATSECRET)
