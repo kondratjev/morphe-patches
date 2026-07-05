@@ -46,20 +46,21 @@ private fun generatePatchList(version: String, patches: Set<Patch<*>>) {
             description = patch.description,
             default = patch.default,
             dependencies = patch.dependencies.map { it.javaClass.simpleName },
-            // Map each Compatibility to JsonCompatibility with full metadata.
-            // Patches with null compatiblePackages are universal.
+            // Map each Compatibility to a JsonCompatibility object with full metadata.
+            // Patches with null compatiblePackages are universal (apply to any app).
             compatiblePackages = patch.compatibility?.map { compat ->
                 JsonCompatibility(
                     packageName = compat.packageName!!,
                     name = compat.name,
                     description = compat.description,
                     apkFileType = compat.apkFileType?.name,
-                    // Format as #RRGGBB; null if not set.
+                    // Format as #RRGGBB string for readability; null if not set
                     appIconColor = compat.appIconColor?.let { "#%06X".format(it) },
                     signatures = compat.signatures,
                     targets = compat.targets.map { target ->
                         JsonCompatibility.Target(
                             version = target.version,
+                            versionCodes = target.versionCodes?.mapKeys { it.key.name },
                             isExperimental = target.isExperimental,
                             minSdk = target.minSdk,
                             description = target.description,
@@ -107,7 +108,7 @@ private class JsonPatch(
     val description: String? = null,
     val default: Boolean = true,
     val dependencies: List<String>,
-    /** Null means the patch is universal. */
+    /** Null means the patch is universal and applies to any app. */
     val compatiblePackages: List<JsonCompatibility>? = null,
     val options: List<Option>,
 ) {
@@ -122,18 +123,18 @@ private class JsonPatch(
     )
 }
 
-/** JSON representation of a compatible app entry with per-version metadata. */
+/** JSON representation of a compatible app entry, including name and per-version metadata. */
 @Suppress("unused")
 private class JsonCompatibility(
     /** Android package name, e.g. com.google.android.youtube. */
     val packageName: String,
-    /** Human-readable app name, e.g. "YouTube". */
+    /** Human-readable app name declared in Compatibility, e.g. "YouTube". */
     val name: String?,
     /** User-facing description of the app. */
     val description: String?,
     /** Target unpatched app file type, e.g. APK, APKM. Null if not specified. */
     val apkFileType: String?,
-    /** App icon background color as #RRGGBB, or null. */
+    /** App icon background color as #RRGGBB string, or null if not set. */
     val appIconColor: String?,
     /** Valid SHA-256 signatures of the app. */
     val signatures: Set<String>?,
@@ -141,10 +142,11 @@ private class JsonCompatibility(
 ) {
     class Target(
         val version: String?,
+        val versionCodes: Map<String, Int>?,
         val isExperimental: Boolean,
-        /** Minimum device SDK version. Null means any. */
+        /** Minimum device SDK version. Null means any SDK version. */
         val minSdk: Int?,
-        /** Optional user-facing note about this version. */
+        /** Optional user-facing note about this specific version. */
         val description: String?,
     )
 }

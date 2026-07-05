@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0",
+  "version": "1.17.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
@@ -48,61 +48,11 @@
       "options": []
     },
     {
-      "name": "Disable OneTrust consent popup",
-      "description": "Disables the OneTrust consent/cookies popup on first launch.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.soundcloud.android",
-          "name": "SoundCloud",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#FF5500",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2026.06.25-release",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Disable Pairip license check",
       "description": "Disables the Pairip license verification check.",
       "default": false,
       "dependencies": [],
       "compatiblePackages": null,
-      "options": []
-    },
-    {
-      "name": "Disable Pulse tracking",
-      "description": "Disables PulseSDK analytics sending events to events.pillo.care.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "xyz.rtrvr.pillo",
-          "name": "Pillo",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#7C4DFF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "0.6.12",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
       "options": []
     },
     {
@@ -142,10 +92,38 @@
     },
     {
       "name": "Disable analytics",
+      "description": "Disables PulseSDK analytics.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "xyz.rtrvr.pillo",
+          "name": "Pillo",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#7C4DFF",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "0.6.12",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
       "description": "Disables VK-specific analytics.",
       "default": true,
       "dependencies": [
-        "ResourcePatch"
+        "ResourcePatch",
+        "BytecodePatch"
       ],
       "compatiblePackages": [
         {
@@ -158,6 +136,33 @@
           "targets": [
             {
               "version": "1.104.0.2",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable analytics",
+      "description": "Disables SoundCloud's analytics.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.06.25-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -220,8 +225,33 @@
       "options": []
     },
     {
+      "name": "Disable consent popup",
+      "description": "Disables the OneTrust consent/cookies popup on first launch.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.soundcloud.android",
+          "name": "SoundCloud",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#FF5500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "2026.06.25-release",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Disable force update dialog",
-      "description": "Makes the 'App must update' dialog skippable by forcing is_cancelable=true.",
+      "description": "Makes the 'App must update' dialog skippable.",
       "default": true,
       "dependencies": [],
       "compatiblePackages": [
@@ -260,31 +290,6 @@
           "targets": [
             {
               "version": "1.104.0.2",
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Disable telemetry",
-      "description": "Disables SoundCloud's telemetry system.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.soundcloud.android",
-          "name": "SoundCloud",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#FF5500",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "2026.06.25-release",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -439,6 +444,31 @@
           "targets": [
             {
               "version": "9.50.3",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
+      "description": "Unlocks all Muscle Motion Strength Training Pro/Individual/Business features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "air.com.musclemotion.strength.mobile",
+          "name": "Muscle Motion Strength Training",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null

@@ -3,6 +3,7 @@ package app.morphe.patches.rustore.analytics
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.analytics.childrenNamed
+import app.morphe.patches.all.analytics.disableAnalyticsPatch
 import app.morphe.patches.all.analytics.disableComponentsByPrefix
 import app.morphe.patches.all.analytics.disableComponentsWhere
 import app.morphe.patches.rustore.shared.Constants.COMPATIBILITY_RUSTORE
@@ -41,7 +42,9 @@ val disableRuStoreAnalyticsPatch = bytecodePatch(
     default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
+
     dependsOn(disableRuStoreAnalyticsManifestPatch)
+    dependsOn(disableAnalyticsPatch)
 
     execute {
         if (AltCraftSendFingerprint.methodOrNull != null) {

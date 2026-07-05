@@ -6,7 +6,7 @@ import app.morphe.patches.soundcloud.shared.Constants.COMPATIBILITY_SOUNDCLOUD
 
 @Suppress("unused")
 val disableConsentPatch = bytecodePatch(
-    name = "Disable OneTrust consent popup",
+    name = "Disable consent popup",
     description = "Disables the OneTrust consent/cookies popup on first launch.",
 ) {
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
