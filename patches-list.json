@@ -455,6 +455,31 @@
     },
     {
       "name": "Unlock Premium",
+      "description": "Unlocks all Muscle Motion Strength Training Pro/Individual/Business features.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "air.com.musclemotion.strength.mobile",
+          "name": "Muscle Motion Strength Training",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "3.5.0",
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Unlock Premium",
       "description": "Unlocks part of Ornament Pro features.",
       "default": true,
       "dependencies": [
