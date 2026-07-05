@@ -1,3 +1,9 @@
+## [1.17.0](https://github.com/kondratjev/morphe-patches/compare/v1.16.0...v1.17.0) (2026-07-05)
+
+### ✨ New Features
+
+* add Muscle Motion Strength Training patch ([fad4901](https://github.com/kondratjev/morphe-patches/commit/fad49018b79ce7428c78b3e0a48bcc2592c09f2d))
+
 ## [1.17.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.16.0...v1.17.0-dev.1) (2026-07-05)
 
 ### ✨ New Features
