@@ -9,9 +9,9 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.16.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.16.0)**  •  `main`  •  24 patches total
+> **[v1.17.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.17.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;25 patches total
 <details open>
-<summary>📦 RuStore  •  6 patches</summary>
+<summary>📦 RuStore&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -19,7 +19,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 1.104.0.2 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable Mine redesign](#disable-mine-redesign) | Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface. |  |
 | [Disable ads](#disable-ads) | Removes all advertisements from the app. |  |
@@ -31,24 +31,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 </details>
 
 <details open>
-<summary>📦 SoundCloud  •  3 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 2026.06.25-release |
-| :---: |
-
-| 💊 Patch | 📜 Description | ⚙️ Options |
-|----------|----------------|-----------|
-| [Disable OneTrust consent popup](#disable-onetrust-consent-popup) | Disables the OneTrust consent/cookies popup on first launch. |  |
-| [Disable telemetry](#disable-telemetry) | Disables SoundCloud's telemetry system. |  |
-| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
-
-</details>
-
-<details open>
-<summary>📦 Pillo  •  2 patches</summary>
+<summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -56,15 +39,32 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 0.6.12 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Disable Pulse tracking](#disable-pulse-tracking) | Disables PulseSDK analytics sending events to events.pillo.care. |  |
+| [Disable analytics](#disable-analytics) | Disables PulseSDK analytics. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
 
 </details>
 
 <details open>
-<summary>📦 FatSecret  •  3 patches</summary>
+<summary>📦 SoundCloud&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 2026.06.25-release |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Disable analytics](#disable-analytics) | Disables SoundCloud's analytics. |  |
+| [Disable consent popup](#disable-consent-popup) | Disables the OneTrust consent/cookies popup on first launch. |  |
+| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
+
+</details>
+
+<details open>
+<summary>📦 FatSecret&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -72,16 +72,16 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 11.6.0.1 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable community tab](#disable-community-tab) | Hides the News/Community tab from the bottom navigation. |  |
-| [Disable force update dialog](#disable-force-update-dialog) | Makes the 'App must update' dialog skippable by forcing is_cancelable=true. |  |
+| [Disable force update dialog](#disable-force-update-dialog) | Makes the 'App must update' dialog skippable. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks all FatSecret Gold features and hides the Premium tab. |  |
 
 </details>
 
 <details open>
-<summary>📦 Lifesum  •  1 patch</summary>
+<summary>📦 Lifesum&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -89,14 +89,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 20.6.1 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
 <details open>
-<summary>📦 Lyfta  •  1 patch</summary>
+<summary>📦 Lyfta&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -104,14 +104,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 1.575 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
 <details open>
-<summary>📦 Medisafe  •  1 patch</summary>
+<summary>📦 Medisafe&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -119,14 +119,29 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 9.50.3 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
 
 </details>
 
 <details open>
-<summary>📦 Ornament  •  1 patch</summary>
+<summary>📦 Muscle Motion Strength Training&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<br>
+
+**🎯 Supported versions:**
+
+| 3.5.0 |
+| :---: |
+
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
+|----------|----------------|-----------|
+| [Unlock Premium](#unlock-premium) | Unlocks all Muscle Motion Strength Training Pro/Individual/Business features. |  |
+
+</details>
+
+<details open>
+<summary>📦 Ornament&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -134,14 +149,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 4.15.1 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks part of Ornament Pro features. |  |
 
 </details>
 
 <details open>
-<summary>📦 Parcels  •  1 patch</summary>
+<summary>📦 Parcels&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -149,14 +164,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 3.0.11 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks premium features. |  |
 
 </details>
 
 <details open>
-<summary>📦 WiseMeal  •  1 patch</summary>
+<summary>📦 WiseMeal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -164,14 +179,14 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 1.3.0 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | ROOT ONLY. Unlocks all premium features. |  |
 
 </details>
 
 <details open>
-<summary>📦 Yazio  •  1 patch</summary>
+<summary>📦 Yazio&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -179,17 +194,17 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 12.87.0 |
 | :---: |
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all Yazio Pro features. |  |
 
 </details>
 
 <details open>
-<summary>🌐 Universal  •  3 patches</summary>
+<summary>🌐 Universal&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
-| 💊 Patch | 📜 Description | ⚙️ Options |
+| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
 | [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
