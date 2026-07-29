@@ -1,5 +1,5 @@
 {
-  "version": "v1.17.0",
+  "version": "1.18.0-dev.1",
   "patches": [
     {
       "name": "Change version code",
