@@ -9,7 +9,6 @@ val disableGameCenterProfilePatch = bytecodePatch(
     name = "Disable gaming profile",
     description = "Removes the Game Profile section from the Mine screen, " +
             "including the button and the usage statistics screen.",
-    default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
 

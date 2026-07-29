@@ -36,7 +36,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 0.6.12 |
+| 0.6.16 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

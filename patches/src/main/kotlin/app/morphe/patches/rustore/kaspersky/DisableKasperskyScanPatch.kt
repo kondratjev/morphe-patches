@@ -8,7 +8,6 @@ import app.morphe.util.returnEarly
 val disableKasperskyScanPatch = bytecodePatch(
     name = "Disable background scan",
     description = "Disables the periodic Kaspersky background device scan.",
-    default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
 

@@ -1,5 +1,5 @@
 {
-  "version": "1.17.0",
+  "version": "v1.17.0",
   "patches": [
     {
       "name": "Change version code",
@@ -37,7 +37,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -70,7 +70,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -107,7 +107,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.12",
+              "version": "0.6.16",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -135,7 +135,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -187,7 +187,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -289,7 +289,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -339,7 +339,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.104.0.2",
+              "version": "1.106.0.3",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -418,7 +418,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.575",
+              "version": "1.578",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -443,7 +443,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "9.50.3",
+              "version": "9.51.0",
               "isExperimental": false,
               "minSdk": null,
               "description": null
@@ -547,7 +547,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "0.6.12",
+              "version": "0.6.16",
               "isExperimental": false,
               "minSdk": null,
               "description": null

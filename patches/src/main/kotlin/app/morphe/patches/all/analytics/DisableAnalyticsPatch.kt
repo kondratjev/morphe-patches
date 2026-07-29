@@ -131,7 +131,6 @@ val disableAnalyticsPatch = bytecodePatch(
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
         "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
-    default = true,
 ) {
     dependsOn(disableAnalyticsManifestPatch)
 
