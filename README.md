@@ -9,7 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.18.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.18.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;25 patches total
+> **[v1.18.0-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.18.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;25 patches total
 <details open>
 <summary>📦 RuStore&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
 <br>
@@ -59,7 +59,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 |----------|----------------|-----------|
 | [Disable analytics](#disable-analytics) | Disables SoundCloud's analytics. |  |
 | [Disable consent popup](#disable-consent-popup) | Disables the OneTrust consent/cookies popup on first launch. |  |
-| [Enable SoundCloud Go+](#enable-soundcloud-go) | Enables all premium features, hides upsell UI and ads. |  |
+| [Enable SoundCloud Go](#enable-soundcloud-go) | Enables SoundCloud Go premium features. |  |
 
 </details>
 

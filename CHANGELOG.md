@@ -1,3 +1,9 @@
+## [1.18.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.1...v1.18.0-dev.2) (2026-08-01)
+
+### ✨ New Features
+
+* bump soundcloud ([8d94bfa](https://github.com/kondratjev/morphe-patches/commit/8d94bfa3a05d36d39499c5c7a6210122f01853f4))
+
 ## [1.18.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.17.0...v1.18.0-dev.1) (2026-07-29)
 
 ### ✨ New Features
