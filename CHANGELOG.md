@@ -1,3 +1,9 @@
+## [1.18.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.2...v1.18.0-dev.3) (2026-08-01)
+
+### ✨ New Features
+
+* add gmscore support for pillo ([34496e2](https://github.com/kondratjev/morphe-patches/commit/34496e2dcce69345f7203cdac6fb0f2953dd1f8f))
+
 ## [1.18.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.1...v1.18.0-dev.2) (2026-08-01)
 
 ### ✨ New Features
