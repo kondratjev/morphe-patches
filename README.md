@@ -52,7 +52,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 2026.06.25-release |
+| 2026.07.23-release |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

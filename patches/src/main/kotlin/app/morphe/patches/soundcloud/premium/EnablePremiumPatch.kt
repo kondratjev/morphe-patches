@@ -7,13 +7,13 @@ import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val enablePremiumPatch = bytecodePatch(
-    name = "Enable SoundCloud Go+",
-    description = "Enables all premium features, hides upsell UI and ads.",
+    name = "Enable SoundCloud Go",
+    description = "Enables SoundCloud Go premium features.",
 ) {
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        // Override plan construction with Go+ tier.
+        // Override plan construction with Go tier.
         UserConsumerPlanConstructorFingerprint.methodOrNull?.addInstructions(
             0,
             """
@@ -39,7 +39,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // Force current tier to HIGH and plan to Go+.
+        // Force current tier to HIGH and plan to Go.
         GetCurrentTierFingerprint.methodOrNull?.addInstructions(
             0,
             """
