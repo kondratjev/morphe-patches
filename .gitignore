@@ -100,7 +100,6 @@ fabric.properties
 .gradle
 **/build/
 !src/**/build/
-**/bin/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -129,7 +128,6 @@ node_modules/
 # Ignore IDEA files
 .idea/
 local.properties
-package-lock.json
 
 # macOS
 .DS_Store
