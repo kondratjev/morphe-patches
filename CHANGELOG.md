@@ -1,3 +1,13 @@
+## [1.18.0-dev.4](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.3...v1.18.0-dev.4) (2026-08-07)
+
+### 🐛 Bug Fixes
+
+* add logger import ([631742a](https://github.com/kondratjev/morphe-patches/commit/631742aa978eb190fe07a3a7d149b6925ac651ba))
+
+### ✨ New Features
+
+* add some updates ([9600c3f](https://github.com/kondratjev/morphe-patches/commit/9600c3fd74c4c835e1d197997dc32647a6c80996))
+
 ## [1.18.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.2...v1.18.0-dev.3) (2026-08-01)
 
 ### ✨ New Features
