@@ -14,6 +14,11 @@ val disableLicenseCheckPatch = bytecodePatch(
 ) {
 
     execute {
+        if (ProcessLicenseResponseFingerprint.methodOrNull == null || ValidateLicenseResponseFingerprint.methodOrNull == null) {
+            return@execute Logger.getLogger(this::class.java.name)
+                .warning("Could not find Pairip licensing check. No changes applied.")
+        }
+
         ProcessLicenseResponseFingerprint.apply {
             // Set first parameter (responseCode) to 0 (success).
             method.addInstruction(0, "const/4 p1, 0x0")
