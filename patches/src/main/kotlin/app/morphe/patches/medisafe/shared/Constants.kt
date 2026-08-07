@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.medisafe.android.client",
         appIconColor = 0x00A99D,
         targets = listOf(
-            AppTarget("9.50.3")
+            AppTarget("9.51.0")
         )
     )
 }

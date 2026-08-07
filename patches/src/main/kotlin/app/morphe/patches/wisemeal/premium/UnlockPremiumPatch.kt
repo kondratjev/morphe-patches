@@ -15,6 +15,6 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(disableLicenseCheckPatch)
 
     execute {
-        IsPremiumFingerprint.methodOrNull?.returnEarly(true)
+        IsPremiumFingerprint.method.returnEarly(true)
     }
 }

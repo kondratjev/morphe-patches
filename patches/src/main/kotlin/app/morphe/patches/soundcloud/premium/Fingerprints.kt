@@ -18,9 +18,10 @@ object UserConsumerPlanConstructorFingerprint : Fingerprint(
     ),
 )
 
-/** Matches `ConfigurationSettingsStorage.getDowngradeTier()` — returns the downgrade tier plan. */
+/** Matches `ConfigurationSettingsStorage.b()` — reads `pending_plan_downgrade` and returns the Tier. */
 object GetDowngradeTierFingerprint : Fingerprint(
     definingClass = "Lcom/soundcloud/android/configuration/data/ConfigurationSettingsStorage;",
+    name = "b",
     returnType = "Lcom/soundcloud/android/configuration/plans/Tier;",
     parameters = emptyList(),
 )

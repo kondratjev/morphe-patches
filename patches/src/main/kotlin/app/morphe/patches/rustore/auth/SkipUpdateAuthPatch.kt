@@ -8,7 +8,6 @@ import app.morphe.util.returnEarly
 val skipUpdateAuthPatch = bytecodePatch(
     name = "Skip update auth",
     description = "Removes the login requirement when updating apps.",
-    default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
 

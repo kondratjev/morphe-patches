@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.sillens.shapeupclub",
         appIconColor = 0x00C853,
         targets = listOf(
-            AppTarget("20.6.1")
+            AppTarget("20.9.2")
         )
     )
 }

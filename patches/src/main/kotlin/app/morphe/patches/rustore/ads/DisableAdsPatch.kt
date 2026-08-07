@@ -8,7 +8,6 @@ import app.morphe.util.returnEarly
 val disableAdsPatch = bytecodePatch(
     name = "Disable ads",
     description = "Removes all advertisements from the app.",
-    default = true,
 ) {
     compatibleWith(COMPATIBILITY_RUSTORE)
 

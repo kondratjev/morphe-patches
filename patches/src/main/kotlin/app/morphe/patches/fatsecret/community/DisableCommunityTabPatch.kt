@@ -27,6 +27,6 @@ val disableCommunityTabPatch = bytecodePatch(
 
     execute {
         // Also patch bytecode to return -1 (fallback for resource-only patch).
-        NewsTabIndexFingerprint.methodOrNull?.returnEarly(-1)
+        NewsTabIndexFingerprint.method.returnEarly(-1)
     }
 }

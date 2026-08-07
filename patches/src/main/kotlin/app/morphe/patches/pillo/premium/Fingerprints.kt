@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
 
 /** Internal JVM class descriptor for Pillo's Preferences. */
-internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/persistence/preferences/Preferences;"
+internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/data/persistence/preferences/Preferences;"
 
 /**
  * Matches `Job setIsPremiumState(boolean)` in SubscriptionStateProvider.

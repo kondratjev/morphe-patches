@@ -1,3 +1,21 @@
+## [1.18.0-dev.3](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.2...v1.18.0-dev.3) (2026-08-01)
+
+### ✨ New Features
+
+* add gmscore support for pillo ([34496e2](https://github.com/kondratjev/morphe-patches/commit/34496e2dcce69345f7203cdac6fb0f2953dd1f8f))
+
+## [1.18.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.18.0-dev.1...v1.18.0-dev.2) (2026-08-01)
+
+### ✨ New Features
+
+* bump soundcloud ([8d94bfa](https://github.com/kondratjev/morphe-patches/commit/8d94bfa3a05d36d39499c5c7a6210122f01853f4))
+
+## [1.18.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.17.0...v1.18.0-dev.1) (2026-07-29)
+
+### ✨ New Features
+
+* bump some apps ([b2a69d2](https://github.com/kondratjev/morphe-patches/commit/b2a69d25f83bb29baf020e7a060c983465783694))
+
 ## [1.17.0](https://github.com/kondratjev/morphe-patches/compare/v1.16.0...v1.17.0) (2026-07-05)
 
 ### ✨ New Features

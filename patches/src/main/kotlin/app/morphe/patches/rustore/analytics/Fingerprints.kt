@@ -7,7 +7,7 @@ import app.morphe.patcher.Fingerprint
  * the main send method all AltCraft event reporting converges on.
  */
 object AltCraftSendFingerprint : Fingerprint(
-    definingClass = "Lvh2/b;",
+    definingClass = "Lfj2/b;",
     name = "b",
     custom = { method, _ ->
         method.parameterTypes.size == 5 &&

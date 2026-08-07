@@ -14,7 +14,6 @@ import app.morphe.patches.all.misc.jsbundle.jsBundlePatch
 val unlockPremiumPatch = rawResourcePatch(
     name = "Unlock Premium",
     description = "Unlocks premium features.",
-    default = true,
 ) {
     compatibleWith(COMPATIBILITY_PARCELS)
 

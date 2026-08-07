@@ -14,11 +14,11 @@ val unlockPremiumPatch = bytecodePatch(
 
     execute {
         // Force hasPremium — covers all code paths using the extension function.
-        HasPremiumFingerprint.methodOrNull?.returnEarly(true)
+        HasPremiumFingerprint.method.returnEarly(true)
 
         // Force Premium.a = true in constructor — catches code paths
         // that read premium.a directly (bypassing hasPremium).
-        PremiumConstructorFingerprint.methodOrNull?.addInstructions(
+        PremiumConstructorFingerprint.method.addInstructions(
             0,
             """
                 sget-object p1, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;

@@ -7,14 +7,14 @@ import app.morphe.util.returnEarly
 
 @Suppress("unused")
 val enablePremiumPatch = bytecodePatch(
-    name = "Enable SoundCloud Go+",
-    description = "Enables all premium features, hides upsell UI and ads.",
+    name = "Enable SoundCloud Go",
+    description = "Enables SoundCloud Go premium features.",
 ) {
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        // Override plan construction with Go+ tier.
-        UserConsumerPlanConstructorFingerprint.methodOrNull?.addInstructions(
+        // Override plan construction with Go tier.
+        UserConsumerPlanConstructorFingerprint.method.addInstructions(
             0,
             """
                 const-string p1, "high_tier"
@@ -23,7 +23,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        GetDowngradeTierFingerprint.methodOrNull?.addInstructions(
+        GetDowngradeTierFingerprint.method.addInstructions(
             0,
             """
                 sget-object v0, Lcom/soundcloud/android/configuration/plans/Tier;->HIGH:Lcom/soundcloud/android/configuration/plans/Tier;
@@ -31,7 +31,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        MapToPlanFingerprint.methodOrNull?.addInstructions(
+        MapToPlanFingerprint.method.addInstructions(
             0,
             """
                 sget-object v0, Lcom/soundcloud/android/upsell/UpsellType${'$'}None;->INSTANCE:Lcom/soundcloud/android/upsell/UpsellType${'$'}None;
@@ -39,8 +39,8 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        // Force current tier to HIGH and plan to Go+.
-        GetCurrentTierFingerprint.methodOrNull?.addInstructions(
+        // Force current tier to HIGH and plan to Go.
+        GetCurrentTierFingerprint.method.addInstructions(
             0,
             """
                 sget-object v0, Lcom/soundcloud/android/configuration/plans/Tier;->HIGH:Lcom/soundcloud/android/configuration/plans/Tier;
@@ -48,7 +48,7 @@ val enablePremiumPatch = bytecodePatch(
             """,
         )
 
-        GetCurrentConsumerPlanFingerprint.methodOrNull?.addInstructions(
+        GetCurrentConsumerPlanFingerprint.method.addInstructions(
             0,
             """
                 sget-object v0, Lcom/soundcloud/android/configuration/plans/ConsumerPlan;->GO_PLUS:Lcom/soundcloud/android/configuration/plans/ConsumerPlan;
@@ -57,12 +57,12 @@ val enablePremiumPatch = bytecodePatch(
         )
 
         // Block offboarding — lifecycle observer controls all transition UI.
-        ConfigurationUpdatesLifecycleObserverFingerprint.methodOrNull?.returnEarly()
+        ConfigurationUpdatesLifecycleObserverFingerprint.method.returnEarly()
 
         // Disable ads.
-        GetShouldRequestAdsFingerprint.methodOrNull?.returnEarly(false)
+        GetShouldRequestAdsFingerprint.method.returnEarly(false)
 
-        IsMonetizableAdGeoFingerprint.methodOrNull?.returnEarly(false)
+        IsMonetizableAdGeoFingerprint.method.returnEarly(false)
 
         // Disable ads — force `enabled` param to false in the data-class ctor.
         AdPlacementConfigCtorFingerprint.matchAllOrNull()?.forEach { match ->

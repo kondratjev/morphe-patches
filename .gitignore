@@ -129,7 +129,6 @@ node_modules/
 # Ignore IDEA files
 .idea/
 local.properties
-package-lock.json
 
 # macOS
 .DS_Store

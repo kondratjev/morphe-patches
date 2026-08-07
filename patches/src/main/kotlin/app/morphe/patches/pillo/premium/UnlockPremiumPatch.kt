@@ -32,10 +32,10 @@ val unlockPremiumPatch = bytecodePatch(
         )
 
         // Block Adapty SDK init (subscription/paywall tracking).
-        AdaptyInitializerCreateFingerprint.methodOrNull?.returnEarly()
+        AdaptyInitializerCreateFingerprint.method.returnEarly()
 
         // Block AdMob SDK init (ads gated by isAdfree anyway; skip spin-up).
-        AdmobInitializerCreateFingerprint.methodOrNull?.returnEarly()
+        AdmobInitializerCreateFingerprint.method.returnEarly()
     }
 }
 
