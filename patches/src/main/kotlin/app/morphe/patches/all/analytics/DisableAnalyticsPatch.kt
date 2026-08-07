@@ -32,7 +32,7 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             application.disableComponentsWhere(appMetrica)
             application.setApplicationMetaData("io.appmetrica.analytics.auto_tracking_enabled", "false")
             application.setApplicationMetaData("io.appmetrica.analytics.location_tracking_enabled", "false")
-            logger.info("AppMetrica: ${if (amFound) "patched" else "not found"}")
+            logger.info("AppMetrica: ${if (amFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // MyTracker (VK / Mail.ru)
             val mtFound = application.disableComponentsWhere {
@@ -40,7 +40,7 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                     it.startsWith("ru.mail.mytracker.") ||
                     it.contains(".mytracker.", ignoreCase = true)
             } > 0
-            logger.info("MyTracker: ${if (mtFound) "patched" else "not found"}")
+            logger.info("MyTracker: ${if (mtFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Firebase Analytics (Google)
             mapOf(
@@ -58,14 +58,14 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                 "com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver",
                 "com.google.firebase.sessions.SessionLifecycleService",
             )
-            logger.info("Firebase: patched")
+            logger.info("Firebase: ✅ patched successfully")
 
             // Google Analytics (legacy)
             val gaFound = application.disableComponentsByPrefix(
                 "com.google.android.gms.analytics.",
                 "com.google.android.gms.tagmanager.",
             ) > 0
-            logger.info("Google Analytics: ${if (gaFound) "patched" else "not found"}")
+            logger.info("Google Analytics: ${if (gaFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Sentry
             application.setApplicationMetaData("io.sentry.enabled", "false")
@@ -73,7 +73,7 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             val sentryFound = application.disableComponentsWhere {
                 it.startsWith("io.sentry.") || it.contains(".Sentry")
             } > 0
-            logger.info("Sentry: ${if (sentryFound) "patched" else "not found"}")
+            logger.info("Sentry: ${if (sentryFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Adjust
             manifest.removeChildren(
@@ -81,7 +81,7 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                     .filter { it.getAttribute("android:name").startsWith("com.adjust.") },
             )
             val adjFound = application.disableComponentsByPrefix("com.adjust.") > 0
-            logger.info("Adjust: ${if (adjFound) "patched" else "not found"}")
+            logger.info("Adjust: ${if (adjFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // AppsFlyer
             manifest.removeChildren(
@@ -89,14 +89,14 @@ private val disableAnalyticsManifestPatch = resourcePatch {
                     .filter { it.getAttribute("android:name") == "com.appsflyer.referrer.INSTALL_PROVIDER" },
             )
             val afFound = application.disableComponentsByPrefix("com.appsflyer.") > 0
-            logger.info("AppsFlyer: ${if (afFound) "patched" else "not found"}")
+            logger.info("AppsFlyer: ${if (afFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Facebook
             application.setApplicationMetaData("com.facebook.sdk.AutoLogAppEventsEnabled", "false")
             application.setApplicationMetaData("com.facebook.sdk.AdvertiserIDCollectionEnabled", "false")
             application.disableComponentsByPrefix("com.facebook.appevents.")
             val fbFound = application.disableComponentsByPrefix("com.facebook.analytics.") > 0
-            logger.info("Facebook: ${if (fbFound) "patched" else "not found"}")
+            logger.info("Facebook: ${if (fbFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // MoEngage
             application.setApplicationMetaData("com_moengage_core_file_based_initialisation_enabled", "false")
@@ -106,19 +106,19 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             application.setApplicationMetaData("com_moengage_core_user_registration_enabled", "false")
             application.setApplicationMetaData("com_moengage_fcm_registration_enabled", "false")
             val moFound = application.disableComponentsByPrefix("com.moengage.") > 0
-            logger.info("MoEngage: ${if (moFound) "patched" else "not found"}")
+            logger.info("MoEngage: ${if (moFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // comScore
             val csFound = application.disableComponentsByPrefix("com.comscore.") > 0
-            logger.info("comScore: ${if (csFound) "patched" else "not found"}")
+            logger.info("comScore: ${if (csFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Amplitude
             val ampFound = application.disableComponentsByPrefix("com.amplitude.") > 0
-            logger.info("Amplitude: ${if (ampFound) "patched" else "not found"}")
+            logger.info("Amplitude: ${if (ampFound) "✅ patched successfully" else "❌ patch not applied"}")
 
             // Mixpanel
             val mpFound = application.disableComponentsByPrefix("com.mixpanel.") > 0
-            logger.info("Mixpanel: ${if (mpFound) "patched" else "not found"}")
+            logger.info("Mixpanel: ${if (mpFound) "✅ patched successfully" else "❌ patch not applied"}")
         }
     }
 }
@@ -131,17 +131,18 @@ val disableAnalyticsPatch = bytecodePatch(
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
         "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
+    default = false
 ) {
     dependsOn(disableAnalyticsManifestPatch)
 
     execute {
         AppMetricaPublicApiFingerprint.methodOrNull
             ?.returnEarly()
-            .also { logger.info("AppMetrica public API: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("AppMetrica public API: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         AppMetricaInternalReportFingerprint.methodOrNull
             ?.returnEarly()
-            .also { logger.info("AppMetrica internal: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("AppMetrica internal: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         AppMetricaInternalQueueFingerprint.methodOrNull
             ?.addInstructions(
@@ -153,22 +154,22 @@ val disableAnalyticsPatch = bytecodePatch(
                     return-object p0
                 """,
             )
-            .also { logger.info("AppMetrica queue: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("AppMetrica queue: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         AppMetricaInternalCallbackFingerprint.methodOrNull
             ?.addInstructions(0, "const/4 p0, 0x0\nreturn-object p0")
-            .also { logger.info("AppMetrica callback: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("AppMetrica callback: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         MyTrackerInitFingerprint.methodOrNull
             ?.returnEarly()
-            .also { logger.info("MyTracker: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("MyTracker: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         FirebaseCrashlyticsCollectionFingerprint.methodOrNull
             ?.returnEarly()
-            .also { logger.info("Firebase Crashlytics collection: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("Firebase Crashlytics collection: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
         FirebasePerformanceCollectionFingerprint.methodOrNull
             ?.returnEarly()
-            .also { logger.info("Firebase Performance collection: ${if (it != null) "patched" else "not found"}") }
+            .also { logger.info("Firebase Performance collection: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
     }
 }
