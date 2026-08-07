@@ -400,7 +400,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "20.9.2",
+              "version": "20.6.1",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,

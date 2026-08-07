@@ -2,6 +2,7 @@ package app.morphe.patches.lifesum.premium
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.all.pairip.license.disableLicenseCheckPatch
 import app.morphe.patches.lifesum.shared.Constants.COMPATIBILITY_LIFESUM
 import app.morphe.util.returnEarly
 
