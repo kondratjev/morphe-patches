@@ -14,13 +14,13 @@ val unlockPremiumPatch = bytecodePatch(
 
     execute {
         // Canonical isPremium check → always true.
-        IsPremiumFingerprint.methodOrNull?.returnEarly(true)
+        IsPremiumFingerprint.method.returnEarly(true)
 
         // Secondary android-subscription check → always true.
-        HasAndroidSubscriptionFingerprint.methodOrNull?.returnEarly(true)
+        HasAndroidSubscriptionFingerprint.method.returnEarly(true)
 
         // Subscription cancel writer → no-op (never set sp_premium = false).
-        SaveUserStatusFingerprint.methodOrNull?.addInstructions(
+        SaveUserStatusFingerprint.method.addInstructions(
             0,
             """
                 const/4 v0, 0x1

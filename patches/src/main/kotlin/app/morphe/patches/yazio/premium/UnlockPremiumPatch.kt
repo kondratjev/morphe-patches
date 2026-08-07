@@ -14,23 +14,23 @@ val unlockPremiumPatch = bytecodePatch(
 
     execute {
         // Primary subscription check → always true.
-        SubscriptionCheckFingerprint.methodOrNull?.returnEarly(true)
+        SubscriptionCheckFingerprint.method.returnEarly(true)
 
         // Lenient subscription check → always true.
-        SubscriptionCheckLenientFingerprint.methodOrNull?.returnEarly(true)
+        SubscriptionCheckLenientFingerprint.method.returnEarly(true)
 
         // "is NOT premium" → force false (user IS premium).
-        IsNotPremiumFingerprint.methodOrNull?.returnEarly(false)
+        IsNotPremiumFingerprint.method.returnEarly(false)
 
         // "IS premium" → force true.
-        IsPremiumFingerprintA.methodOrNull?.returnEarly(true)
+        IsPremiumFingerprintA.method.returnEarly(true)
 
         // "IS premium" → force true.
-        IsPremiumFingerprintB.methodOrNull?.returnEarly(true)
+        IsPremiumFingerprintB.method.returnEarly(true)
 
         // PremiumType null check (inverted). Returns Boolean.TRUE when
         // NOT premium → return FALSE. Return type is Object (coroutine).
-        PremiumTypeNullCheckFingerprint.methodOrNull?.addInstructions(
+        PremiumTypeNullCheckFingerprint.method.addInstructions(
             0,
             """
                 const/4 v0, 0x0

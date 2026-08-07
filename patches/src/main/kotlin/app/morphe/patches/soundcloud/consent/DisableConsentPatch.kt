@@ -12,7 +12,7 @@ val disableConsentPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_SOUNDCLOUD)
 
     execute {
-        PrivacyConsentControllerProviderFingerprint.methodOrNull?.addInstructions(
+        PrivacyConsentControllerProviderFingerprint.method.addInstructions(
             0,
             """
                 sget-object v0, Lcom/soundcloud/android/privacy/consent/base/NoopPrivacyConsentController;->a:Lcom/soundcloud/android/privacy/consent/base/NoopPrivacyConsentController;

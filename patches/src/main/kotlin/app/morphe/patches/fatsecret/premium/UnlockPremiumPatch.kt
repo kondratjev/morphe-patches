@@ -27,16 +27,16 @@ val unlockPremiumPatch = bytecodePatch(
 
     execute {
         // Primary isPremium check → always true.
-        IsPremiumFingerprint.methodOrNull?.returnEarly(true)
+        IsPremiumFingerprint.method.returnEarly(true)
 
         // Premium status loaded → always true.
-        IsPremiumLoadedFingerprint.methodOrNull?.returnEarly(true)
+        IsPremiumLoadedFingerprint.method.returnEarly(true)
 
         // Invalid subscription check → always false.
-        IsInvalidSubscriptionFingerprint.methodOrNull?.returnEarly(false)
+        IsInvalidSubscriptionFingerprint.method.returnEarly(false)
 
         // Force both params true in StateFlow emitter.
-        PremiumStatusEmitterFingerprint.methodOrNull?.addInstructions(
+        PremiumStatusEmitterFingerprint.method.addInstructions(
             0,
             """
                 const/4 p1, 0x1
