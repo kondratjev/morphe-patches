@@ -47,7 +47,7 @@ val disableRuStoreAnalyticsPatch = bytecodePatch(
 
     execute {
         if (AltCraftSendFingerprint.methodOrNull != null) {
-            AltCraftSendFingerprint.method.returnEarly()
+            AltCraftSendFingerprint.method.returnEarly(null as Void?)
             logger.info("Patched AltCraft send method")
         } else {
             logger.info("Skipped AltCraft (not found)")

@@ -9,7 +9,7 @@ object Constants {
         packageName = "ru.vk.store",
         appIconColor = 0x0077FF,
         targets = listOf(
-            AppTarget("1.106.0.3")
+            AppTarget("1.108.0.2")
         )
     )
 }

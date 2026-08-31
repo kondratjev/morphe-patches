@@ -3,15 +3,15 @@ package app.morphe.patches.rustore.analytics
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `AltCraftAnalyticsImpl.b(String, Map, String, boolean, ph2.f)` —
- * the main send method all AltCraft event reporting converges on.
+ * Matches `AltCraftSendEventsUseCase.a(I, Continuation)` — the suspend
+ * use-case entry for AltCraft (compiled from `AltCraftSendEventsUseCase.kt`).
+ * Obfuscated as `Lwo2/c;` in 1.108.0.2; previously `Lfj2/b;`.
  */
 object AltCraftSendFingerprint : Fingerprint(
-    definingClass = "Lfj2/b;",
-    name = "b",
+    definingClass = "Lwo2/c;",
+    name = "a",
     custom = { method, _ ->
-        method.parameterTypes.size == 5 &&
-            method.parameterTypes[0] == "Ljava/lang/String;" &&
+        method.parameterTypes.size == 2 &&
             method.implementation != null
     },
 )

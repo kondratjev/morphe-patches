@@ -7,7 +7,7 @@ import app.morphe.patcher.Fingerprint
  * method that checks authorization before showing login modal on update.
  */
 object AuthSuggestShownFingerprint : Fingerprint(
-    definingClass = "Ll61/e;",
+    definingClass = "Laa1/e;",
     name = "a",
     returnType = "Ljava/lang/Object;",
     custom = { method, _ -> method.parameters.size == 1 },

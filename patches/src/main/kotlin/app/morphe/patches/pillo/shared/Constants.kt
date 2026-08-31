@@ -9,7 +9,7 @@ object Constants {
         packageName = "xyz.rtrvr.pillo",
         appIconColor = 0x7C4DFF,
         targets = listOf(
-            AppTarget("0.6.18")
+            AppTarget("0.6.19")
         )
     )
 }
