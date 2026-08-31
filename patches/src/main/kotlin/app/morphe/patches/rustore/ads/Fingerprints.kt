@@ -8,7 +8,7 @@ import app.morphe.patcher.Fingerprint
  * MyTarget, and VKR ads without affecting other remote features.
  */
 object RawAdvertisementRepoGetFingerprint : Fingerprint(
-    definingClass = "Lt41/g0;",
+    definingClass = "Li81/u0;",
     name = "a",
     custom = { method, _ -> method.parameters.size >= 7 },
 )

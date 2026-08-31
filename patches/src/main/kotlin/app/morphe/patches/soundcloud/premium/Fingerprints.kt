@@ -26,9 +26,9 @@ object GetDowngradeTierFingerprint : Fingerprint(
     parameters = emptyList(),
 )
 
-/** Matches `RemoteUpsellVisibilityController.mapToPlan()` — maps backend upselling data to plan visibility. */
+/** Matches `UpsellVisibilityController.mapToPlan()` — maps backend upselling data to plan visibility. */
 object MapToPlanFingerprint : Fingerprint(
-    definingClass = "Lcom/soundcloud/android/upsell/RemoteUpsellVisibilityController;",
+    definingClass = "Lcom/soundcloud/android/upsell/UpsellVisibilityController;",
     name = "mapToPlan",
 )
 

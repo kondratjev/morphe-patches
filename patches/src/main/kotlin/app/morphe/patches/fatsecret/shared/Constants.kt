@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.fatsecret.android",
         appIconColor = 0x00897B,
         targets = listOf(
-            AppTarget("11.7.0.1")
+            AppTarget("11.8.0.5")
         )
     )
 }
