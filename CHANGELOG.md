@@ -1,3 +1,9 @@
+## [1.20.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.19.0...v1.20.0-dev.1) (2026-08-31)
+
+### ✨ New Features
+
+* bump some apps ([f2a5580](https://github.com/kondratjev/morphe-patches/commit/f2a5580c9051e656a2f0651bd803e309246e9c83))
+
 ## [1.19.0](https://github.com/kondratjev/morphe-patches/compare/v1.18.0...v1.19.0) (2026-08-07)
 
 ### ✨ New Features
