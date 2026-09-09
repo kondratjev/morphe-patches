@@ -39,5 +39,15 @@ val disableLicenseCheckPatch = bytecodePatch(
 
         // Short-circuit license response validation.
         ValidateLicenseResponseFingerprint.method.returnEarly()
+
+        // Pass the local installer check even when not installed from Play Store.
+        // Uses methodOrNull — older Pairip versions without this check are unaffected.
+        LocalInstallerCheckFingerprint.methodOrNull?.returnEarly(true)
+
+        // Never launch the license error dialog, no matter which sub-check failed.
+        StartErrorDialogFingerprint.methodOrNull?.returnEarly()
+
+        // Never kill the app after a silently failed check.
+        ScheduleAppShutdownFingerprint.methodOrNull?.returnEarly()
     }
 }

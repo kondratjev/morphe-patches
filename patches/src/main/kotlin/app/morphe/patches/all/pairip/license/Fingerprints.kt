@@ -10,6 +10,24 @@ object ProcessLicenseResponseFingerprint : Fingerprint(
     name = "processResponse",
 )
 
+/** Matches `LicenseClient.performLocalInstallerCheck()` — fails when the installer is not Play Store. */
+object LocalInstallerCheckFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "performLocalInstallerCheck",
+)
+
+/** Matches `LicenseClient.startErrorDialogActivity()` — launches the "Google Play" error dialog. */
+object StartErrorDialogFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "startErrorDialogActivity",
+)
+
+/** Matches `LicenseClient.scheduleAppShutdown()` — kills the app some time after a failed check. */
+object ScheduleAppShutdownFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "scheduleAppShutdown",
+)
+
 /** Matches any method reading the `repeatedCheckEnabled` static boolean field. */
 object RepeatedCheckFingerprint : Fingerprint(
     filters = listOf(
