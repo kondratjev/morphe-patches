@@ -1,3 +1,9 @@
+## [1.22.0](https://github.com/kondratjev/morphe-patches/compare/v1.21.0...v1.22.0) (2026-09-09)
+
+### ✨ New Features
+
+* Bump some apps (Lifesum/Lyfta/Yazio) ([0e702ac](https://github.com/kondratjev/morphe-patches/commit/0e702acd75ce93d34bcc03d1cfc9be77a704ec4b))
+
 ## [1.22.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.21.0...v1.22.0-dev.1) (2026-09-09)
 
 ### ✨ New Features
