@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.ornament.monitor",
         appIconColor = 0x6750A4,
         targets = listOf(
-            AppTarget("4.15.1")
+            AppTarget("4.18.1")
         )
     )
 }

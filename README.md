@@ -9,27 +9,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.20.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.20.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;25 patches total
-<details open>
-<summary>📦 RuStore&nbsp;&nbsp;•&nbsp;&nbsp;6 patches</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 1.108.0.2 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Disable Mine redesign](#disable-mine-redesign) | Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface. |  |
-| [Disable ads](#disable-ads) | Removes all advertisements from the app. |  |
-| [Disable analytics](#disable-analytics) | Disables VK-specific analytics. |  |
-| [Disable background scan](#disable-background-scan) | Disables the periodic Kaspersky background device scan. |  |
-| [Disable gaming profile](#disable-gaming-profile) | Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen. |  |
-| [Skip update auth](#skip-update-auth) | Removes the login requirement when updating apps. |  |
-
-</details>
-
+> **[v1.21.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.21.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -146,12 +126,12 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 4.15.1 |
+| 4.18.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks part of Ornament Pro features. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks Ornament subscription features. |  |
 
 </details>
 
@@ -167,21 +147,6 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks premium features. |  |
-
-</details>
-
-<details open>
-<summary>📦 WiseMeal&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
-<br>
-
-**🎯 Supported versions:**
-
-| 1.3.0 |
-| :---: |
-
-| 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
-|----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | ROOT ONLY. Unlocks all premium features. |  |
 
 </details>
 
