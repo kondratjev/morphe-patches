@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.yazio.android",
         appIconColor = 0x00C853,
         targets = listOf(
-            AppTarget("12.87.0")
+            AppTarget("26.36.1")
         )
     )
 }
