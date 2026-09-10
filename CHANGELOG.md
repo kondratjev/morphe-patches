@@ -1,3 +1,9 @@
+## [1.23.0](https://github.com/kondratjev/morphe-patches/compare/v1.22.0...v1.23.0) (2026-09-10)
+
+### ✨ New Features
+
+* Bump Lifesum and fix Lyfta patches ([3bc3e67](https://github.com/kondratjev/morphe-patches/commit/3bc3e6788646586bc6beb3bbc5b25da765f29ac0))
+
 ## [1.23.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.22.0...v1.23.0-dev.1) (2026-09-10)
 
 ### ✨ New Features
