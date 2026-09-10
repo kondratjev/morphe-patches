@@ -49,5 +49,9 @@ val disableLicenseCheckPatch = bytecodePatch(
 
         // Never kill the app after a silently failed check.
         ScheduleAppShutdownFingerprint.methodOrNull?.returnEarly()
+
+        // Never start the license check in the first place — fire-and-forget
+        // entry called from the (wrapped) Application. Nothing reads its result.
+        CheckLicenseFingerprint.methodOrNull?.returnEarly()
     }
 }

@@ -15,6 +15,10 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(disableLicenseCheckPatch)
 
     execute {
-        GetSubscriptionTypeFingerprint.method.returnEarly("premium")
+        // Central premium gate → always true.
+        IsPremiumUserFingerprint.method.returnEarly(true)
+
+        // Subscription tier string → "premium" for every direct reader.
+        LocalAccessStateFingerprint.method.returnEarly("premium")
     }
 }

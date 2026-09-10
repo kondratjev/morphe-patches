@@ -4,6 +4,12 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import com.android.tools.smali.dexlib2.Opcode
 
+/** Matches `LicenseClient.checkLicense()` — the single entry point starting the whole check. */
+object CheckLicenseFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "checkLicense",
+)
+
 /** Matches `LicenseClient.processResponse()` — processes the license validation server response. */
 object ProcessLicenseResponseFingerprint : Fingerprint(
     definingClass = "Lcom/pairip/licensecheck/LicenseClient;",

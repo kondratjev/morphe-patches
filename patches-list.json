@@ -242,7 +242,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "20.8.0",
+              "version": "20.9.0",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
