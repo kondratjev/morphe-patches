@@ -1,3 +1,9 @@
+## [1.24.0](https://github.com/kondratjev/morphe-patches/compare/v1.23.0...v1.24.0) (2026-09-15)
+
+### ✨ New Features
+
+* Add Lyfta 1.575 with old UI and update Ornament patch supported version ([3b69189](https://github.com/kondratjev/morphe-patches/commit/3b691896b5f36d27bc1655137d47bc21c575e18f))
+
 ## [1.24.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.23.0...v1.24.0-dev.1) (2026-09-15)
 
 ### ✨ New Features
