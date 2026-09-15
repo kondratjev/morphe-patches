@@ -6,10 +6,20 @@ Patches for use with [Morphe](https://morphe.software).
 
 A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
+## 📚 How to use
+
+Click here to add these patches to Morphe:
+
+> https://morphe.software/add-source?github=kondratjev/morphe-patches
+
+Or manually add this repository URL in Morphe Manager → Sources:
+
+> `https://github.com/kondratjev/morphe-patches`
+
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.23.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.23.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
+> **[v1.24.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.24.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
@@ -81,8 +91,8 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 1.591 |
-| :---: |
+| 1.591 | 1.575 |
+| :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
@@ -126,7 +136,7 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 **🎯 Supported versions:**
 
-| 4.18.1 |
+| 4.19.2 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -179,16 +189,6 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 <!-- PATCHES_END -->
 
-## 📚 How to use
-
-Click here to add these patches to Morphe:
-
-> https://morphe.software/add-source?github=kondratjev/morphe-patches
-
-Or manually add this repository URL in Morphe Manager → Sources:
-
-> `https://github.com/kondratjev/morphe-patches`
-
 ## ⚖️ Disclaimer
 
 This project is provided for **educational purposes only**. The patches are intended to help developers understand Android bytecode modification and the Morphe patching framework.
@@ -204,7 +204,7 @@ The author assumes no liability for any consequences resulting from the use of t
 ## 🛠️ Building
 
 ```bash
-./gradlew patches:generatePatchesList
+./gradlew clean :patches:buildAndroid patches:generatePatchesList
 ```
 
 The built `.mpp` file will be at `patches/build/libs/`.

@@ -22,13 +22,13 @@ val unlockPremiumPatch = bytecodePatch(
                 "6C 03 01 6C 02 02 29 01 00 2E 06 01" to
                     "78 00 5C 00 00 00 00 00 00 00 00 00",
 
-                // Patch useHasSubscription hook (#37597, 61 bytes) to always return true.
+                // Patch useHasSubscription hook (#37570, 61 bytes) to always return true.
                 // Full function unique (61 bytes): useSelector(getActiveSubscription)
                 // Replaced: LoadConstTrue r0 + Ret r0
-                // String IDs verified on 4.18.1: purchasesSelectors=0xFA23, getActiveSubscription=0xC9AF
+                // String IDs verified on 4.19.2: purchasesSelectors=0xFA4A, getActiveSubscription=0xCB19
                 "29 00 00 2E 03 00 00 2E 04 00 01 6E 00 01 49 00 04 00 76 02 53 00 03 02 00" +
-                    "36 01 00 01 F5 6E 00 02 49 00 04 00 53 00 03 02 00 37 00 00 02 23 FA" +
-                    "37 00 00 03 AF C9 53 00 01 02 00 5C 00" to
+                    "36 01 00 01 F5 6E 00 02 49 00 04 00 53 00 03 02 00 37 00 00 02 4A FA" +
+                    "37 00 00 03 19 CB 53 00 01 02 00 5C 00" to
                     "78 00 5C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00" +
                     "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00" +
                     "00 00 00 00 00 00 00 00 00 00 00 00 00",
@@ -52,17 +52,18 @@ val unlockPremiumPatch = bytecodePatch(
                 // Patch getUnavailableHealthAdvisorList saga locked-fallback to available.
                 // The saga ends the locked branch with setAvailablePartsList(getAvailablePartsListDefault(parts, false)).
                 // Single byte: LoadConstFalse r8 -> LoadConstTrue r8 (same length, reachable code safe).
-                "37 0C 08 0D AE EA 79 08 54 08 0C 06 03 08" to
-                    "37 0C 08 0D AE EA 78 08 54 08 0C 06 03 08",
+                // String ID verified on 4.19.2: getAvailablePartsListDefault=0xEB30
+                "37 0C 08 0D 30 EB 79 08 54 08 0C 06 03 08" to
+                    "37 0C 08 0D 30 EB 78 08 54 08 0C 06 03 08",
 
                 // getSubscriptionLevel: replace STANDARD/LITE returns with PRO.
                 // Pattern: 37 <dst> <src> <cache> <strId_lo> <strId_hi> 5c <ret>
-                // String IDs verified on 4.18.1: STANDARD=0x752B, LITE=0x5E21, PRO=0x772B
-                "37 03 03 0B 21 5E 5C 03" to "37 03 03 0B 2B 77 5C 03",
-                "37 03 01 12 2B 75 5C 03" to "37 03 01 12 2B 77 5C 03",
-                "37 03 01 0B 21 5E 5C 03" to "37 03 01 0B 2B 77 5C 03",
-                "37 01 01 12 2B 75 5C 01" to "37 01 01 12 2B 77 5C 01",
-                "37 00 00 12 2B 75 5C 00" to "37 00 00 12 2B 77 5C 00",
+                // String IDs verified on 4.19.2: STANDARD=0xADEF, LITE=0xBA60, PRO=0x759B
+                "37 03 03 0B 60 BA 5C 03" to "37 03 03 0B 9B 75 5C 03",
+                "37 03 01 12 EF AD 5C 03" to "37 03 01 12 9B 75 5C 03",
+                "37 03 01 0B 60 BA 5C 03" to "37 03 01 0B 9B 75 5C 03",
+                "37 01 01 12 EF AD 5C 01" to "37 01 01 12 9B 75 5C 01",
+                "37 00 00 12 EF AD 5C 00" to "37 00 00 12 9B 75 5C 00",
 
                 // Rename string "isPaid" -> "isFree" in string table.
                 // isPaid is a prefix of isPaidContent (shared storage).
