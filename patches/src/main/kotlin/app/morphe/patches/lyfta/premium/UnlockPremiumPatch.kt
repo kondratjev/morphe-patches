@@ -1,5 +1,6 @@
 package app.morphe.patches.lyfta.premium
 
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.util.returnEarly
 import app.morphe.patches.all.pairip.license.disableLicenseCheckPatch
@@ -15,10 +16,18 @@ val unlockPremiumPatch = bytecodePatch(
     dependsOn(disableLicenseCheckPatch)
 
     execute {
-        // Central premium gate → always true.
-        IsPremiumUserFingerprint.method.returnEarly(true)
+        // 1.575 (old UI): subscription tier string.
+        val legacyPatched = GetSubscriptionTypeFingerprint.methodOrNull
+            ?.returnEarly("premium") != null
 
-        // Subscription tier string → "premium" for every direct reader.
-        LocalAccessStateFingerprint.method.returnEarly("premium")
+        // 1.591 (new UI): central premium gate + tier string.
+        val gatePatched = IsPremiumUserFingerprint.methodOrNull
+            ?.returnEarly(true) != null
+        val tierPatched = LocalAccessStateFingerprint.methodOrNull
+            ?.returnEarly("premium") != null
+
+        if (!legacyPatched && !gatePatched && !tierPatched) {
+            throw PatchException("No premium fingerprints matched for version ${packageMetadata.versionName}")
+        }
     }
 }

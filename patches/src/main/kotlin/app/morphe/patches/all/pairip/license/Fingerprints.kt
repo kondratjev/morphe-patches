@@ -34,6 +34,28 @@ object ScheduleAppShutdownFingerprint : Fingerprint(
     name = "scheduleAppShutdown",
 )
 
+/** Matches `LicenseClient.initializeLicenseCheck()` — second entry point,
+ * called directly from `LicenseContentProvider.onCreate`, bypassing `checkLicense`. */
+object InitializeLicenseCheckFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "initializeLicenseCheck",
+)
+
+/** Matches `LicenseContentProvider.onCreate()` — auto-run at app start,
+ * launches the license check outside `checkLicense`. */
+object LicenseContentProviderOnCreateFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseContentProvider;",
+    name = "onCreate",
+)
+
+/** Matches `SignatureCheck.verifyIntegrity()` — throws when the APK signature
+ * doesn't match the Play release (i.e. any patched install). Called from the
+ * wrapped Application before anything else. */
+object SignatureCheckFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/SignatureCheck;",
+    name = "verifyIntegrity",
+)
+
 /** Matches any method reading the `repeatedCheckEnabled` static boolean field. */
 object RepeatedCheckFingerprint : Fingerprint(
     filters = listOf(

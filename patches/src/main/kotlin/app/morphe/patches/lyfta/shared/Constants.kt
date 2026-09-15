@@ -10,6 +10,7 @@ object Constants {
         appIconColor = 0x000000,
         targets = listOf(
             AppTarget("1.591"),
+            AppTarget("1.575"),
         )
     )
 }

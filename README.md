@@ -6,6 +6,16 @@ Patches for use with [Morphe](https://morphe.software).
 
 A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
+## 📚 How to use
+
+Click here to add these patches to Morphe:
+
+> https://morphe.software/add-source?github=kondratjev/morphe-patches
+
+Or manually add this repository URL in Morphe Manager → Sources:
+
+> `https://github.com/kondratjev/morphe-patches`
+
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
@@ -179,16 +189,6 @@ A collection of bytecode patches for Android apps, built for the Morphe patcher.
 
 <!-- PATCHES_END -->
 
-## 📚 How to use
-
-Click here to add these patches to Morphe:
-
-> https://morphe.software/add-source?github=kondratjev/morphe-patches
-
-Or manually add this repository URL in Morphe Manager → Sources:
-
-> `https://github.com/kondratjev/morphe-patches`
-
 ## ⚖️ Disclaimer
 
 This project is provided for **educational purposes only**. The patches are intended to help developers understand Android bytecode modification and the Morphe patching framework.
@@ -204,7 +204,7 @@ The author assumes no liability for any consequences resulting from the use of t
 ## 🛠️ Building
 
 ```bash
-./gradlew patches:generatePatchesList
+./gradlew clean :patches:buildAndroid patches:generatePatchesList
 ```
 
 The built `.mpp` file will be at `patches/build/libs/`.

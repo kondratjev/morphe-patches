@@ -41,7 +41,6 @@ val disableLicenseCheckPatch = bytecodePatch(
         ValidateLicenseResponseFingerprint.method.returnEarly()
 
         // Pass the local installer check even when not installed from Play Store.
-        // Uses methodOrNull — older Pairip versions without this check are unaffected.
         LocalInstallerCheckFingerprint.methodOrNull?.returnEarly(true)
 
         // Never launch the license error dialog, no matter which sub-check failed.
@@ -53,5 +52,15 @@ val disableLicenseCheckPatch = bytecodePatch(
         // Never start the license check in the first place — fire-and-forget
         // entry called from the (wrapped) Application. Nothing reads its result.
         CheckLicenseFingerprint.methodOrNull?.returnEarly()
+
+        // Kill the second entry point — the content provider calls it directly,
+        // bypassing checkLicense.
+        InitializeLicenseCheckFingerprint.methodOrNull?.returnEarly()
+
+        // Report the provider as loaded without starting any check.
+        LicenseContentProviderOnCreateFingerprint.methodOrNull?.returnEarly(true)
+
+        // Skip the APK signature check — any patched install is resigned.
+        SignatureCheckFingerprint.methodOrNull?.returnEarly()
     }
 }
