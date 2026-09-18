@@ -4,7 +4,7 @@ morphe-patches-library = "1.5.1"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
 gson = "2.14.0"
-guava = "33.6.0-jre"
+guava = "33.7.1-jre"
 
 [libraries]
 morphe-patches-library = { module = "app.morphe:morphe-patches-library", version.ref = "morphe-patches-library" }
