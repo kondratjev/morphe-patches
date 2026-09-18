@@ -19,9 +19,9 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.24.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.24.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;18 patches total
+> **[v1.25.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.25.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;19 patches total
 <details open>
-<summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
+<summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -32,6 +32,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable analytics](#disable-analytics) | Disables PulseSDK analytics. |  |
+| [MicroG support](#microg-support) | Fixes Google sign-in and sync on patched builds: routes Google services through MicroG-RE and reports the original certificate to Firebase. Requires MicroG-RE with a Google account. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
 
 </details>
@@ -106,7 +107,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 9.51.0 |
+| 9.52.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
