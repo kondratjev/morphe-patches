@@ -1,3 +1,9 @@
+## [1.25.0](https://github.com/kondratjev/morphe-patches/compare/v1.24.0...v1.25.0) (2026-09-18)
+
+### ✨ New Features
+
+* Bump medisafe and add pillo microg support ([400318d](https://github.com/kondratjev/morphe-patches/commit/400318dc649c88e55ecf9aeb144a93480bd0b08f))
+
 ## [1.25.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.24.0...v1.25.0-dev.1) (2026-09-18)
 
 ### ✨ New Features
