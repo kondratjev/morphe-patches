@@ -87,7 +87,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 </details>
 
 <details open>
-<summary>📦 Lyfta&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
+<summary>📦 Lyfta&nbsp;&nbsp;•&nbsp;&nbsp;2 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -98,6 +98,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
+| [Support patched YouTube Music](#support-patched-youtube-music) | Points the workout music button at a patched YouTube Music app instead of the stock package, so the button opens it. | ⚙️ `YouTube Music package` |
 
 </details>
 

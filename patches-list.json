@@ -228,6 +228,54 @@
       "options": []
     },
     {
+      "name": "Support patched YouTube Music",
+      "description": "Points the workout music button at a patched YouTube Music app instead of the stock package, so the button opens it.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.lyfta",
+          "name": "Lyfta",
+          "description": null,
+          "apkFileType": null,
+          "appIconColor": "#000000",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.600",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "1.575",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "youTubeMusicPackage",
+          "title": "YouTube Music package",
+          "description": "Package name of the patched YouTube Music app installed on the device.",
+          "required": true,
+          "type": "kotlin.String",
+          "default": "app.morphe.android.apps.youtube.music",
+          "values": {
+            "Morphe": "app.morphe.android.apps.youtube.music",
+            "ReVanced": "app.revanced.android.apps.youtube.music",
+            "Anddea": "anddea.youtube.music",
+            "Clone": "bill.youtube.music"
+          }
+        }
+      ]
+    },
+    {
       "name": "Unlock Premium",
       "description": "Unlocks all FatSecret Gold features and hides the Premium tab.",
       "default": true,
