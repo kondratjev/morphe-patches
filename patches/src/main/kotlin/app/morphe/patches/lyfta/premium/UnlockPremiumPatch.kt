@@ -20,7 +20,7 @@ val unlockPremiumPatch = bytecodePatch(
         val legacyPatched = GetSubscriptionTypeFingerprint.methodOrNull
             ?.returnEarly("premium") != null
 
-        // 1.591 (new UI): central premium gate + tier string.
+        // 1.600 (new UI): central premium gate + tier string.
         val gatePatched = IsPremiumUserFingerprint.methodOrNull
             ?.returnEarly(true) != null
         val tierPatched = LocalAccessStateFingerprint.methodOrNull
