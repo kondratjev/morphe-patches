@@ -1,3 +1,10 @@
+## [1.26.0](https://github.com/kondratjev/morphe-patches/compare/v1.25.0...v1.26.0) (2026-09-26)
+
+### ✨ New Features
+
+* add patched yt music support for lyfta ([914bdb3](https://github.com/kondratjev/morphe-patches/commit/914bdb36cb0386ff0361e46fe9370dfb195825a5))
+* bump pillo, ornament, lyfta ([96b80b9](https://github.com/kondratjev/morphe-patches/commit/96b80b9a4422a39caddbb96a71297d3766abf5e9))
+
 ## [1.26.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.26.0-dev.1...v1.26.0-dev.2) (2026-09-26)
 
 ### ✨ New Features
