@@ -19,14 +19,14 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.25.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.25.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;19 patches total
+> **[v1.26.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.26.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;19 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 0.6.19 |
+| 0.6.20 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -92,7 +92,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 1.591 | 1.575 |
+| 1.600 | 1.575 |
 | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -137,7 +137,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 4.19.2 |
+| 4.20.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

@@ -1,3 +1,9 @@
+## [1.26.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.25.0...v1.26.0-dev.1) (2026-09-26)
+
+### ✨ New Features
+
+* bump pillo, ornament, lyfta ([96b80b9](https://github.com/kondratjev/morphe-patches/commit/96b80b9a4422a39caddbb96a71297d3766abf5e9))
+
 ## [1.25.0](https://github.com/kondratjev/morphe-patches/compare/v1.24.0...v1.25.0) (2026-09-18)
 
 ### ✨ New Features
