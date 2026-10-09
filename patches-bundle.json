@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-10-09T18:13:59",
-  "description": "## [1.27.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.26.0...v1.27.0-dev.1) (2026-10-09)\n\n### ✨ New Features\n\n* bump fatsecret, ornament, pillo ([318ce8e](https://github.com/kondratjev/morphe-patches/commit/318ce8e7fcc860593e15fea149b5df2d4db85ae1))",
-  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.27.0-dev.1/patches-1.27.0-dev.1.mpp",
+  "created_at": "2026-10-09T18:16:16",
+  "description": "## [1.27.0](https://github.com/kondratjev/morphe-patches/compare/v1.26.0...v1.27.0) (2026-10-09)\n\n### ✨ New Features\n\n* bump fatsecret, ornament, pillo ([318ce8e](https://github.com/kondratjev/morphe-patches/commit/318ce8e7fcc860593e15fea149b5df2d4db85ae1))",
+  "download_url": "https://github.com/kondratjev/morphe-patches/releases/download/v1.27.0/patches-1.27.0.mpp",
   "signature_download_url": "",
-  "version": "1.27.0-dev.1"
+  "version": "1.27.0"
 }
