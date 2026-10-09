@@ -26,7 +26,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 0.6.20 |
+| 0.6.24 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -60,7 +60,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 11.8.0.5 |
+| 11.8.1.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
