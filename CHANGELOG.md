@@ -1,3 +1,9 @@
+## [1.27.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.26.0...v1.27.0-dev.1) (2026-10-09)
+
+### ✨ New Features
+
+* bump fatsecret, ornament, pillo ([318ce8e](https://github.com/kondratjev/morphe-patches/commit/318ce8e7fcc860593e15fea149b5df2d4db85ae1))
+
 ## [1.26.0](https://github.com/kondratjev/morphe-patches/compare/v1.25.0...v1.26.0) (2026-09-26)
 
 ### ✨ New Features
