@@ -119,6 +119,19 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             // Mixpanel
             val mpFound = application.disableComponentsByPrefix("com.mixpanel.") > 0
             logger.info("Mixpanel: ${if (mpFound) "✅ patched successfully" else "❌ patch not applied"}")
+
+            // Braze (incl. legacy com.appboy components)
+            // Braze has no manifest meta-data opt-out flags — collection is
+            // configured programmatically (BrazeConfig), so components are
+            // disabled here and the SDK itself is neutralized in bytecode.
+            // Note: Braze-powered push campaigns, content cards, and in-app
+            // messages stop working as a side effect. App-specific Braze
+            // wrappers (e.g. `com.tidal.android.analytics.braze.*`) are
+            // matched by the ".braze." package segment.
+            val brazFound = application.disableComponentsWhere {
+                it.startsWith("com.braze.") || it.startsWith("com.appboy.") || it.contains(".braze.")
+            } > 0
+            logger.info("Braze: ${if (brazFound) "✅ patched successfully" else "❌ patch not applied"}")
         }
     }
 }
@@ -130,7 +143,9 @@ val disableAnalyticsPatch = bytecodePatch(
     name = "Disable analytics",
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
-        "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
+        "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, comScore, " +
+        "and Braze. Note: Braze-powered push campaigns, content cards, and " +
+        "in-app messages stop working as a side effect.",
     default = false
 ) {
     dependsOn(disableAnalyticsManifestPatch)
@@ -171,5 +186,47 @@ val disableAnalyticsPatch = bytecodePatch(
         FirebasePerformanceCollectionFingerprint.methodOrNull
             ?.returnEarly()
             .also { logger.info("Firebase Performance collection: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeConfigureFingerprint.methodOrNull
+            ?.addInstructions(
+                0,
+                """
+                    const/4 v0, 0x0
+                    return v0
+                """,
+            )
+            .also { logger.info("Braze configure: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeEnableSdkFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze enableSdk: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeDispatchStartFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze dispatch: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeOpenSessionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze openSession: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeCloseSessionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze closeSession: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeLogCustomEventFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze logCustomEvent: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeLogPurchaseFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze logPurchase: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeChangeUserFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze changeUser: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeLogPushNotificationOpenedFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze logPushNotificationOpened: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
     }
 }
