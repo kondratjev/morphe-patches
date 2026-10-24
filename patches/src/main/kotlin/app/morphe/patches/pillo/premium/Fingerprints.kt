@@ -7,23 +7,28 @@ import app.morphe.patcher.methodCall
 internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/data/persistence/preferences/Preferences;"
 
 /**
- * Matches `Job setIsPremiumState(boolean)` in SubscriptionStateProvider.
+ * Matches `setIsPremiumState(boolean)` in SubscriptionStateProvider.
+ * Return type is not pinned: `Job` in 0.6.24, obfuscated `q1` in 0.6.25 —
+ * same dispatcher body either way. Unique method name per class.
  */
 object SetIsPremiumStateFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
-    name = "setIsPremiumState",
-    returnType = "Lkotlinx/coroutines/Job;",
-    parameters = listOf("Z"),
+    custom = { method, classDef ->
+        classDef.type == "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;" &&
+            method.name == "setIsPremiumState" &&
+            method.implementation != null
+    }
 )
 
 /**
- * Matches `Job setIsAdfreeState(boolean)` in SubscriptionStateProvider.
+ * Matches `setIsAdfreeState(boolean)` in SubscriptionStateProvider.
+ * Same return-type drift as premium (see above).
  */
 object SetIsAdfreeStateFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
-    name = "setIsAdfreeState",
-    returnType = "Lkotlinx/coroutines/Job;",
-    parameters = listOf("Z"),
+    custom = { method, classDef ->
+        classDef.type == "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;" &&
+            method.name == "setIsAdfreeState" &&
+            method.implementation != null
+    }
 )
 
 /**

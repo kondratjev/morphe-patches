@@ -166,6 +166,10 @@ val gmsCoreSupportPatch = bytecodePatch(
         // This is the authoritative source of the cert hash inside
         // FirebaseInstallationServiceClient — every caller (the X-Android-Cert
         // header, FID auth, etc.) gets the correct value.
+        // Absent in newer Pillo (only FIS registrars left) — skip then.
+        if (FirebaseFingerprintHashFingerprint.methodOrNull != null &&
+            FirebaseOpenHttpConnectionFingerprint.methodOrNull != null
+        ) {
         FirebaseFingerprintHashFingerprint.method.addInstructions(
             0,
             """
@@ -197,6 +201,7 @@ val gmsCoreSupportPatch = bytecodePatch(
             insertIndex,
             "const-string v$valueRegister, \"${ORIGINAL_CERTIFICATE_SHA1.uppercase()}\"",
         )
+        } // end Firebase block (client may be absent in newer Pillo)
 
         gmsStringReplacements.forEach { (from, to) ->
             string(from).matchAllMethodIndicesForEach(requireMatches = false) { index ->
