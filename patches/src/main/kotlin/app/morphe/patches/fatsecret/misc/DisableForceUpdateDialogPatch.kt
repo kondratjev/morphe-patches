@@ -12,7 +12,7 @@ val disableForceUpdateDialogPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_FATSECRET)
 
     execute {
-        // BaseActivity.x3(boolean isCancelable): force p1 (isCancelable) = true.
+        // BaseActivity.G3(boolean isCancelable): force p1 (isCancelable) = true.
         ShowUpdateDialogFingerprint.method.addInstructions(
             0,
             "const/4 p1, 0x1",

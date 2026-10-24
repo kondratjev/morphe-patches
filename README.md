@@ -19,14 +19,14 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.27.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.27.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;20 patches total
+> **[v1.28.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.28.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;20 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 0.6.24 |
+| 0.6.25 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -43,7 +43,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 2026.08.26-release |
+| 2026.09.09-release |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -60,7 +60,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 11.8.1.1 |
+| 11.8.2.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -93,7 +93,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 20.9.0 |
+| 20.9.2 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -123,7 +123,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 3.5.0 |
+| 3.5.5 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -138,7 +138,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 4.21.1 |
+| 4.22.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -202,6 +202,41 @@ This project is provided for **educational purposes only**. The patches are inte
 - **Fair use** — These patches are developed through independent reverse engineering for interoperability and personal use, consistent with fair use principles.
 
 The author assumes no liability for any consequences resulting from the use of these patches.
+
+## 🧰 Prerequisites (macOS)
+
+```bash
+brew install apkeep              # APK downloads (https://github.com/EFForg/apkeep)
+brew install --cask temurin@21   # JDK for the Gradle build
+brew install gh                  # version-report issue management
+npm install                      # deps + git hooks (commitlint)
+```
+
+## 🔄 App version maintenance
+
+Target app versions live in `patches/.../shared/Constants.kt` (`AppTarget(...)`).
+
+- **CI report** — in the Friday-to-Saturday night the `Check app updates` workflow compares targets
+  with Google Play and updates the `App version report` issue (`version-report` label).
+  No downloads, no commits.
+- **Local bump** — for packages flagged in the report:
+  ```bash
+  brew install apkeep  # once, https://github.com/EFForg/apkeep
+  python3 scripts/download-all-apks.py --only <package>
+  ```
+  The script downloads the new APK via APKPure and never touches the repo.
+  Bumping is manual, one app at a time (see AGENTS.md "Actualization"):
+  verify fingerprints with droidsaw, then update `AppTarget(...)`.
+  To fetch latest APKs for every app at once:
+  ```bash
+  python3 scripts/download-all-apks.py [--only <package>] [--all] [--out build/apks] [--jobs 3] [--arch arm64-v8a]
+  ```
+  Then verify manually per `AGENTS.md` (droidsaw fingerprints), regenerate lists
+  and compile:
+  ```bash
+  ./gradlew :patches:generatePatchesList
+  ./gradlew :patches:compileKotlin -x test --offline
+  ```
 
 ## 🛠️ Building
 
