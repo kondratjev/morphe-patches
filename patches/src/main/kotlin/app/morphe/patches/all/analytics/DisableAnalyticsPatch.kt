@@ -119,6 +119,11 @@ private val disableAnalyticsManifestPatch = resourcePatch {
             // Mixpanel
             val mpFound = application.disableComponentsByPrefix("com.mixpanel.") > 0
             logger.info("Mixpanel: ${if (mpFound) "✅ patched successfully" else "❌ patch not applied"}")
+
+            // Braze (incl. legacy com.appboy components) — no manifest opt-out flags
+            // exist, so its components are disabled here and the SDK neutralized below.
+            val brazeFound = application.disableComponentsByPrefix("com.braze.", "com.appboy.") > 0
+            logger.info("Braze: ${if (brazeFound) "✅ patched successfully" else "❌ patch not applied"}")
         }
     }
 }
@@ -130,7 +135,9 @@ val disableAnalyticsPatch = bytecodePatch(
     name = "Disable analytics",
     description = "Disables analytics and tracking from multiple SDKs, " +
         "including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, " +
-        "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore.",
+        "Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, comScore, " +
+        "and Braze. Note: Braze-powered push campaigns, content cards, and " +
+        "in-app messages stop working as a side effect.",
     default = false
 ) {
     dependsOn(disableAnalyticsManifestPatch)
@@ -171,5 +178,49 @@ val disableAnalyticsPatch = bytecodePatch(
         FirebasePerformanceCollectionFingerprint.methodOrNull
             ?.returnEarly()
             .also { logger.info("Firebase Performance collection: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        // Braze present but unmatched means the SDK was obfuscated; the manifest step alone won't stop reporting.
+        if (BrazeConfigureFingerprint.methodOrNull == null &&
+            classDefByOrNull { it.type.startsWith("Lcom/braze/") } != null
+        ) {
+            logger.warning("Braze is present but its SDK entry points could not be matched (obfuscated or unsupported version?); analytics may still be reported.")
+        }
+
+        BrazeConfigureFingerprint.methodOrNull
+            ?.returnEarly(false)
+            .also { logger.info("Braze configure: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeEnableSdkFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze enableSdk: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        // Assert a single match so a future Braze change fails loudly instead of patching the wrong method.
+        val brazeDispatchMatches = BrazeDispatchStartFingerprint.matchAllOrNull().orEmpty()
+        check(brazeDispatchMatches.size <= 1) {
+            "Braze dispatch fingerprint is ambiguous: ${brazeDispatchMatches.size} matches"
+        }
+        brazeDispatchMatches.forEach { it.method.returnEarly() }
+        logger.info("Braze dispatch: ${if (brazeDispatchMatches.isNotEmpty()) "✅ patched successfully" else "❌ patch not applied"}")
+
+        BrazeOpenSessionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze openSession: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeCloseSessionFingerprint.methodOrNull
+            ?.returnEarly()
+            .also { logger.info("Braze closeSession: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeChangeUserFingerprint.matchAllOrNull()
+            ?.onEach { it.method.returnEarly() }
+            .also { logger.info("Braze changeUser: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+
+        BrazeLogEventFingerprint.matchAllOrNull()
+            ?.onEach { match ->
+                when (match.method.returnType) {
+                    "Z" -> match.method.returnEarly(false)
+                    else -> match.method.returnEarly()
+                }
+            }
+            .also { logger.info("Braze log events: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
     }
 }
