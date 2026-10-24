@@ -1,0 +1,90 @@
+name: Check app updates
+
+on:
+  schedule:
+    - cron: '0 2 * * 6'  # Sat 02:00 UTC = Sat 05:00 MSK
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'Package filter (empty = all)'
+        required: false
+        default: ''
+
+concurrency:
+  group: check-updates
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      # Report only: no downloads, no file writes. Local download documented
+      # in the issue body (download-all-apks.py, manual bump after).
+      - name: Check for updates
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.app }}" ]; then ARGS="--only ${{ inputs.app }}"; fi
+          python3 .github/scripts/check-app-updates.py $ARGS | tee /tmp/summary.json
+          python3 - <<'EOF' > /tmp/report.md
+          import datetime, importlib.util, json
+          spec = importlib.util.spec_from_file_location(
+              "cau", ".github/scripts/check-app-updates.py")
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          summary = json.load(open("/tmp/summary.json"))
+          lines = [f"# App version report ({datetime.date.today():%F})",
+                   "",
+                   "| package | current | play | status |",
+                   "|---|---|---|---|"]
+          for e in summary:
+              cur = ", ".join(e["current"])
+              play = e.get("play")
+              if not play:
+                  st = "unknown"
+              elif play in e["current"]:
+                  st = "up-to-date"
+              elif m.is_newer(play, e["current"]):
+                  st = "NEW"
+              else:
+                  st = "skipped"
+              lines.append(f"| {e['package']} | {cur} | {play or '-'} | {st} |")
+          lines += ["",
+                    "Local bump:",
+                    "",
+                    "```sh",
+                    "brew install apkeep  # once",
+                    "python3 scripts/download-all-apks.py --only <package>",
+                    "```",
+                    "",
+                    "Then per AGENTS.md: droidsaw verify, "
+                    "`:patches:generatePatchesList`, "
+                    "`./gradlew :patches:compileKotlin -x test --offline`."]
+          open("/tmp/report.md", "w").write("\n".join(lines) + "\n")
+          EOF
+          cat /tmp/report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish report issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="App version report"
+          gh label create version-report --description "Automated app version reports" 2>/dev/null || true
+          NUM=$(gh issue list --label version-report --state open --json number --jq '.[0].number // empty')
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITLE" --label version-report --body-file /tmp/report.md
+          else
+            gh issue edit "$NUM" --body-file /tmp/report.md
+            NEW=$(grep -c '| NEW |' /tmp/report.md || true)
+            gh issue comment "$NUM" --body "Updated $(date -u +%FT%TZ). New versions: $NEW."
+          fi
