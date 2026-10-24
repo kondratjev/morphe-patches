@@ -123,8 +123,8 @@ object BrazeEnableSdkFingerprint : Fingerprint(
 )
 
 /**
- * Matches `Braze.setUserSpecificMemberVariablesAndStartDispatch` — starts the
- * dispatch worker that registers the device and ships events.
+ * Matches `Braze.setUserSpecificMemberVariablesAndStartDispatch` — installs the
+ * user data model and starts the event dispatch pipeline.
  * The single parameter's type is re-obfuscated every release (`bo.app.*`,
  * `com.braze.managers.*`), so only its arity is pinned.
  */
@@ -158,26 +158,6 @@ object BrazeCloseSessionFingerprint : Fingerprint(
 )
 
 /**
- * Matches all `Braze.logCustomEvent(...)` overloads — custom event reporting.
- */
-object BrazeLogCustomEventFingerprint : Fingerprint(
-    definingClass = "Lcom/braze/Braze;",
-    name = "logCustomEvent",
-    returnType = "V",
-    custom = { method, _ -> method.implementation != null },
-)
-
-/**
- * Matches all `Braze.logPurchase(...)` overloads — purchase reporting.
- */
-object BrazeLogPurchaseFingerprint : Fingerprint(
-    definingClass = "Lcom/braze/Braze;",
-    name = "logPurchase",
-    returnType = "V",
-    custom = { method, _ -> method.implementation != null },
-)
-
-/**
  * Matches `Braze.changeUser(...)` — user identification (switches the
  * anonymous device user to a named user).
  */
@@ -189,12 +169,15 @@ object BrazeChangeUserFingerprint : Fingerprint(
 )
 
 /**
- * Matches `Braze.logPushNotificationOpened(...)` — push open/click
- * attribution reporting.
+ * Matches every `Braze.log*` reporting method — custom events, purchases,
+ * ecommerce, banners, feature flags and push attribution. `logout` is excluded.
  */
-object BrazeLogPushNotificationOpenedFingerprint : Fingerprint(
+object BrazeLogEventFingerprint : Fingerprint(
     definingClass = "Lcom/braze/Braze;",
-    name = "logPushNotificationOpened",
-    returnType = "V",
-    custom = { method, _ -> method.implementation != null },
+    custom = { method, _ ->
+        method.implementation != null &&
+            method.name.startsWith("log") &&
+            method.name != "logout" &&
+            (method.returnType == "V" || method.returnType == "Z")
+    },
 )

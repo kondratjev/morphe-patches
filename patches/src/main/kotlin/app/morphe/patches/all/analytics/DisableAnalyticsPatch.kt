@@ -179,6 +179,13 @@ val disableAnalyticsPatch = bytecodePatch(
             ?.returnEarly()
             .also { logger.info("Firebase Performance collection: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
+        // Braze present but unmatched means the SDK was obfuscated; the manifest step alone won't stop reporting.
+        if (BrazeConfigureFingerprint.methodOrNull == null &&
+            classDefByOrNull { it.type.startsWith("Lcom/braze/") } != null
+        ) {
+            logger.warning("Braze is present but its SDK entry points could not be matched (obfuscated or unsupported version?); analytics may still be reported.")
+        }
+
         BrazeConfigureFingerprint.methodOrNull
             ?.returnEarly(false)
             .also { logger.info("Braze configure: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
@@ -203,20 +210,17 @@ val disableAnalyticsPatch = bytecodePatch(
             ?.returnEarly()
             .also { logger.info("Braze closeSession: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
-        BrazeLogCustomEventFingerprint.matchAllOrNull()
-            ?.onEach { it.method.returnEarly() }
-            .also { logger.info("Braze logCustomEvent: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
-
-        BrazeLogPurchaseFingerprint.matchAllOrNull()
-            ?.onEach { it.method.returnEarly() }
-            .also { logger.info("Braze logPurchase: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
-
         BrazeChangeUserFingerprint.matchAllOrNull()
             ?.onEach { it.method.returnEarly() }
             .also { logger.info("Braze changeUser: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
 
-        BrazeLogPushNotificationOpenedFingerprint.matchAllOrNull()
-            ?.onEach { it.method.returnEarly() }
-            .also { logger.info("Braze logPushNotificationOpened: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
+        BrazeLogEventFingerprint.matchAllOrNull()
+            ?.onEach { match ->
+                when (match.method.returnType) {
+                    "Z" -> match.method.returnEarly(false)
+                    else -> match.method.returnEarly()
+                }
+            }
+            .also { logger.info("Braze log events: ${if (it != null) "✅ patched successfully" else "❌ patch not applied"}") }
     }
 }
