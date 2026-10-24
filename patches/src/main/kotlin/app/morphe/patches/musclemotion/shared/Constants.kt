@@ -9,7 +9,7 @@ object Constants {
         packageName = "air.com.musclemotion.strength.mobile",
         appIconColor = 0x000000,
         targets = listOf(
-            AppTarget("3.5.0"),
+            AppTarget("3.5.5"),
         ),
     )
 }
