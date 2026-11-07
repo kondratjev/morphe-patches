@@ -12,8 +12,10 @@ object GetSubscriptionTypeFingerprint : Fingerprint(
 )
 
 /**
- * Matches `Utils.isPremiumUser()` — central premium gate.
+ * Matches `Utils.isPremiumUser()` — central premium gate up to 1.600.
  * Returns true when the local access state equals "premium".
+ * (R8 inlined the gate in 1.612 — there the tier force below covers
+ * every inline `== "premium"` reader instead.)
  */
 object IsPremiumUserFingerprint : Fingerprint(
     definingClass = "Lcom/lyfta/util/helpers/Utils;",
@@ -23,13 +25,16 @@ object IsPremiumUserFingerprint : Fingerprint(
 )
 
 /**
- * Matches `Utils.localAccessState()` — reads the "SUBSCRIPTION" value
- * from the session manager. Forcing "premium" covers every reader
- * comparing the tier string (premium button label, profile sync, etc.).
+ * Matches `zob.r0()` in Lyfta 1.612 — reads the "SUBSCRIPTION" value
+ * from the session manager (`SessionManager.getValue("SUBSCRIPTION",
+ * null)`). Forcing "premium" covers every reader comparing the tier
+ * string (premium button label, profile sync, inline `== "premium"`
+ * gates — R8 inlined the old `isPremiumUser` gate in 1.612).
+ * (Was `Utils.localAccessState()` up to 1.600, same body.)
  */
 object LocalAccessStateFingerprint : Fingerprint(
-    definingClass = "Lcom/lyfta/util/helpers/Utils;",
-    name = "localAccessState",
+    definingClass = "Lzob;",
+    name = "r0",
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
 )
