@@ -35,6 +35,9 @@ val unlockPremiumPatch = bytecodePatch(
         // Invalid subscription check → always false.
         IsInvalidSubscriptionFingerprint.method.returnEarly(false)
 
+        // Subscription check server round-trip may 403 → suppress the dialog.
+        InvalidSubscriptionDialogFingerprint.method.returnEarly()
+
         // Force both params true in StateFlow emitter.
         PremiumStatusEmitterFingerprint.method.addInstructions(
             0,

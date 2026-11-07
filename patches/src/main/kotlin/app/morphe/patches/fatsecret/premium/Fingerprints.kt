@@ -34,6 +34,18 @@ object IsInvalidSubscriptionFingerprint : Fingerprint(
 )
 
 /**
+ * Matches `InvalidSubscriptionDialog$a.a(i0, jn/a)` — shows the
+ * "could not verify purchase" dialog. Single show entry used by
+ * every premium feature (28 call sites).
+ */
+object InvalidSubscriptionDialogFingerprint : Fingerprint(
+    definingClass = "Lcom/fatsecret/android/dialogs/InvalidSubscriptionDialog\$a;",
+    name = "a",
+    returnType = "V",
+    parameters = listOf("Landroidx/fragment/app/i0;", "Ljn/a;"),
+)
+
+/**
  * Matches `w0.m(boolean, boolean)` — emits PremiumStatus to StateFlow.
  * Creates new PremiumStatus(isStatusLoaded, isPremium) and sets it
  * on the MutableStateFlow. Forcing both params to true ensures
