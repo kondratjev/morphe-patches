@@ -10,10 +10,11 @@ internal const val PREFERENCES_CLASS = "Lxyz/rtrvr/pillo/data/persistence/prefer
  * Matches `setIsPremiumState(boolean)` in SubscriptionStateProvider.
  * Return type is not pinned: `Job` in 0.6.24, obfuscated `q1` in 0.6.25 —
  * same dispatcher body either way. Unique method name per class.
+ * (Was `pillo/subscription/` in 0.6.25; moved to `pillo/data/subscription/` in 0.6.27, same logic.)
  */
 object SetIsPremiumStateFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;" &&
+        classDef.type == "Lxyz/rtrvr/pillo/data/subscription/SubscriptionStateProvider;" &&
             method.name == "setIsPremiumState" &&
             method.implementation != null
     }
@@ -22,10 +23,11 @@ object SetIsPremiumStateFingerprint : Fingerprint(
 /**
  * Matches `setIsAdfreeState(boolean)` in SubscriptionStateProvider.
  * Same return-type drift as premium (see above).
+ * (Was `pillo/subscription/` in 0.6.25; moved to `pillo/data/subscription/` in 0.6.27, same logic.)
  */
 object SetIsAdfreeStateFingerprint : Fingerprint(
     custom = { method, classDef ->
-        classDef.type == "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;" &&
+        classDef.type == "Lxyz/rtrvr/pillo/data/subscription/SubscriptionStateProvider;" &&
             method.name == "setIsAdfreeState" &&
             method.implementation != null
     }
@@ -34,9 +36,10 @@ object SetIsAdfreeStateFingerprint : Fingerprint(
 /**
  * Matches the constructor of SubscriptionStateProvider by looking
  * for calls to both Preferences methods in the constructor body.
+ * (Was `pillo/subscription/` in 0.6.25; moved to `pillo/data/subscription/` in 0.6.27, same logic.)
  */
 object SubscriptionStateProviderConstructorFingerprint : Fingerprint(
-    definingClass = "Lxyz/rtrvr/pillo/subscription/SubscriptionStateProvider;",
+    definingClass = "Lxyz/rtrvr/pillo/data/subscription/SubscriptionStateProvider;",
     name = "<init>",
     returnType = "V",
     filters = listOf(
