@@ -3,6 +3,46 @@ package app.morphe.patches.ornament.premium
 import app.morphe.patches.all.misc.hermes.hermesPatch
 import app.morphe.patches.ornament.shared.Constants.COMPATIBILITY_ORNAMENT
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import org.w3c.dom.Element
+
+/**
+ * Restores Firebase key resource names mangled to `string_0x...`
+ * placeholders during rebuild. Without them Firebase init fails
+ * with "Please set a valid API key" and the app crashes on launch.
+ */
+private val restoreFirebaseKeyNamesResourcePatch = resourcePatch {
+    compatibleWith(COMPATIBILITY_ORNAMENT)
+
+    execute {
+        // Maps mangled entries (matched by value) back to real names.
+        val renames = mapOf(
+            "AIzaSyAJ4EsS7sUnHSTtwZrsLGWppCWIDf-aMRg" to "google_api_key",
+            "AIzaSyAcbazCRZPM1NylX7zhnfU9uwXtnWkeYGY" to "GOOGLE_API_KEY",
+        )
+        document("res/values/strings.xml").use { document ->
+            val existing = mutableSetOf<String>()
+            val strings = mutableListOf<Element>()
+            val nodes = document.documentElement.childNodes
+            for (i in 0 until nodes.length) {
+                val node = nodes.item(i)
+                if (node is Element && node.tagName == "string") {
+                    existing.add(node.getAttribute("name"))
+                    strings.add(node)
+                }
+            }
+            strings
+                .filter { it.getAttribute("name").startsWith("string_0x") }
+                .forEach { element ->
+                    val fixed = renames[element.textContent.trim()]
+                    if (fixed != null && !existing.contains(fixed)) {
+                        element.setAttribute("name", fixed)
+                        existing.add(fixed)
+                    }
+                }
+        }
+    }
+}
 
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
@@ -10,6 +50,8 @@ val unlockPremiumPatch = bytecodePatch(
     description = "Unlocks Ornament subscription features.",
 ) {
     compatibleWith(COMPATIBILITY_ORNAMENT)
+
+    dependsOn(restoreFirebaseKeyNamesResourcePatch)
 
     dependsOn(
         hermesPatch {
@@ -25,10 +67,10 @@ val unlockPremiumPatch = bytecodePatch(
                 // Patch useHasSubscription hook (#37570, 61 bytes) to always return true.
                 // Full function unique (61 bytes): useSelector(getActiveSubscription)
                 // Replaced: LoadConstTrue r0 + Ret r0
-                // String IDs verified on 4.22.1: purchasesSelectors=0xF9EB, getActiveSubscription=0xC80A
+                // String IDs verified on 4.23.1: purchasesSelectors=0xF9E2, getActiveSubscription=0xC909
                 "29 00 00 2E 03 00 00 2E 04 00 01 6E 00 01 49 00 04 00 76 02 53 00 03 02 00" +
-                    "36 01 00 01 F5 6E 00 02 49 00 04 00 53 00 03 02 00 37 00 00 02 EB F9" +
-                    "37 00 00 03 0A C8 53 00 01 02 00 5C 00" to
+                    "36 01 00 01 F5 6E 00 02 49 00 04 00 53 00 03 02 00 37 00 00 02 E2 F9" +
+                    "37 00 00 03 09 C9 53 00 01 02 00 5C 00" to
                     "78 00 5C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00" +
                     "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00" +
                     "00 00 00 00 00 00 00 00 00 00 00 00 00",
@@ -52,18 +94,18 @@ val unlockPremiumPatch = bytecodePatch(
                 // Patch getUnavailableHealthAdvisorList saga locked-fallback to available.
                 // The saga ends the locked branch with setAvailablePartsList(getAvailablePartsListDefault(parts, false)).
                 // Single byte: LoadConstFalse r8 -> LoadConstTrue r8 (same length, reachable code safe).
-                // String ID verified on 4.22.1: getAvailablePartsListDefault=0xEA2F
-                "37 0C 08 0D 2F EA 79 08 54 08 0C 06 03 08" to
-                    "37 0C 08 0D 2F EA 78 08 54 08 0C 06 03 08",
+                // String ID verified on 4.23.1: getAvailablePartsListDefault=0xEA06
+                "37 0C 08 0D 06 EA 79 08 54 08 0C 06 03 08" to
+                    "37 0C 08 0D 06 EA 78 08 54 08 0C 06 03 08",
 
                 // getSubscriptionLevel: replace STANDARD/LITE returns with PRO.
                 // Pattern: 37 <dst> <src> <cache> <strId_lo> <strId_hi> 5c <ret>
-                // String IDs verified on 4.22.1: STANDARD=0xAC13, LITE=0xB8ED, PRO=0x7205
-                "37 03 03 0B ED B8 5C 03" to "37 03 03 0B 05 72 5C 03",
-                "37 03 01 12 13 AC 5C 03" to "37 03 01 12 05 72 5C 03",
-                "37 03 01 0B ED B8 5C 03" to "37 03 01 0B 05 72 5C 03",
-                "37 01 01 12 13 AC 5C 01" to "37 01 01 12 05 72 5C 01",
-                "37 00 00 12 13 AC 5C 00" to "37 00 00 12 05 72 5C 00",
+                // String IDs verified on 4.23.1: STANDARD=0xAB8A, LITE=0x5823, PRO=0x710D
+                "37 03 03 0B 23 58 5C 03" to "37 03 03 0B 0D 71 5C 03",
+                "37 03 01 12 8A AB 5C 03" to "37 03 01 12 0D 71 5C 03",
+                "37 03 01 0B 23 58 5C 03" to "37 03 01 0B 0D 71 5C 03",
+                "37 01 01 12 8A AB 5C 01" to "37 01 01 12 0D 71 5C 01",
+                "37 00 00 12 8A AB 5C 00" to "37 00 00 12 0D 71 5C 00",
 
                 // Rename string "isPaid" -> "isFree" in string table.
                 // isPaid is a prefix of isPaidContent (shared storage).
