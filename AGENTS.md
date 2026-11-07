@@ -1,63 +1,59 @@
 # Agent Notes
 
-## Actualization (bump to a new app version)
+## Bump to a new app version
 
-Use `droidsaw` for every step. It reads APK/XAPK directly, no install needed.
-Every subcommand writes JSON to stdout, progress to stderr. Prefer it over
-`jadx`/`apktool` for fingerprint checks.
+Use `droidsaw` CLI (takes a PATH, JSON to stdout). Prefer it over
+`jadx`/`apktool` for fingerprint checks. Bump only when ALL pass —
+obfuscators rename, move, reshape; a name alone is not a match.
 
-Bump is done only when EVERY check below passes. Presence of a name is
-not a match — obfuscators rename, move, and reshape code between releases.
-
-1. Confirm the target. XAPK = zip with `com.*.apk` + `manifest.json`.
-   Unpack the base APK, then `droidsaw info` → `version_name` /
+1. Confirm target. XAPK = zip with `com.*.apk` + `manifest.json`.
+   Unpack the base APK, `droidsaw info` → `version_name` /
    `version_code` / `package`. Never bump from an unversioned fallback
-   artifact (`<package>.xapk` without `@version`).
+   (`<package>.xapk` without `@version`); APKPure lags Play — lagged
+   means blocked, report it, don't force it.
 2. Check every fingerprint the patch relies on — all `Fingerprints.kt`
-   of the app, plus `dependsOn` chains. Exact signature:
-   `definingClass` + `name` + `returnType` + `parameters`
-   (+ `accessFlags` if set). Required (`.method`) fingerprints must fail
-   LOUDLY on mismatch — never silence with `methodOrNull` unless absence
-   is genuinely tolerable. For `custom = {...}` matchers the match must be
-   UNIQUE in the new APK; for `methodOrNull` fallbacks list matched vs
-   missing variants (one missing = old/new UI variant, all missing =
-   dead patch).
-3. Verify bodies, not just names. Decompile the exact class (anchor the
-   regex, otherwise you get all inner classes) and diff old-vs-new APK:
-   same return values, same keys, same field layout. Same logic = bump
-   only. Changed logic = update fingerprints / patch first. Download the
-   OLD apk too (`apkeep -a <pkg>@<old>`) — comparison needs both sides.
+   plus `dependsOn` chains. Signature: `definingClass` + `name` +
+   `returnType` + `parameters` (+ `accessFlags` if set). Pin full
+   signatures — names repeat inside one class (e.g. companion `a`).
+   Required (`.method`) fingerprints fail LOUDLY — never silence with
+   `methodOrNull` unless absence is genuinely tolerable. `custom`
+   matchers must be UNIQUE in the new APK. For `methodOrNull`
+   fallbacks list matched vs missing (one missing = old/new UI
+   variant, all missing = dead patch).
+3. Verify bodies, not names. Decompile the exact class (anchor the
+   regex, else you get all inner classes), diff old-vs-new — download
+   the OLD apk too (`apkeep -a <pkg>@<old>`). Same logic = bump only.
+   Changed logic = update fingerprints / patch first.
 4. Verify by layer:
-   - DEX: method bodies as above; a referenced-but-not-implemented entry
-     is fine only if another DEX unit holds the definition.
+   - DEX: referenced-but-not-implemented is fine only if another unit
+     holds the definition.
    - Resources: every referenced id must exist in the NEW apk
-     (`aapt2 dump resources` + `dump xmltree` for structure). A patch
-     that hides/shows UI must target ids present in the new layout.
-   - Byte patterns (Hermes/JS bundles): patterns are version-pinned and
-     must occur exactly once in the new bundle; replacements must keep
-     length. String-pool ids shift every release — re-derive them, never
-     reuse old ones. If patterns can't be re-derived, REVERT the bump
-     instead of shipping a dead target.
-5. Bump: `patches/.../<app>/shared/Constants.kt` is the source of truth.
-   Replace the superseded `AppTarget`, keep genuinely different variants
-   as separate targets. Update stale comments. Then regenerate
-   `patches-list.json` + `README.md` (`:patches:generatePatchesList`) and
-   only then `./gradlew :patches:compileKotlin -x test --offline`.
-   Simulate replacements outside Kotlin first where possible
-   (apply each, assert single match) before editing patch sources.
+     (`aapt2 dump resources` + `dump xmltree`).
+   - Byte patterns (Hermes/JS): exactly once in the new bundle,
+     same-length replacements. Check magic first — a JS pattern
+     scores 0 on a Hermes bundle, which means a new Hermes patch or
+     a REVERTED bump, never a blind one. String-pool ids shift every
+     release — re-derive, never reuse.
+5. Bump `patches/.../<app>/shared/Constants.kt` (source of truth):
+   replace the superseded `AppTarget`, keep genuinely different
+   variants. Update stale comments. Simulate replacements outside
+   Kotlin first (single match each). Delete stale `build/libs/*.mpp`
+   (the generator takes the FIRST jar), regenerate `patches-list.json`
+   + `README.md` (`:patches:generatePatchesList`), confirm the
+   `version` field didn't downgrade. Then
+   `./gradlew :patches:compileKotlin -x test --offline`.
 
 ## Code comments (one scheme)
 
 - Fingerprint KDoc: `/** Matches \`<Class>.<method>(<params>)\` — <behavior>. */`
-  History goes in parentheses at the end:
+  History in trailing parens:
   `(Was <old> in <ver>; <new> in <ver>, same logic.)`
 - Patch `execute` steps: `// <Goal>.` plus at most one `// <why>` line.
-  No mechanics essays, no version numbers — they rot (a renamed method
-  leaves a lying comment). Mechanics live in the fingerprint KDoc.
+  No mechanics, no versions — they rot. Mechanics live in the KDoc.
 - Section dividers in `Fingerprints.kt`: `// <Area>` as-is.
 
 ## Batch update loop
 
-User downloads APKs first (`scripts/download-all-apks.py`), agent updates
-apps one by one with the flow above, then regenerates lists and compiles
-once at the end.
+User downloads APKs first (`scripts/download-all-apks.py`), agent
+updates apps one by one, then regenerates lists and compiles once
+at the end.
