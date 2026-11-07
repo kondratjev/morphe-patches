@@ -19,7 +19,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.28.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.28.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;20 patches total
+> **[v1.28.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.28.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;20 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
 <br>
@@ -185,7 +185,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 |----------|----------------|-----------|
 | [Change version code](#change-version-code) | Changes the app version code, allowing installation over existing versions. | • Version code |
 | [Disable Pairip license check](#disable-pairip-license-check) | Disables the Pairip license verification check. |  |
-| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, and comScore. |  |
+| [Disable analytics](#disable-analytics) | Disables analytics and tracking from multiple SDKs, including AppMetrica, MyTracker, Firebase, Sentry, Google Analytics, Amplitude, Mixpanel, Adjust, AppsFlyer, Facebook, MoEngage, comScore, and Braze. Note: Braze-powered push campaigns, content cards, and in-app messages stop working as a side effect. |  |
 
 </details>
 

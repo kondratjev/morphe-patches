@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/kondratjev/morphe-patches/compare/v1.28.0...v1.28.1) (2026-11-07)
+
+### 🐛 Bug Fixes
+
+* **analytics:** cover all Braze log events and warn when the SDK is unmatched ([90d3305](https://github.com/kondratjev/morphe-patches/commit/90d3305c8bc549f994e8e057bbe0805327d2c8eb))
+* **analytics:** improve Braze analytics based on PR ([cc6258a](https://github.com/kondratjev/morphe-patches/commit/cc6258af4eaefa662151d35ee391896c89d94dce))
+
 ## [1.28.0](https://github.com/kondratjev/morphe-patches/compare/v1.27.0...v1.28.0) (2026-10-24)
 
 ### 🐛 Bug Fixes
