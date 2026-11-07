@@ -1,3 +1,17 @@
+## [1.28.2](https://github.com/kondratjev/morphe-patches/compare/v1.28.1...v1.28.2) (2026-11-07)
+
+### 🐛 Bug Fixes
+
+* **fatsecret:** suppress unverifiable-purchase dialog on server 403 ([36aa860](https://github.com/kondratjev/morphe-patches/commit/36aa860d79de8e5ead308cffe0f6005e185a4311))
+
+### 🚀 Updated App Support
+
+* **lyfta:** update to 1.612 ([224bd29](https://github.com/kondratjev/morphe-patches/commit/224bd2900c55c2f95777c5210c3104ccd72aad21))
+* **musclemotion:** update to 3.5.6 ([7ad5289](https://github.com/kondratjev/morphe-patches/commit/7ad52893133935321406cf1670c4197004c5207c))
+* **ornament:** update to 4.23.1 ([9b8038c](https://github.com/kondratjev/morphe-patches/commit/9b8038c04df28ce0dd92ed6834cc311116dc2a93))
+* **pillo:** update to 0.6.27 ([b289b3b](https://github.com/kondratjev/morphe-patches/commit/b289b3bf415285006d96d47b236f6d5db5963bd4))
+* **yazio:** update to 26.44.2 ([60890c1](https://github.com/kondratjev/morphe-patches/commit/60890c14eaa808bb806f118e5a1d1667ac468d07))
+
 ## [1.28.2-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.28.1...v1.28.2-dev.1) (2026-11-07)
 
 ### 🐛 Bug Fixes
