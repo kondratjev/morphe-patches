@@ -54,6 +54,7 @@ obfuscators rename, move, reshape; a name alone is not a match.
 
 ## Batch update loop
 
-User downloads APKs first (`scripts/download-all-apks.py`), agent
-updates apps one by one, then regenerates lists and compiles once
-at the end.
+User downloads APKs first (`scripts/download-all-apks.py` — with
+`APKEEP_PLAY_EMAIL` + token env it pulls lag-free from Google Play),
+agent updates apps one by one, then regenerates lists and compiles
+once at the end.

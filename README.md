@@ -19,19 +19,20 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.28.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.28.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;20 patches total
+> **[v1.29.0-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.29.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
 <details open>
-<summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;3 patches</summary>
+<summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 0.6.27 |
+| 0.6.28 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Disable analytics](#disable-analytics) | Disables PulseSDK analytics. |  |
+| [Edit paused medications](#edit-paused-medications) | Allows editing paused medications without resuming them first. |  |
 | [MicroG support](#microg-support) | Fixes Google sign-in and sync on patched builds: routes Google services through MicroG-RE and reports the original certificate to Firebase. Requires MicroG-RE with a Google account. |  |
 | [Unlock Premium](#unlock-premium) | Unlocks premium features and removes ads. |  |
 
@@ -60,7 +61,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 11.8.2.1 |
+| 11.10.0.3 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

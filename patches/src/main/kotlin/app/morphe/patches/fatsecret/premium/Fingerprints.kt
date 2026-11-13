@@ -34,15 +34,17 @@ object IsInvalidSubscriptionFingerprint : Fingerprint(
 )
 
 /**
- * Matches `InvalidSubscriptionDialog$a.a(i0, jn/a)` — shows the
+ * Matches `InvalidSubscriptionDialog$a.a(i0, ln/a)` — shows the
  * "could not verify purchase" dialog. Single show entry used by
  * every premium feature (28 call sites).
+ * (Was `jn/a` in 11.8.2.1; R8 renamed the arg class in 11.10.0.3,
+ * same show-dialog body.)
  */
 object InvalidSubscriptionDialogFingerprint : Fingerprint(
     definingClass = "Lcom/fatsecret/android/dialogs/InvalidSubscriptionDialog\$a;",
     name = "a",
     returnType = "V",
-    parameters = listOf("Landroidx/fragment/app/i0;", "Ljn/a;"),
+    parameters = listOf("Landroidx/fragment/app/i0;", "Lln/a;"),
 )
 
 /**

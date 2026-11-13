@@ -1,3 +1,15 @@
+## [1.29.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.28.2...v1.29.0-dev.1) (2026-11-13)
+
+### ✨ New Features
+
+* **pillo:** allow editing paused medications ([2365132](https://github.com/kondratjev/morphe-patches/commit/236513286609ddc74001170454471e08fa8445ba))
+* **scripts:** add apkget mirrors, enforce ABI, prune old APKs ([87d4802](https://github.com/kondratjev/morphe-patches/commit/87d480258b4e4a53f806c7c008db68b8f838bef0))
+
+### 🚀 Updated App Support
+
+* **fatsecret:** update to 11.10.0.3 ([b434587](https://github.com/kondratjev/morphe-patches/commit/b434587cb86974a3216e09684aea6573be0c5ffa))
+* **pillo:** update to 0.6.28 ([ccbcfc5](https://github.com/kondratjev/morphe-patches/commit/ccbcfc5021ed6fa8b3ae11d6009f7444683cb2f9))
+
 ## [1.28.2](https://github.com/kondratjev/morphe-patches/compare/v1.28.1...v1.28.2) (2026-11-07)
 
 ### 🐛 Bug Fixes
