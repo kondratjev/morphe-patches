@@ -13,6 +13,8 @@ import glob
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.request
 
@@ -74,6 +76,26 @@ def play_version(pkg, current):
     return max(cands, key=_vkey)
 
 
+def apkget_mirrors(pkg, version):
+    """{source: has_version} across mirrors via `apkget list`.
+
+    None when apkget is missing (CI keeps working) or on error.
+    Version truth always stays with Google Play; this only reports
+    where the exact version is already downloadable.
+    """
+    if shutil.which("apkget") is None:
+        return None
+    try:
+        out = subprocess.run(["apkget", "list", pkg], timeout=120,
+                             check=False, stdout=subprocess.PIPE,
+                             stderr=subprocess.DEVNULL, text=True).stdout
+        entries = json.loads(out)
+    except Exception as e:
+        log(f"  apkget check failed for {pkg}: {e}")
+        return None
+    return {e["source"]: version in e.get("versions", []) for e in entries}
+
+
 def log(msg):
     print(msg, file=sys.stderr, flush=True)
 
@@ -110,6 +132,14 @@ def main():
         else:
             log(f"  -> {play}: NEW")
             entry["update_available"] = True
+            mirrors = apkget_mirrors(pkg, play)
+            entry["mirrors"] = mirrors
+            if mirrors:
+                have = sorted(s for s, ok in mirrors.items() if ok)
+                log(f"  Mirrors with {play}: "
+                    f"{', '.join(have) if have else 'none yet (manual dl or Play creds needed)'}")
+            else:
+                log("  Mirrors: unchecked (no apkget)")
         summary.append(entry)
     print(json.dumps(summary, indent=2, ensure_ascii=False))
 
