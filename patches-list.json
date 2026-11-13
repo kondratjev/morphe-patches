@@ -174,32 +174,6 @@
       "options": []
     },
     {
-      "name": "Edit paused medications",
-      "description": "Allows editing paused medications without resuming them first.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "xyz.rtrvr.pillo",
-          "name": "Pillo",
-          "description": null,
-          "apkFileType": null,
-          "appIconColor": "#7C4DFF",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "0.6.28",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Enable SoundCloud Go",
       "description": "Enables SoundCloud Go premium features.",
       "default": true,
