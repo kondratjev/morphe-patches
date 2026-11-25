@@ -1,3 +1,16 @@
+## [1.29.1](https://github.com/kondratjev/morphe-patches/compare/v1.29.0...v1.29.1) (2026-11-25)
+
+### 🐛 Bug Fixes
+
+* **pairip:** block paywall activity branch ([5c980c0](https://github.com/kondratjev/morphe-patches/commit/5c980c0ea08ec8d997c263e640fa03f71942259f))
+
+### 🚀 Updated App Support
+
+* **lifesum:** update to 20.8.0 ([41e172b](https://github.com/kondratjev/morphe-patches/commit/41e172b30ea81b130d8d56469b46d42cd6eb9752))
+* **lyfta:** update to 1.614 ([21cb63b](https://github.com/kondratjev/morphe-patches/commit/21cb63b24c4a250ddd1ea7074d6492a1e5c5123e))
+* **ornament:** update to 4.24.1 ([93c483e](https://github.com/kondratjev/morphe-patches/commit/93c483e3a663c7a0b8ca21a7261202bb6384a396))
+* **yazio:** update to 26.47.2 ([95b5405](https://github.com/kondratjev/morphe-patches/commit/95b54059fd62af2dd3a782a96a615a5225ff963d))
+
 ## [1.29.1-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.29.0...v1.29.1-dev.1) (2026-11-25)
 
 ### 🐛 Bug Fixes
