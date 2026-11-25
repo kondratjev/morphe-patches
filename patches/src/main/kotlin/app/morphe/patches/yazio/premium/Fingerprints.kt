@@ -3,61 +3,63 @@ package app.morphe.patches.yazio.premium
 import app.morphe.patcher.Fingerprint
 
 /**
- * Matches `hjs.A(SubscriptionStatus)` — primary premium check.
+ * Matches `vmu.j(SubscriptionStatus)` — primary premium check.
  * Returns true for GracePeriod, WillRenew, InTrialPeriod.
- * (Was `jg8.N()` in 26.36.1; R8 renamed the class in 26.44.2, same logic.)
+ * (Was `hjs.A` in 26.44.2 — R8 swapped the method names in 26.47.2,
+ * same logic.)
  */
 object SubscriptionCheckFingerprint : Fingerprint(
-    definingClass = "Lhjs;",
-    name = "A",
+    definingClass = "Lvmu;",
+    name = "j",
     returnType = "Z",
     parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
 )
 
 /**
- * Matches `hjs.q(SubscriptionStatus)` — lenient premium check.
+ * Matches `vmu.g(SubscriptionStatus)` — lenient premium check.
  * Returns true for WillExpire, GracePeriod, WillRenew, InTrialPeriod.
- * (Was `jg8.H()` in 26.36.1; R8 renamed the class in 26.44.2, same logic.)
+ * (Was `hjs.q` in 26.44.2 — R8 swapped the method names in 26.47.2,
+ * same logic.)
  */
 object SubscriptionCheckLenientFingerprint : Fingerprint(
-    definingClass = "Lhjs;",
-    name = "q",
+    definingClass = "Lvmu;",
+    name = "g",
     returnType = "Z",
     parameters = listOf("Lyazio/subscription/api/SubscriptionStatus;"),
 )
 
 /**
- * Matches `bvv.l(zqn)` — returns true when user is NOT premium.
+ * Matches `wnw.p(n5o)` — returns true when user is NOT premium.
  * Checks (user == null || user.z == null), where z is PremiumType.
- * (Was `etj.r(q6k)` in 26.36.1; user model `q6k` renamed to `zqn` in 26.44.2, same logic.)
+ * (Was `bvv.l(zqn)` in 26.44.2; R8 renamed in 26.47.2, same logic.)
  */
 object IsNotPremiumFingerprint : Fingerprint(
-    definingClass = "Lbvv;",
-    name = "l",
+    definingClass = "Lwnw;",
+    name = "p",
     returnType = "Z",
-    parameters = listOf("Lzqn;"),
+    parameters = listOf("Ln5o;"),
 )
 
 /**
- * Matches `gvv.g(zqn)` — returns true when user IS premium.
+ * Matches `ynw.n(n5o)` — returns true when user IS premium.
  * Checks user.z (PremiumType) != null.
- * (Was `gtj.n(q6k)` in 26.36.1; user model `q6k` renamed to `zqn` in 26.44.2, same logic.)
+ * (Was `gvv.g(zqn)` in 26.44.2; R8 renamed in 26.47.2, same logic.)
  */
 object IsPremiumFingerprintA : Fingerprint(
-    definingClass = "Lgvv;",
-    name = "g",
+    definingClass = "Lynw;",
+    name = "n",
     returnType = "Z",
-    parameters = listOf("Lzqn;"),
+    parameters = listOf("Ln5o;"),
 )
 
 /**
- * Matches `gvv.h(zqn)` — returns true when user IS premium.
+ * Matches `ynw.o(n5o)` — returns true when user IS premium.
  * Checks (user != null ? user.z : null) != null.
- * (Was `gtj.o(q6k)` in 26.36.1; user model `q6k` renamed to `zqn` in 26.44.2, same logic.)
+ * (Was `gvv.h(zqn)` in 26.44.2; R8 renamed in 26.47.2, same logic.)
  */
 object IsPremiumFingerprintB : Fingerprint(
-    definingClass = "Lgvv;",
-    name = "h",
+    definingClass = "Lynw;",
+    name = "o",
     returnType = "Z",
-    parameters = listOf("Lzqn;"),
+    parameters = listOf("Ln5o;"),
 )
