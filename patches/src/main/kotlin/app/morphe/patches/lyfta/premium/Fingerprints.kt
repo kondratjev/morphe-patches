@@ -25,15 +25,15 @@ object IsPremiumUserFingerprint : Fingerprint(
 )
 
 /**
- * Matches `zob.r0()` in Lyfta 1.612 — reads the "SUBSCRIPTION" value
+ * Matches `ysb.r0()` in Lyfta 1.614 — reads the "SUBSCRIPTION" value
  * from the session manager (`SessionManager.getValue("SUBSCRIPTION",
  * null)`). Forcing "premium" covers every reader comparing the tier
  * string (premium button label, profile sync, inline `== "premium"`
  * gates — R8 inlined the old `isPremiumUser` gate in 1.612).
- * (Was `Utils.localAccessState()` up to 1.600, same body.)
+ * (Was `zob` in 1.612; `ysb` in 1.614, same logic.)
  */
 object LocalAccessStateFingerprint : Fingerprint(
-    definingClass = "Lzob;",
+    definingClass = "Lysb;",
     name = "r0",
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
