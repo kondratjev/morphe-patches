@@ -19,7 +19,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.29.0](https://github.com/kondratjev/morphe-patches/releases/tag/v1.29.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
+> **[v1.29.1-dev.1](https://github.com/kondratjev/morphe-patches/releases/tag/v1.29.1-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
 <br>
@@ -78,7 +78,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 1.612 | 1.575 |
+| 1.614 | 1.575 |
 | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -94,12 +94,12 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 20.9.2 |
+| 20.8.0 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features (20.8.0 max — newer versions ship PairIP). |  |
 
 </details>
 
@@ -139,7 +139,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 4.23.1 |
+| 4.24.1 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -169,7 +169,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 26.44.2 |
+| 26.47.2 |
 | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
