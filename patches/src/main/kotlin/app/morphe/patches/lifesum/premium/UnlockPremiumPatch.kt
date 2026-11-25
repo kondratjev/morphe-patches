@@ -8,7 +8,7 @@ import app.morphe.util.returnEarly
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks all premium features.",
+    description = "Unlocks all premium features (20.8.0 max — newer versions ship PairIP).",
 ) {
     compatibleWith(COMPATIBILITY_LIFESUM)
 
