@@ -46,6 +46,10 @@ val disableLicenseCheckPatch = bytecodePatch(
         // Never launch the license error dialog, no matter which sub-check failed.
         StartErrorDialogFingerprint.methodOrNull?.returnEarly()
 
+        // Never launch PairIP's paywall, no matter which sub-check failed.
+        StartPaywallActivityFingerprint.methodOrNull?.returnEarly()
+        ShowPaywallAndCloseAppFingerprint.methodOrNull?.returnEarly()
+
         // Never kill the app after a silently failed check.
         ScheduleAppShutdownFingerprint.methodOrNull?.returnEarly()
 

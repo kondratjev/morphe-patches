@@ -66,6 +66,20 @@ object RepeatedCheckFingerprint : Fingerprint(
     )
 )
 
+/** Matches `LicenseClient.startPaywallActivity()` — launches PairIP's
+ * paywall when the server response carries a PAYWALL_INTENT. */
+object StartPaywallActivityFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseClient;",
+    name = "startPaywallActivity",
+)
+
+/** Matches `LicenseActivity.showPaywallAndCloseApp()` — PairIP's own
+ * paywall screen with app shutdown. */
+object ShowPaywallAndCloseAppFingerprint : Fingerprint(
+    definingClass = "Lcom/pairip/licensecheck/LicenseActivity;",
+    name = "showPaywallAndCloseApp",
+)
+
 /** Matches `ResponseValidator.validateResponse()` / `LicenseResponseHelper.validateResponse()` — validates the license server response. */
 object ValidateLicenseResponseFingerprint : Fingerprint(
     custom = { method, classDef ->

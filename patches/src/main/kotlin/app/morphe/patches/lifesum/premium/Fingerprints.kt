@@ -82,14 +82,13 @@ object IsAutoRenewingFingerprint : Fingerprint(
 )
 
 /**
- * Matches `l/e0d.<init>(Boolean, String, LocalDate, ...)` — Premium data class constructor
- * (obfuscated name varies per version: `l/n5c` in 20.6.1, `l/yrc` in 20.8.0,
- * `l/cid` in 20.10.0, `l/quc` in 20.9.0, `l/e0d` in 20.9.2).
+ * Matches `l/yrc.<init>(Boolean, String, LocalDate, ...)` — Premium data class constructor
+ * (obfuscated name varies per version: `l/n5c` in 20.6.1, `l/yrc` in 20.8.0).
  * Multiple code paths read `premium.a` directly instead of going through `hasPremium()`.
  * Patching the constructor forces `this.a = Boolean.TRUE` for all instances.
  */
 object PremiumConstructorFingerprint : Fingerprint(
-    definingClass = "Ll/e0d;",
+    definingClass = "Ll/yrc;",
     name = "<init>",
     returnType = "V",
     parameters = listOf(
@@ -99,7 +98,7 @@ object PremiumConstructorFingerprint : Fingerprint(
         "Lorg/joda/time/LocalDate;",
         "Ljava/lang/Integer;",
         "Ljava/lang/Integer;",
-        "Ll/wdg;",
+        "Ll/y3g;",
         "Ljava/lang/Boolean;",
         "Ljava/lang/Double;",
         "Ljava/util/Map;",
