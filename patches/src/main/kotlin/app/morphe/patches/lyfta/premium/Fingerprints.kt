@@ -25,16 +25,23 @@ object IsPremiumUserFingerprint : Fingerprint(
 )
 
 /**
- * Matches `ysb.r0()` in Lyfta 1.614 — reads the "SUBSCRIPTION" value
- * from the session manager (`SessionManager.getValue("SUBSCRIPTION",
- * null)`). Forcing "premium" covers every reader comparing the tier
- * string (premium button label, profile sync, inline `== "premium"`
- * gates — R8 inlined the old `isPremiumUser` gate in 1.612).
- * (Was `zob` in 1.612; `ysb` in 1.614, same logic.)
+ * Matches `s69.c(...)` in Lyfta 1.617 — paywall router. Reads the tier via
+ * the generic session getter (`q2b.i("SUBSCRIPTION", null)`) and shows
+ * paywall fragments for non-premium tiers (the premium branch only runs
+ * the caller's callback). The patch overwrites the tier register with
+ * "premium" right after the getter call.
  */
-object LocalAccessStateFingerprint : Fingerprint(
-    definingClass = "Lysb;",
-    name = "r0",
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
+object PaywallRouterTierFingerprint : Fingerprint(
+    definingClass = "Ls69;",
+    name = "c",
+    returnType = "V",
+    parameters = listOf(
+        "Ls69;",
+        "Landroid/app/Activity;",
+        "Ljava/lang/String;",
+        "Ldp9;",
+        "Z",
+        "I",
+    ),
+    strings = listOf("SUBSCRIPTION"),
 )
