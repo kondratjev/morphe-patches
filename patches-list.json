@@ -357,7 +357,7 @@
     },
     {
       "name": "Unlock Premium",
-      "description": "Unlocks all premium features.",
+      "description": "Unlocks all premium features (1.614 max — newer versions ship VM-enforced PairIP).",
       "default": true,
       "dependencies": [
         "BytecodePatch"

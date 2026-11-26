@@ -9,7 +9,7 @@ import app.morphe.patches.lyfta.shared.Constants.COMPATIBILITY_LYFTA
 @Suppress("unused")
 val unlockPremiumPatch = bytecodePatch(
     name = "Unlock Premium",
-    description = "Unlocks all premium features.",
+    description = "Unlocks all premium features (1.614 max — newer versions ship VM-enforced PairIP).",
 ) {
     compatibleWith(COMPATIBILITY_LYFTA)
 
