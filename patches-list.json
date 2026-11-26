@@ -268,7 +268,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.617",
+              "version": "1.614",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
@@ -372,7 +372,7 @@
           "signatures": null,
           "targets": [
             {
-              "version": "1.617",
+              "version": "1.614",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": null,
