@@ -1,3 +1,9 @@
+## [1.29.2](https://github.com/kondratjev/morphe-patches/compare/v1.29.1...v1.29.2) (2026-11-26)
+
+### 🚀 Updated App Support
+
+* **lyfta:** update to 1.617 ([9de4c53](https://github.com/kondratjev/morphe-patches/commit/9de4c53d0590be1741640490b63654f4f2414d95))
+
 ## [1.29.2-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.29.1...v1.29.2-dev.1) (2026-11-26)
 
 ### 🚀 Updated App Support
