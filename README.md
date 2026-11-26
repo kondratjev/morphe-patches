@@ -19,7 +19,7 @@ Or manually add this repository URL in Morphe Manager → Sources:
 ## 🩹 Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v1.29.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.29.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
+> **[v1.29.3-dev.2](https://github.com/kondratjev/morphe-patches/releases/tag/v1.29.3-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;21 patches total
 <details open>
 <summary>📦 Pillo&nbsp;&nbsp;•&nbsp;&nbsp;4 patches</summary>
 <br>
@@ -78,13 +78,13 @@ Or manually add this repository URL in Morphe Manager → Sources:
 
 **🎯 Supported versions:**
 
-| 1.617 | 1.575 |
+| 1.614 | 1.575 |
 | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Support patched YouTube Music](#support-patched-youtube-music) | Points the workout music button at a patched YouTube Music app instead of the stock package, so the button opens it. | • YouTube Music package |
-| [Unlock Premium](#unlock-premium) | Unlocks all premium features. |  |
+| [Unlock Premium](#unlock-premium) | Unlocks all premium features (1.614 max — newer versions ship VM-enforced PairIP). |  |
 
 </details>
 

@@ -9,7 +9,7 @@ object Constants {
         packageName = "com.lyfta",
         appIconColor = 0x000000,
         targets = listOf(
-            AppTarget("1.617"),
+            AppTarget("1.614"),
             AppTarget("1.575"),
         )
     )
